@@ -187,11 +187,11 @@ function mainindex()
 	$result['dis']=$this->Mymodel->states();
 	$this->load->view('home',$result);
 }
-	function countapprove($a)
-	{
-		$approve=$this->amodel->countapproval($a);
-		return($approve);
-	}
+function countapprove($a)
+{
+	$approve=$this->amodel->countapproval($a);
+	return($approve);
+}
 
 	//THEATRE approval
 	function approvetheatreaction()

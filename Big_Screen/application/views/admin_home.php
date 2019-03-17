@@ -19,6 +19,6 @@ if($a==1)
 	}
 	else
 	{
-		$CI->mainindex() ;
+		$CI->index() ;
 	}
 	?>

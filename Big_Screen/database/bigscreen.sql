@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Mar 12, 2019 at 02:08 PM
--- Server version: 5.7.23
--- PHP Version: 7.2.10
+-- Host: 127.0.0.1
+-- Generation Time: Mar 17, 2019 at 07:45 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,9 +28,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_bank`
 --
 
-DROP TABLE IF EXISTS `tbl_bank`;
-CREATE TABLE IF NOT EXISTS `tbl_bank` (
-  `bid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_bank` (
+  `bid` int(11) NOT NULL,
   `bank_name` varchar(50) NOT NULL,
   `banktype` varchar(10) NOT NULL,
   `account_no` varchar(16) NOT NULL,
@@ -39,9 +38,8 @@ CREATE TABLE IF NOT EXISTS `tbl_bank` (
   `year` int(11) NOT NULL,
   `cvv` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`bid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_bank`
@@ -57,9 +55,8 @@ INSERT INTO `tbl_bank` (`bid`, `bank_name`, `banktype`, `account_no`, `card_no`,
 -- Table structure for table `tbl_details`
 --
 
-DROP TABLE IF EXISTS `tbl_details`;
-CREATE TABLE IF NOT EXISTS `tbl_details` (
-  `regid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_details` (
+  `regid` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
@@ -67,10 +64,8 @@ CREATE TABLE IF NOT EXISTS `tbl_details` (
   `place` varchar(50) NOT NULL,
   `pin` bigint(20) NOT NULL,
   `profile_pic` text NOT NULL,
-  `cpic` longtext NOT NULL,
-  PRIMARY KEY (`email`),
-  UNIQUE KEY `regid` (`regid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `cpic` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_details`
@@ -78,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `tbl_details` (
 
 INSERT INTO `tbl_details` (`regid`, `name`, `email`, `phone`, `did`, `place`, `pin`, `profile_pic`, `cpic`) VALUES
 (1, 'admin', 'admin', '123456789', 0, '0', 0, '0', '0'),
-(2, 'Ajil Sunny', 'ajil@gmail.com', '8593967684', 2, 'kiliyanthara', 670706, '1552369099IMG_8800 (2).JPG', '1551848513Class Diagram.png'),
+(2, 'Ajil Sunny', 'ajil@gmail.com', '8593967684', 2, 'kiliyanthara', 670706, '1552406856IMG_8800 (2).JPG', '1551848513Class Diagram.png'),
 (4, 'ALAN', 'alan@gmail.com', '7410258963', 1, 'sreekandapuram', 670705, 'profilepic.png', '1551867465Sequence Diagram.png'),
 (7, 'APPU', 'appu@gmail.com', '7410258963', 2, 'kiliyanthara', 963258, 'profilepic.png', '1552233796'),
 (3, 'JITHU', 'jithu@gmail.com', '9638527410', 1, 'chemperi', 670706, 'profilepic.png', '1551849444Object Diagram.png'),
@@ -91,14 +86,12 @@ INSERT INTO `tbl_details` (`regid`, `name`, `email`, `phone`, `did`, `place`, `p
 -- Table structure for table `tbl_district`
 --
 
-DROP TABLE IF EXISTS `tbl_district`;
-CREATE TABLE IF NOT EXISTS `tbl_district` (
-  `did` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_district` (
+  `did` int(11) NOT NULL,
   `dname` varchar(50) NOT NULL,
   `sid` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`did`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_district`
@@ -120,15 +113,13 @@ INSERT INTO `tbl_district` (`did`, `dname`, `sid`, `status`) VALUES
 -- Table structure for table `tbl_filmselection`
 --
 
-DROP TABLE IF EXISTS `tbl_filmselection`;
-CREATE TABLE IF NOT EXISTS `tbl_filmselection` (
-  `fs_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_filmselection` (
+  `fs_id` int(11) NOT NULL,
   `mid` int(11) NOT NULL,
   `lid` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`fs_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
+  `date` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_filmselection`
@@ -151,15 +142,13 @@ INSERT INTO `tbl_filmselection` (`fs_id`, `mid`, `lid`, `status`, `date`) VALUES
 -- Table structure for table `tbl_login`
 --
 
-DROP TABLE IF EXISTS `tbl_login`;
-CREATE TABLE IF NOT EXISTS `tbl_login` (
-  `lid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_login` (
+  `lid` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(500) NOT NULL,
   `type` int(11) NOT NULL,
-  `lstatus` int(11) NOT NULL,
-  PRIMARY KEY (`lid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `lstatus` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_login`
@@ -168,11 +157,11 @@ CREATE TABLE IF NOT EXISTS `tbl_login` (
 INSERT INTO `tbl_login` (`lid`, `username`, `password`, `type`, `lstatus`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, 1),
 (2, 'ajil@gmail.com', '1ed09e82663a771ec7c98e896e37a501', 3, 1),
-(3, 'jithu@gmail.com', '97e75fd1f9125270c4ec644141947574', 2, 1),
+(3, 'jithu@gmail.com', '97e75fd1f9125270c4ec644141947574', 2, 2),
 (4, 'alan@gmail.com', '02558a70324e7c4f269c69825450cec8', 3, 0),
 (5, 'jobin@gmail.com', 'e6758b2a3b13423bdd3fe1b8e273909c', 2, 1),
 (6, 'roniya@gmail.com', '202cb962ac59075b964b07152d234b70', 2, 0),
-(7, 'appu@gmail.com', '622622b00805c54040dd9a15674a5117', 1, 2);
+(7, 'appu@gmail.com', '622622b00805c54040dd9a15674a5117', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -180,9 +169,8 @@ INSERT INTO `tbl_login` (`lid`, `username`, `password`, `type`, `lstatus`) VALUE
 -- Table structure for table `tbl_moviedetails`
 --
 
-DROP TABLE IF EXISTS `tbl_moviedetails`;
-CREATE TABLE IF NOT EXISTS `tbl_moviedetails` (
-  `mid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_moviedetails` (
+  `mid` int(11) NOT NULL,
   `distributer_id` int(11) NOT NULL,
   `film_name` varchar(100) NOT NULL,
   `poster_pic` varchar(500) NOT NULL,
@@ -199,10 +187,8 @@ CREATE TABLE IF NOT EXISTS `tbl_moviedetails` (
   `actress_pic` varchar(500) NOT NULL,
   `description` longtext NOT NULL,
   `date` varchar(4) NOT NULL,
-  `price` text NOT NULL,
-  PRIMARY KEY (`mid`),
-  UNIQUE KEY `film_name` (`film_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `price` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_moviedetails`
@@ -225,25 +211,21 @@ INSERT INTO `tbl_moviedetails` (`mid`, `distributer_id`, `film_name`, `poster_pi
 -- Table structure for table `tbl_news`
 --
 
-DROP TABLE IF EXISTS `tbl_news`;
-CREATE TABLE IF NOT EXISTS `tbl_news` (
-  `nid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_news` (
+  `nid` int(11) NOT NULL,
   `heading` varchar(100) NOT NULL,
   `photo` varchar(500) NOT NULL,
   `description` text NOT NULL,
   `ndate` varchar(100) NOT NULL,
-  `nstatus` int(11) NOT NULL,
-  PRIMARY KEY (`nid`),
-  UNIQUE KEY `heading` (`heading`),
-  UNIQUE KEY `heading_2` (`heading`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+  `nstatus` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_news`
 --
 
 INSERT INTO `tbl_news` (`nid`, `heading`, `photo`, `description`, `ndate`, `nstatus`) VALUES
-(38, 'Nun20 days', '1552282208Abhijith Bsc 20180225_201008.jpg', 'sssssssssssssssss', '2019/03/11  05:30:08am', 0);
+(41, 'wertyuje', '15525448597f90c3aead012830a1dc2ff8b0416f79.jpg', 'sdfghxdfvb', '2019/03/14  06:27:39am', 0);
 
 -- --------------------------------------------------------
 
@@ -251,9 +233,8 @@ INSERT INTO `tbl_news` (`nid`, `heading`, `photo`, `description`, `ndate`, `nsta
 -- Table structure for table `tbl_runningmovietime`
 --
 
-DROP TABLE IF EXISTS `tbl_runningmovietime`;
-CREATE TABLE IF NOT EXISTS `tbl_runningmovietime` (
-  `runid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_runningmovietime` (
+  `runid` int(11) NOT NULL,
   `mid` int(11) NOT NULL,
   `lid` int(11) NOT NULL,
   `no_of_shows` int(11) NOT NULL,
@@ -262,9 +243,8 @@ CREATE TABLE IF NOT EXISTS `tbl_runningmovietime` (
   `time3` varchar(20) NOT NULL,
   `time4` varchar(20) NOT NULL,
   `time5` varchar(20) NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`runid`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_runningmovietime`
@@ -280,23 +260,68 @@ INSERT INTO `tbl_runningmovietime` (`runid`, `mid`, `lid`, `no_of_shows`, `time1
 -- Table structure for table `tbl_state`
 --
 
-DROP TABLE IF EXISTS `tbl_state`;
-CREATE TABLE IF NOT EXISTS `tbl_state` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_state` (
+  `id` int(11) NOT NULL,
   `sname` varchar(100) NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `status` varchar(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_state`
 --
 
 INSERT INTO `tbl_state` (`id`, `sname`, `status`) VALUES
-(1, 'Kerala', 0),
-(2, 'Assam', 0),
-(3, 'Andhra Pradesh', 0),
-(4, 'Goa', 0);
+(1, 'Andhra Pradesh', '1'),
+(2, 'Arunachal Pradesh', '1'),
+(3, 'Assam', '1'),
+(4, 'Bihar', '1'),
+(5, 'Chhattisgarh', '1'),
+(6, 'Goa', '1'),
+(7, 'Gujarat', '1'),
+(8, 'Haryana', '1'),
+(9, 'Himachal Pradesh', '1'),
+(10, 'Jammu and Kashmir', '1'),
+(11, 'Jharkhand', '1'),
+(12, 'Karnataka', '1'),
+(13, 'Kerala', '1'),
+(14, 'Madhya Pradesh', '1'),
+(15, 'Maharashtra', '1'),
+(16, 'Manipur', '1'),
+(17, 'Meghalaya', '1'),
+(18, 'Mizoram', '1'),
+(19, 'Nagaland', '1'),
+(20, 'Odisha', '1'),
+(21, 'Punjab', '1'),
+(22, 'Rajasthan', '1'),
+(23, 'Sikkim', '1'),
+(24, 'Tamil Nadu', '1'),
+(25, 'Telangana', '1'),
+(26, 'Tripura', '1'),
+(27, 'Uttar Pradesh', '1'),
+(28, 'Uttarakhand', '1'),
+(29, 'West Bengal', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_status`
+--
+
+CREATE TABLE `tbl_status` (
+  `sid` int(11) NOT NULL,
+  `sname` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_status`
+--
+
+INSERT INTO `tbl_status` (`sid`, `sname`) VALUES
+(1, 'ok'),
+(2, 'approve'),
+(3, 'not approve'),
+(4, 'block'),
+(5, 'unblock');
 
 -- --------------------------------------------------------
 
@@ -304,9 +329,8 @@ INSERT INTO `tbl_state` (`id`, `sname`, `status`) VALUES
 -- Table structure for table `tbl_theatreseating`
 --
 
-DROP TABLE IF EXISTS `tbl_theatreseating`;
-CREATE TABLE IF NOT EXISTS `tbl_theatreseating` (
-  `tid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_theatreseating` (
+  `tid` int(11) NOT NULL,
   `lid` int(11) NOT NULL,
   `c_row` int(11) NOT NULL,
   `c_column` int(11) NOT NULL,
@@ -323,10 +347,8 @@ CREATE TABLE IF NOT EXISTS `tbl_theatreseating` (
   `time3` varchar(20) NOT NULL,
   `time4` varchar(20) NOT NULL,
   `time5` varchar(20) NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`tid`),
-  UNIQUE KEY `lid` (`lid`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_theatreseating`
@@ -341,13 +363,178 @@ INSERT INTO `tbl_theatreseating` (`tid`, `lid`, `c_row`, `c_column`, `c_price`, 
 -- Table structure for table `tbl_usertype`
 --
 
-DROP TABLE IF EXISTS `tbl_usertype`;
-CREATE TABLE IF NOT EXISTS `tbl_usertype` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_usertype` (
+  `id` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_usertype`
+--
+
+INSERT INTO `tbl_usertype` (`id`, `type`, `status`) VALUES
+(0, 'admin', 1),
+(1, 'user', 1),
+(2, 'Theatre Owner', 1),
+(3, 'Distributor', 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_bank`
+--
+ALTER TABLE `tbl_bank`
+  ADD PRIMARY KEY (`bid`);
+
+--
+-- Indexes for table `tbl_details`
+--
+ALTER TABLE `tbl_details`
+  ADD PRIMARY KEY (`email`),
+  ADD UNIQUE KEY `regid` (`regid`);
+
+--
+-- Indexes for table `tbl_district`
+--
+ALTER TABLE `tbl_district`
+  ADD PRIMARY KEY (`did`);
+
+--
+-- Indexes for table `tbl_filmselection`
+--
+ALTER TABLE `tbl_filmselection`
+  ADD PRIMARY KEY (`fs_id`);
+
+--
+-- Indexes for table `tbl_login`
+--
+ALTER TABLE `tbl_login`
+  ADD PRIMARY KEY (`lid`);
+
+--
+-- Indexes for table `tbl_moviedetails`
+--
+ALTER TABLE `tbl_moviedetails`
+  ADD PRIMARY KEY (`mid`),
+  ADD UNIQUE KEY `film_name` (`film_name`);
+
+--
+-- Indexes for table `tbl_news`
+--
+ALTER TABLE `tbl_news`
+  ADD PRIMARY KEY (`nid`),
+  ADD UNIQUE KEY `heading` (`heading`),
+  ADD UNIQUE KEY `heading_2` (`heading`);
+
+--
+-- Indexes for table `tbl_runningmovietime`
+--
+ALTER TABLE `tbl_runningmovietime`
+  ADD PRIMARY KEY (`runid`);
+
+--
+-- Indexes for table `tbl_state`
+--
+ALTER TABLE `tbl_state`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_status`
+--
+ALTER TABLE `tbl_status`
+  ADD PRIMARY KEY (`sid`);
+
+--
+-- Indexes for table `tbl_theatreseating`
+--
+ALTER TABLE `tbl_theatreseating`
+  ADD PRIMARY KEY (`tid`),
+  ADD UNIQUE KEY `lid` (`lid`);
+
+--
+-- Indexes for table `tbl_usertype`
+--
+ALTER TABLE `tbl_usertype`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_bank`
+--
+ALTER TABLE `tbl_bank`
+  MODIFY `bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_details`
+--
+ALTER TABLE `tbl_details`
+  MODIFY `regid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_district`
+--
+ALTER TABLE `tbl_district`
+  MODIFY `did` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tbl_filmselection`
+--
+ALTER TABLE `tbl_filmselection`
+  MODIFY `fs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
+--
+-- AUTO_INCREMENT for table `tbl_login`
+--
+ALTER TABLE `tbl_login`
+  MODIFY `lid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_moviedetails`
+--
+ALTER TABLE `tbl_moviedetails`
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tbl_news`
+--
+ALTER TABLE `tbl_news`
+  MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `tbl_runningmovietime`
+--
+ALTER TABLE `tbl_runningmovietime`
+  MODIFY `runid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tbl_state`
+--
+ALTER TABLE `tbl_state`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `tbl_status`
+--
+ALTER TABLE `tbl_status`
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_theatreseating`
+--
+ALTER TABLE `tbl_theatreseating`
+  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tbl_usertype`
+--
+ALTER TABLE `tbl_usertype`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

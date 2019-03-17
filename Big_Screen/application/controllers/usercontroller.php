@@ -5,6 +5,7 @@ class Usercontroller extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Mymodel');
+		$this->load->model('amodel');
 		$this->load->helpers(array('url','form'));
 		$this->load->library(array('session','upload'));
 	}
@@ -31,9 +32,14 @@ class Usercontroller extends CI_Controller
 	{
 		$this->load->view('forgotpassword');
 	}
-
+	function countall($a)
+	{
+		$userreg=$this->amodel->countlist($a);
+		return($userreg);
+	}
 	function logout()
 	{
+		$this->session->unset_userdata(array('id'=> "",'username'=> "",'password'=>""));
 		$this->session->sess_destroy();
 		$this->index();
 
@@ -259,9 +265,11 @@ function usercontact()
 						{
 							if($type=='0')
 							{
-								$this->session->set_userdata('id',$lid);
-								$this->session->set_userdata('username',$username);
-								$this->session->set_userdata('password',$password);
+								$data= array('id'  => $lid,'username'=> $username,'password'=>$password);
+								$this->session->set_userdata($data);
+								// $this->session->set_userdata('id',$lid);
+								// $this->session->set_userdata('username',$username);
+								// $this->session->set_userdata('password',$password);
 								$this->load->view('admin_home');
 							}
 							else if($type=='1')
@@ -330,74 +338,7 @@ function usercontact()
 		$this->load->view('list',$display);
 	}
 
-	//Movie details insert
-	function moviedetailesinsert()
-	{
-		$filmName=$this->input->post('filmName');
-		$res=$this->Mymodel->checkmovie($filmName);
-		if($res == 0)
-		{
-			$id=$this->session->userdata('id');
-			$directer=$this->input->post('directer');
-			$producer=$this->input->post('producer');
-			$mdirector=$this->input->post('mdirector');
-			$language=$this->input->post('language');
-			$actor=$this->input->post('actor');
-			$actress=$this->input->post('actress');
-			$description=$this->input->post('description');
-			$cost=$this->input->post('cost');
-			$filmposterpic=time().$_FILES['filmposterpic']['name'];
-			$coverpic=time().$_FILES['coverpic']['name'];
-			$directerpic=time().$_FILES['directerpic']['name'];
-			$producerpic=time().$_FILES['producerpic']['name'];
-			$actorpic=time().$_FILES['actorpic']['name'];
-			$actresspic=time().$_FILES['actresspic']['name'];
-			$posterpath="../Big_Screen/images/movie/poster/";
-			$coverpath="../Big_Screen/images/movie/cover/";
-			$directorpath="../Big_Screen/images/movie/directer/";
-			$producerpath="../Big_Screen/images/movie/producer/";
-			$actorpath="../Big_Screen/images/movie/actor/";
-			$actresspath="../Big_Screen/images/movie/actress/";
-			move_uploaded_file($_FILES['filmposterpic']['tmp_name'],$posterpath.$filmposterpic);
-			move_uploaded_file($_FILES['coverpic']['tmp_name'],$coverpath.$coverpic);
-			move_uploaded_file($_FILES['directerpic']['tmp_name'],$directorpath.$directerpic);
-			move_uploaded_file($_FILES['producerpic']['tmp_name'],$producerpath.$producerpic);
-			move_uploaded_file($_FILES['actorpic']['tmp_name'],$actorpath.$actorpic);
-			move_uploaded_file($_FILES['actresspic']['tmp_name'],$actresspath.$actresspic);
-
-			$sourceProperties = getimagesize($posterpath.$filmposterpic);
-			$this->imagecheckposter($sourceProperties,$posterpath.$filmposterpic);
-
-			$sourceProperties = getimagesize($coverpath.$coverpic);
-			$this->imagecheckcover($sourceProperties,$coverpath.$coverpic);
-
-			$sourceProperties = getimagesize($directorpath.$directerpic);
-			$this->imagecheck($sourceProperties,$directorpath.$directerpic);
-
-			$sourceProperties1 = getimagesize($producerpath.$producerpic);
-			$this->imagecheck($sourceProperties1,$producerpath.$producerpic);
-
-			$sourceProperties2 = getimagesize($actorpath.$actorpic);
-			$this->imagecheck($sourceProperties2,$actorpath.$actorpic);
-
-			$sourceProperties3 = getimagesize($actresspath.$actresspic);
-			$this->imagecheck($sourceProperties3,$actresspath.$actresspic);
-
-			$data=array('mid'=>NULL,'distributor_id'=>$id,'film_name'=>$filmName,'poster_pic'=>$filmposterpic,'cover_pic'=>$coverpic,'directer'=>$directer,'directer_pic'=>$directerpic,'producer'=>$producer,'producer_pic'=>$producerpic,'mdirector'=>$mdirector,'language'=>$language,'actor'=>$actor,'actor_pic'=>$actorpic,'actress'=>$actress,'actress_pic'=>$actresspic,'description'=>$description,'date'=>'2018','price'=>$cost);
-			$this->Mymodel->insertmovie($data);
-			$username=$this->session->userdata('username');
-			$this->session->set_flashdata('msg', 'Film Update Sucessfully');
-			$result['dis']=$this->Mymodel->disuser($username);
-			$this->load->view('distributor_addfilmdetails',$result);
-		}
-		else
-		{
-			$username=$this->session->userdata('username');
-			$this->session->set_flashdata('msg', 'The Film Already Uploaded');
-			$result['dis']=$this->Mymodel->disuser($username);
-			$this->load->view('distributor_addfilmdetails',$result);
-		}
-	}
+	
 
 	//Film detailes view distributor
 	function filmviewdistributor()
@@ -642,7 +583,7 @@ function usercontact()
 
 
 
-	
+
 
 	function imageResizeposter($imageResourceId,$width,$height)
 	{
@@ -899,6 +840,12 @@ function runningfilmtime()
 		$result['dis']=$this->Mymodel->theatrebooked($lid);
 		$this->load->view('theatre_runningtime',$result);
 	}
+}
+
+function countapprove($a)
+{
+	$approve=$this->amodel->countapproval($a);
+	return($approve);
 }
 
 function runningtimeadd()

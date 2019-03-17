@@ -11,6 +11,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <link rel="icon" href="../../images/images.png" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="<?php echo base_url('style/css/bootstrap.css');?>" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo base_url('style/css/style.css');?>" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo base_url('style/css/contactstyle.css');?>" rel="stylesheet"  type="text/css" media="all" />
@@ -47,6 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="<?php echo base_url('style/js/move-top.js');?>"></script>
 <script type="text/javascript" src="<?php echo base_url('style/js/easing.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('style/js/validateaddmovie.js');?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){

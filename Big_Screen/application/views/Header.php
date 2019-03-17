@@ -100,6 +100,12 @@ function dist()
   });
 }
 
+function clearform()
+{
+	document.getElementById('signup').reset();
+		document.getElementById('loginform').reset();
+}
+
 	</script>
 	 <!-- start-smoth-scrolling -->
 </head>
@@ -146,7 +152,7 @@ function dist()
 			<div class="modal-content">
 				<div class="modal-header">
 					Sign In & Sign Up
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearform()"><span aria-hidden="true">&times;</span></button>
 				</div>
 				<section>
 					<div class="modal-body">
@@ -157,7 +163,7 @@ function dist()
 							  </div>
 							  <div class="form">
 								<h3>Login to your account</h3>
-								<form action="<?php echo site_url('usercontroller/loginn')?>" method="post">
+								<form name="loginform" id="loginform" action="<?php echo site_url('usercontroller/loginn')?>" method="post">
 								  <input type="text" name="Username" placeholder="Email" required="">
 								  <input type="password" name="Password" placeholder="Password" required="">
 								  <input type="submit" value="Login">
@@ -166,13 +172,13 @@ function dist()
 
 							  <div class="form">
 								<h3>Create an account</h3>
-								<form action="<?php echo site_url('usercontroller/insert')?>" method="post" onsubmit="return signup()" enctype="multipart/form-data">
+								<form name="signup" id="signup" action="<?php echo site_url('usercontroller/insert')?>" method="post" onsubmit="return signup()" enctype="multipart/form-data">
 									<p id="vname" style="color:red;"></P>
 								  <input type="text" name="Name" id="Name" placeholder="Name" pattern="^[a-zA-Z]+$" maxlength="15" onkeyup="this.value = this.value.toUpperCase();" >
 									<p id="vemail" style="color:red;"></P>
 									<input type="email" name="Email" id="Email" placeholder="Email Address">
 									<p id="vphone" style="color:red;"></P>
-									<input type="text" name="Phone" id="Phone" placeholder="Phone Number" pattern="^\d{10}$" >
+									<input type="text" name="Phone" id="Phone" placeholder="Phone Number" maxlength="10" pattern="^\d{10}$" >
 									<p id="vtype" style="color:red;"></P>
 									<select name="Type" id="Type" placeholder="Select" style="width:100%;height:100%;margin-bottom:5%;padding:4% 4%" onchange="return user()">
 								  <option value="0">Select Type</option>

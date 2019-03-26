@@ -14,21 +14,21 @@ class acontroller extends CI_Controller
 	//ADMIN PAGES
 	function index()
 	{
-		$this->load->view('admin_home');
+		$this->load->view('admin/admin_home');
 	}
 
 	function theatreapproval()
 	{
 		$type='2';
 		$result['theatres']=$this->amodel->approvetheatrelist($type);
-		$this->load->view('admin_theatreapprove',$result);
+		$this->load->view('admin/admin_theatreapprove',$result);
 	}
 
 	function distributorapproval()
 	{
 		$type='3';
 		$result['distributor']=$this->amodel->approvedistributorlist($type);
-		$this->load->view('admin_distributorapprove',$result);
+		$this->load->view('admin/admin_distributorapprove',$result);
 	}
 
 	//distributor approval
@@ -36,13 +36,11 @@ class acontroller extends CI_Controller
 	{
 		$email=$this->input->post('blockid');
 		$blockstatus=$this->input->post('blockstatus');
-		if($blockstatus==0)
+		if($blockstatus==1)
 		{
-			$action=1;
+			$action=0;
 			$this->amodel->updateblock($email,$action);
-			$type='3';
-			$result['distributor']=$this->amodel->approvedistributorlist($type);
-			$this->load->view('admin_distributorapprove',$result);
+			$this->distributorapproval();
 		}
 	}
 
@@ -50,8 +48,16 @@ class acontroller extends CI_Controller
 	{
 		$type='2';
 		$result['theatres']=$this->amodel->lists($type);
-		$this->load->view('admin_theatrelist',$result);
+		$this->load->view('admin/admin_theatrelist',$result);
 	}
+
+	function userlist()
+	{
+		$type='1';
+		$result['user']=$this->amodel->lists($type);
+		$this->load->view('admin/admin_userslist',$result);
+	}
+
 
 	//USER BLOCK ACTION
 	function blockuseraction()
@@ -60,35 +66,25 @@ class acontroller extends CI_Controller
 		$blockstatus=$this->input->post('blockstatus');
 		if($blockstatus==2)
 		{
-			$action=1;
+			$action=0;
 			$this->amodel->updateblock($email,$action);
-			$type='1';
-			$result['user']=$this->amodel->lists($type);
-			$this->load->view('admin_userslist',$result);
+			$this->userlist();
 		}
 		else
 		{
 			$action=2;
 			$this->amodel->updateblock($email,$action);
-			$type='1';
-			$result['user']=$this->amodel->lists($type);
-			$this->load->view('admin_userslist',$result);
+				$this->userlist();
 		}
 	}
 	//END USER BLOCK
 
-	function userlist()
-	{
-		$type='1';
-		$result['user']=$this->amodel->lists($type);
-		$this->load->view('admin_userslist',$result);
-	}
 
 	function distributorlist()
 	{
 		$type='3';
 		$result['distributor']=$this->amodel->lists($type);
-		$this->load->view('admin_distributorlist',$result);
+		$this->load->view('admin/admin_distributorlist',$result);
 	}
 	//THEATRE BLOCK ACTION
 	function blocktheatreaction()
@@ -97,19 +93,15 @@ class acontroller extends CI_Controller
 		$blockstatus=$this->input->post('blockstatus');
 		if($blockstatus==2)
 		{
-			$action=1;
+			$action=0;
 			$this->amodel->updateblock($email,$action);
-			$type='2';
-			$result['theatres']=$this->amodel->lists($type);
-			$this->load->view('admin_theatrelist',$result);
+			$this->theatrelist();
 		}
 		else
 		{
 			$action=2;
 			$this->amodel->updateblock($email,$action);
-			$type='2';
-			$result['theatres']=$this->amodel->lists($type);
-			$this->load->view('admin_theatrelist',$result);
+			$this->theatrelist();
 		}
 	}
 	//END BLOCK ACTION
@@ -121,19 +113,15 @@ class acontroller extends CI_Controller
 		$blockstatus=$this->input->post('blockstatus');
 		if($blockstatus==2)
 		{
-			$action=1;
+			$action=0;
 			$this->amodel->updateblock($email,$action);
-			$type='3';
-			$result['distributor']=$this->amodel->lists($type);
-			$this->load->view('admin_distributorlist',$result);
+			$this->distributorlist();
 		}
 		else
 		{
 			$action=2;
 			$this->amodel->updateblock($email,$action);
-			$type='3';
-			$result['distributor']=$this->amodel->lists($type);
-			$this->load->view('admin_distributorlist',$result);
+			$this->distributorlist();
 		}
 	}
 	//END distributor BLOCK
@@ -141,24 +129,24 @@ class acontroller extends CI_Controller
 
 	function payment()
 	{
-		$this->load->view('admin_payment');
+		$this->load->view('admin/admin_payment');
 	}
 
 	function addnews()
 	{
 		$result['dis']=$this->amodel->newsupdate(0);
-		$this->load->view('admin_addnews',$result);
+		$this->load->view('admin/admin_addnews',$result);
 	}
 
 	function dnews()
 	{
 		$result['list']=$this->amodel->newslist();
-		$this->load->view('admin_news',$result);
+		$this->load->view('admin/admin_news',$result);
 	}
 
 	function contact()
 	{
-		$this->load->view('admin_contact');
+		$this->load->view('admin/admin_contact');
 	}
 	//END ADMIN PAGES
 
@@ -198,13 +186,11 @@ function countapprove($a)
 	{
 		$email=$this->input->post('blockid');
 		$blockstatus=$this->input->post('blockstatus');
-		if($blockstatus==0)
+		if($blockstatus==1)
 		{
-			$action=1;
+			$action=0;
 			$this->amodel->updateblock($email,$action);
-			$type='2';
-			$result['theatres']=$this->amodel->approvetheatrelist($type);
-			$this->load->view('admin_theatreapprove',$result);
+			$this->theatreapproval();
 		}
 	}
 	//END approval THEATRE
@@ -229,11 +215,11 @@ function countapprove($a)
 			$s=$this->amodel->insertnews($data);
 			$this->session->set_flashdata('msg', 'News Added Sucessfully');
 			$result['dis']=$this->amodel->newsupdate(0);
-			$this->load->view('admin_addnews',$result);
+			$this->load->view('admin/admin_addnews',$result);
 		}else{
 			$this->session->set_flashdata('msg', 'The news already uploaded');
 			$result['dis']=$this->amodel->newsupdate(0);
-			$this->load->view('admin_addnews',$result);
+			$this->load->view('admin/admin_addnews',$result);
 		}
 
 	}
@@ -307,21 +293,21 @@ function countapprove($a)
 					$s=$this->amodel->updatenews($nid,$data);
 					$this->session->set_flashdata('msg', 'News Update Sucessfully');
 					$result['list']=$this->amodel->newslist();
-					$this->load->view('admin_news',$result);
+					$this->load->view('admin/admin_news',$result);
 				}
 				else {
 					$data=array('heading'=>$heading,'description'=>$description,'ndate'=>$date,'nstatus'=>0);
 					$s=$this->amodel->updatenews($nid,$data);
 					$this->session->set_flashdata('msg', 'News Update Sucessfully');
 					$result['list']=$this->amodel->newslist();
-					$this->load->view('admin_news',$result);
+					$this->load->view('admin/admin_news',$result);
 				}
 		}
 		else
 		{
 			$this->session->set_flashdata('msg', 'The news already uploaded');
 			$result['list']=$this->amodel->newslist();
-			$this->load->view('admin_news',$result);
+			$this->load->view('admin/admin_news',$result);
 		}
 	}
 
@@ -337,12 +323,12 @@ function countapprove($a)
 				{
 					$this->amodel->removenews($id);
 					$result['list']=$this->amodel->newslist();
-					$this->load->view('admin_news',$result);
+					$this->load->view('admin/admin_news',$result);
 				}
 				else
 				{
 					$result['dis']=$this->amodel->newsupdate($id);
-					$this->load->view('admin_addnews',$result);
+					$this->load->view('admin/admin_addnews',$result);
 				}
 			}
 	//END VIEW CHANGE
@@ -352,7 +338,7 @@ function searchtheatre()
 {
 	$search=$this->input->post('search');
 	$result['theatres']=$this->amodel->searchtheatre($search);
-	$this->load->view('admin_theatreapprove',$result);
+	$this->load->view('admin/admin_theatreapprove',$result);
 
 }
 
@@ -361,7 +347,7 @@ function searchdistributor()
 {
 	$search=$this->input->post('search');
 	$result['distributor']=$this->amodel->searchdistributor($search);
-	$this->load->view('admin_distributorapprove',$result);
+	$this->load->view('admin/admin_distributorapprove',$result);
 
 }
 
@@ -370,7 +356,7 @@ function searchtheatrelist()
 {
 	$search=$this->input->post('search');
 	$result['theatres']=$this->amodel->searchtheatrelist($search);
-	$this->load->view('admin_theatrelist',$result);
+	$this->load->view('admin/admin_theatrelist',$result);
 
 }
 
@@ -379,7 +365,7 @@ function searchuserlist()
 {
 	$search=$this->input->post('search');
 	$result['user']=$this->amodel->searchuserlist($search);
-	$this->load->view('admin_userslist',$result);
+	$this->load->view('admin/admin_userslist',$result);
 }
 
 //Search Distributor list
@@ -387,7 +373,7 @@ function searchdistributorlist()
 {
 	$search=$this->input->post('search');
 	$result['distributor']=$this->amodel->searchdistributorlist($search);
-	$this->load->view('admin_distributorlist',$result);
+	$this->load->view('admin/admin_distributorlist',$result);
 }
 
 }

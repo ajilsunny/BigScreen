@@ -36,14 +36,15 @@ class dcontroller extends CI_Controller
   {
     $username=$this->session->userdata('username');
     $result['dis']=$this->Mymodel->disuser($username);
-    $this->load->view('distributor_home',$result);
+    $this->load->view('distributor/distributor_home',$result);
   }
 
   function distributoraddfilms()
 	{
 		$username=$this->session->userdata('username');
-		$result['dis']=$this->Mymodel->disuser($username);
-		$this->load->view('distributor_addfilmdetails',$result);
+		//$result['dis']=$this->Mymodel->disuser($username);
+		$cat['cat']=$this->dmodel->filmcategory();
+		$this->load->view('distributor/distributor_addfilmdetails',$cat);
 	}
 
   function distributorfilms()
@@ -51,35 +52,35 @@ class dcontroller extends CI_Controller
 		$lid=$this->session->userdata('id');
 		$msg='lid';
 		$result['dis']=$this->dmodel->films($lid,$msg);
-		$this->load->view('distributor_films',$result);
+		$this->load->view('distributor/distributor_films',$result);
 	}
 
   function distributorselectedfilms()
 	{
 		$lid=$this->session->userdata('id');
 		$result['dis']=$this->dmodel->filmsselect($lid);
-		$this->load->view('distributor_selectedfilmdetails',$result);
+		$this->load->view('distributor/distributor_selectedfilmdetails',$result);
 	}
 
   function distributorrunningstatus()
 	{
 		$lid=$this->session->userdata('id');
 		$result['dis']=$this->dmodel->filmsrunning($lid);
-		$this->load->view('distributor_runningtheaters',$result);
+		$this->load->view('distributor/distributor_runningtheaters',$result);
 	}
 
   function distributorprofile()
 	{
 		$username=$this->session->userdata('username');
 		$result['dis']=$this->Mymodel->disuser($username);
-		$this->load->view('distributor_profile',$result);
+		$this->load->view('distributor/distributor_profile',$result);
 	}
 
   function distributorcontact()
 	{
 		$username=$this->session->userdata('username');
 		$result['dis']=$this->Mymodel->disuser($username);
-		$this->load->view('distributor_contact',$result);
+		$this->load->view('distributor/distributor_contact',$result);
 	}
 
 	//distributor edit profile
@@ -89,13 +90,13 @@ class dcontroller extends CI_Controller
 		if(isset($email))
 		{
 		$result['dis']=$this->Mymodel->disuser($email);
-		$this->load->view('distributor_profileedit',$result);
+		$this->load->view('distributor/distributor_profileedit',$result);
 		}
 		else
 		{
 		$username=$this->session->userdata('username');
 		$result['dis']=$this->Mymodel->disuser($username);
-		$this->load->view('distributor_profile',$result);
+		$this->load->view('distributor/distributor_profile',$result);
 		}
 	}
 
@@ -113,7 +114,7 @@ class dcontroller extends CI_Controller
 				{
 					$username=$this->session->userdata('username');
 					$result['dis']=$this->Mymodel->disuser($username);
-					$this->load->view('distributor_profile',$result);
+					$this->load->view('distributor/distributor_profile',$result);
 				}
 				else
 				{
@@ -129,14 +130,14 @@ class dcontroller extends CI_Controller
 							$this->Mymodel->update_profile($data,$email);
 							$result['dis']=$this->Mymodel->disuser($email);
 							$this->session->set_userdata('name',$name);
-							$this->load->view('distributor_profile',$result);
+							$this->load->view('distributor/distributor_profile',$result);
 						}
 						else
 						{
 							$data=array('name'=>$name,'phone'=>$phone,'place'=>$place,'pin'=>$pin);
 							$this->Mymodel->update_profile($data,$email);
 							$result['dis']=$this->Mymodel->disuser($email);
-							$this->load->view('distributor_profile',$result);
+							$this->load->view('distributor/distributor_profile',$result);
 						}
 				}
 			}
@@ -144,7 +145,7 @@ class dcontroller extends CI_Controller
 			{
 				$username=$this->session->userdata('username');
 				$result['dis']=$this->Mymodel->disuser($username);
-				$this->load->view('distributor_profile',$result);
+				$this->load->view('distributor/distributor_profile',$result);
 			}
 	}
 
@@ -193,33 +194,123 @@ class dcontroller extends CI_Controller
 		return $targetLayer;
 	}
 
+	function imagecheckposter($sourceProperties,$path)
+	{
+	$imageType = $sourceProperties[2];
+	switch ($imageType) {
+
+
+	case IMAGETYPE_PNG:
+	$imageResourceId = imagecreatefrompng($path);
+	$targetLayer = $this->imageResizeposter($imageResourceId,$sourceProperties[0],$sourceProperties[1]);
+	imagepng($targetLayer,$path);
+	break;
+
+
+	case IMAGETYPE_GIF:
+	$imageResourceId = imagecreatefromgif($path);
+	$targetLayer = $this->imageResizeposter($imageResourceId,$sourceProperties[0],$sourceProperties[1]);
+	imagegif($targetLayer,$path);
+	break;
+
+
+	case IMAGETYPE_JPEG:
+	$imageResourceId = imagecreatefromjpeg($path);
+	$targetLayer =$this->imageResizeposter($imageResourceId,$sourceProperties[0],$sourceProperties[1]);
+	imagejpeg($targetLayer,$path);
+	break;
+
+
+	default:
+	echo "Invalid Image type.";
+	exit;
+	break;
+
+	}
+	}
+
+	function imagecheckcover($sourceProperties,$path)
+	{
+	$imageType = $sourceProperties[2];
+	switch ($imageType) {
+
+
+	case IMAGETYPE_PNG:
+	$imageResourceId = imagecreatefrompng($path);
+	$targetLayer = $this->imageResizecover($imageResourceId,$sourceProperties[0],$sourceProperties[1]);
+	imagepng($targetLayer,$path);
+	break;
+
+
+	case IMAGETYPE_GIF:
+	$imageResourceId = imagecreatefromgif($path);
+	$targetLayer = $this->imageResizecover($imageResourceId,$sourceProperties[0],$sourceProperties[1]);
+	imagegif($targetLayer,$path);
+	break;
+
+
+	case IMAGETYPE_JPEG:
+	$imageResourceId = imagecreatefromjpeg($path);
+	$targetLayer =$this->imageResizecover($imageResourceId,$sourceProperties[0],$sourceProperties[1]);
+	imagejpeg($targetLayer,$path);
+	break;
+
+
+	default:
+	echo "Invalid Image type.";
+	exit;
+	break;
+
+	}
+	}
+
+
+	function imageResizeposter($imageResourceId,$width,$height)
+	{
+	$targetWidth =236;
+	$targetHeight =328;
+	$targetLayer=imagecreatetruecolor($targetWidth,$targetHeight);
+	imagecopyresampled($targetLayer,$imageResourceId,0,0,0,0,$targetWidth,$targetHeight, $width,$height);
+	return $targetLayer;
+	}
+
+	function imageResizecover($imageResourceId,$width,$height)
+	{
+	$targetWidth =1280;
+	$targetHeight =720;
+	$targetLayer=imagecreatetruecolor($targetWidth,$targetHeight);
+	imagecopyresampled($targetLayer,$imageResourceId,0,0,0,0,$targetWidth,$targetHeight, $width,$height);
+	return $targetLayer;
+	}
+
 	//Movie details insert
 	function moviedetailesinsert()
 	{
 		$filmName1=$this->input->post('filmName');
-		$res=$this->Mymodel->checkmovie($filmName);
+		$res=$this->Mymodel->checkmovie($filmName1);
 		if($res == 0)
 		{
-			$directer=array();
+			$director=array();
 			$producer=array();
 			$actor=array();
 			$actress=array();
-			$directerpic=array();
+			$directorpic=array();
 			$producerpic=array();
 			$actorpic=array();
 			$actresspic=array();
+			$categories=array();
 
 			$id=$this->session->userdata('id');
 
 			$numdirector=$this->input->post('numdirector');
 			for($i=0;$i<=$numdirector;$i++)
 			{
-				$directer[$i]=$this->input->post('directer'.$i);
-				$directerpic[$i]=time().$_FILES['directerpic'.$i]['name'];
-				$directorpath="../Big_Screen/images/movie/directer/";
-				move_uploaded_file($_FILES['directerpic'.$i]['tmp_name'],$directorpath.$directerpic[$i]);
-				$sourceProperties = getimagesize($directorpath.$directerpic[$i]);
-				$this->imagecheck($sourceProperties,$directorpath.$directerpic[$i]);
+				$director[$i]=$this->input->post('Director'.$i);
+				$directorpic[$i]=time().$_FILES['Directorpic'.$i]['name'];
+				$directorpath="../Big_Screen/images/movie/director/";
+				move_uploaded_file($_FILES['Directorpic'.$i]['tmp_name'],$directorpath.$directorpic[$i]);
+				$sourceProperties = getimagesize($directorpath.$directorpic[$i]);
+				$this->imagecheck($sourceProperties,$directorpath.$directorpic[$i]);
 			}
 
 			$numproducer=$this->input->post('numproducer');
@@ -227,79 +318,105 @@ class dcontroller extends CI_Controller
 			{
 				$producer[$i]=$this->input->post('producer'.$i);
 				$producerpic[$i]=time().$_FILES['producerpic'.$i]['name'];
-				$producerpath="../Big_Screen/images/movie/directer/";
+				$producerpath="../Big_Screen/images/movie/producer/";
 				move_uploaded_file($_FILES['producerpic'.$i]['tmp_name'],$producerpath.$producerpic[$i]);
-				$sourceProperties = getimagesize($producerpath.$$producerpic[$i]);
+				$sourceProperties = getimagesize($producerpath.$producerpic[$i]);
 				$this->imagecheck($sourceProperties,$producerpath.$producerpic[$i]);
 			}
 
-			$numproducer=$this->input->post('numproducer');
-			for($i=0;$i<=$numproducer;$i++)
+			$numactor=$this->input->post('numactor');
+
+			for($i=0;$i<=$numactor;$i++)
 			{
-				$producer[$i]=$this->input->post('producer'.$i);
-				$producerpic[$i]=time().$_FILES['producerpic'.$i]['name'];
-				$producerpath="../Big_Screen/images/movie/directer/";
-				move_uploaded_file($_FILES['producerpic'.$i]['tmp_name'],$producerpath.$producerpic[$i]);
-				$sourceProperties = getimagesize($producerpath.$$producerpic[$i]);
-				$this->imagecheck($sourceProperties,$producerpath.$producerpic[$i]);
+
+				$actor[$i]=$this->input->post('actor'.$i);
+				$actorpic[$i]=time().$_FILES['actorpic'.$i]['name'];
+				$actorpath="../Big_Screen/images/movie/actor/";
+				move_uploaded_file($_FILES['actorpic'.$i]['tmp_name'],$actorpath.$actorpic[$i]);
+				$sourceProperties = getimagesize($actorpath.$actorpic[$i]);
+				$this->imagecheck($sourceProperties,$actorpath.$actorpic[$i]);
+			}
+
+			$numactress=$this->input->post('numactress');
+			for($i=0;$i<=$numactress;$i++)
+			{
+				$actress[$i]=$this->input->post('actress'.$i);
+				$actresspic[$i]=time().$_FILES['actresspic'.$i]['name'];
+				$actresspath="../Big_Screen/images/movie/actress/";
+				move_uploaded_file($_FILES['actresspic'.$i]['tmp_name'],$actresspath.$actresspic[$i]);
+				$sourceProperties = getimagesize($actresspath.$actresspic[$i]);
+				$this->imagecheck($sourceProperties,$actresspath.$actresspic[$i]);
 			}
 
 			$mdirector=$this->input->post('mdirector');
 			$language=$this->input->post('language');
-			$actor=$this->input->post('actor');
-			$actress=$this->input->post('actress');
+			$category = implode(',',$this->input->post('caregory'));
 			$description=$this->input->post('description');
 			$cost=$this->input->post('cost');
 			$filmposterpic=time().$_FILES['filmposterpic']['name'];
 			$coverpic=time().$_FILES['coverpic']['name'];
-
-			$producerpic=time().$_FILES['producerpic']['name'];
-			$actorpic=time().$_FILES['actorpic']['name'];
-			$actresspic=time().$_FILES['actresspic']['name'];
 			$posterpath="../Big_Screen/images/movie/poster/";
 			$coverpath="../Big_Screen/images/movie/cover/";
-
-			$producerpath="../Big_Screen/images/movie/producer/";
-			$actorpath="../Big_Screen/images/movie/actor/";
-			$actresspath="../Big_Screen/images/movie/actress/";
 			move_uploaded_file($_FILES['filmposterpic']['tmp_name'],$posterpath.$filmposterpic);
 			move_uploaded_file($_FILES['coverpic']['tmp_name'],$coverpath.$coverpic);
-
-			move_uploaded_file($_FILES['producerpic']['tmp_name'],$producerpath.$producerpic);
-			move_uploaded_file($_FILES['actorpic']['tmp_name'],$actorpath.$actorpic);
-			move_uploaded_file($_FILES['actresspic']['tmp_name'],$actresspath.$actresspic);
-
 			$sourceProperties = getimagesize($posterpath.$filmposterpic);
 			$this->imagecheckposter($sourceProperties,$posterpath.$filmposterpic);
 
 			$sourceProperties = getimagesize($coverpath.$coverpic);
 			$this->imagecheckcover($sourceProperties,$coverpath.$coverpic);
-
-
-
-			$sourceProperties1 = getimagesize($producerpath.$producerpic);
-			$this->imagecheck($sourceProperties1,$producerpath.$producerpic);
-
-			$sourceProperties2 = getimagesize($actorpath.$actorpic);
-			$this->imagecheck($sourceProperties2,$actorpath.$actorpic);
-
-			$sourceProperties3 = getimagesize($actresspath.$actresspic);
-			$this->imagecheck($sourceProperties3,$actresspath.$actresspic);
-
-			$data=array('mid'=>NULL,'distributor_id'=>$id,'film_name'=>$filmName,'poster_pic'=>$filmposterpic,'cover_pic'=>$coverpic,'directer'=>$directer,'directer_pic'=>$directerpic,'producer'=>$producer,'producer_pic'=>$producerpic,'mdirector'=>$mdirector,'language'=>$language,'actor'=>$actor,'actor_pic'=>$actorpic,'actress'=>$actress,'actress_pic'=>$actresspic,'description'=>$description,'date'=>'2018','price'=>$cost);
-			$this->Mymodel->insertmovie($data);
+			$directordata=implode(',', $director);
+			$producordata=implode(',', $producer);
+			$actordata=implode(',', $actor);
+			$actressdata=implode(',', $actress);
+			$directerpicdata=implode(',', $directorpic);
+			$producerpicdata=implode(',', $producerpic);
+			$actorpicdata=implode(',', $actorpic);
+			$actresspicdata=implode(',', $actresspic);
+			$data=array('mid'=>NULL,'distributor_id'=>$id,'film_name'=>$filmName1,'poster_pic'=>$filmposterpic,'cover_pic'=>$coverpic,'director'=>$directordata,'director_pic'=>$directerpicdata,'producer'=>$producordata,'producer_pic'=>$producerpicdata,'mdirector'=>$mdirector,'language'=>$language,'categories'=>$category,'actor'=>$actordata,'actor_pic'=>$actorpicdata,'actress'=>$actressdata,'actress_pic'=>$actresspicdata,'description'=>$description,'date'=>'2018','price'=>$cost);
+			$this->dmodel->insertmovie($data);
 			$username=$this->session->userdata('username');
 			$this->session->set_flashdata('msg', 'Film Update Sucessfully');
-			$result['dis']=$this->Mymodel->disuser($username);
-			$this->load->view('distributor_addfilmdetails',$result);
+			$this->distributoraddfilms();
 		}
 		else
 		{
 			$username=$this->session->userdata('username');
 			$this->session->set_flashdata('msg', 'The Film Already Uploaded');
-			$result['dis']=$this->Mymodel->disuser($username);
-			$this->load->view('distributor_addfilmdetails',$result);
+			$this->distributoraddfilms();
 		}
+	}
+
+	function filmcategory()
+	{
+		$result['dis']=$this->dmodel->filmcategory();
+		return $result;
+	}
+
+	//Film detailes view distributor
+function filmviewdistributor()
+{
+		$lid=$this->session->userdata('id');
+		$fid=$this->input->post('fid');
+		if(isset($fid))
+		{
+			$result['dis']=$this->dmodel->filmsingle($fid);
+			$this->load->view('distributor/distributor_film_single',$result);
+		}
+		else
+		{
+			$result['dis']=$this->dmodel->theatreaccepted($lid);
+			$this->load->view('distributor/distributor_selectedfilmdetails',$result);
+		}
+	}
+
+	function category($cat)
+	{
+		$result['dis']=$this->dmodel->category($cat);
+		foreach ($result['dis'] as $row)
+		{
+			return $row->catname;
+		}
+
 	}
 
 }

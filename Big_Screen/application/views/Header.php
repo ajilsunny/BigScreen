@@ -99,13 +99,6 @@ function dist()
 				}
   });
 }
-
-function clearform()
-{
-	document.getElementById('signup').reset();
-		document.getElementById('loginform').reset();
-}
-
 	</script>
 	 <!-- start-smoth-scrolling -->
 </head>
@@ -152,7 +145,7 @@ function clearform()
 			<div class="modal-content">
 				<div class="modal-header">
 					Sign In & Sign Up
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearform()"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				</div>
 				<section>
 					<div class="modal-body">
@@ -172,7 +165,7 @@ function clearform()
 
 							  <div class="form">
 								<h3>Create an account</h3>
-								<form name="signup" id="signup" action="<?php echo site_url('usercontroller/insert')?>" method="post" onsubmit="return signup()" enctype="multipart/form-data">
+								<form name="signup" id="signup" action="<?php echo site_url('usercontroller/insert')?>" method="post" onsubmit="return signup1()" enctype="multipart/form-data">
 									<p id="vname" style="color:red;"></P>
 								  <input type="text" name="Name" id="Name" placeholder="Name" pattern="^[a-zA-Z]+$" maxlength="15" onkeyup="this.value = this.value.toUpperCase();" >
 									<p id="vemail" style="color:red;"></P>
@@ -220,7 +213,7 @@ function clearform()
 								  <input type="submit" value="Register">
 								</form>
 							  </div>
-							  <!-- <div class="cta"><a href="#">Forgot your password?</a></div> -->
+							  <div class="cta"><a href="<?php echo site_url('usercontroller/forgotpassword')?>">Forgot your password?</a></div>
 							</div>
 						</div>
 					</div>

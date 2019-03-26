@@ -5,6 +5,7 @@ class Mymodel extends CI_Model
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->library('email');
 	}
 
 
@@ -20,14 +21,42 @@ class Mymodel extends CI_Model
 
 	}
 // END OF usert registraion details insert
+function forgotpasswordemailcheck($email)
+{
+	$querys=$this->db->get_where('tbl_login',array('username'=>$email));
+	return $querys->result();
+}
 
+function forgotpasswordnmrinsert($email,$otp)
+{
+	$this->db->where(array('email'=>$email));
+	$this->db->delete('tbl_otp');
+	$this->db->insert('tbl_otp',array('email'=>$email,'otp'=>$otp));
+	$querys=$this->db->get_where('tbl_otp',array('email'=>$email));
+	return $querys->result();
+}
 
+function otpcheck($emaildb,$otp)
+{
+	$querys=$this->db->get_where('tbl_otp',array('email'=>$emaildb,'otp'=>$otp));
+	//$c=$querys->num_rows();
+	//return $c;
+	return $querys->result();
+}
 
-//insert movie detailes
-	function insertmovie($data)
-	{
-		$this->db->insert('tbl_moviedetails',$data);
-	}
+function otplimit($email)
+{
+	$this->db->where(array('email'=>$email));
+	$this->db->delete('tbl_otp');
+}
+
+function updatepassword($email,$password)
+{
+	$pass=md5($password);
+	$this->db->where('username',$email);
+	$this->db->update('tbl_login',array('password'=>$pass));
+}
+
 //login
 	function loguser($username,$password)
 	{
@@ -46,12 +75,13 @@ class Mymodel extends CI_Model
 function states()
 {
 
-	$querys=$this->db->get_where('tbl_state',array('status'=>0));
+	$querys=$this->db->get_where('tbl_state');
 	return $querys->result();
 }
 
 function districtselect($sid)
 {
+	$this->db->order_by("dname", "asc");
 	$querys=$this->db->get_where('tbl_district',array('sid'=>$sid));
 	return $querys->result();
 }

@@ -7,28 +7,28 @@ var actress=0;
 function adddirector()
 {
   director++
-  $('#directoradd').append('<div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vdirector'+director+'" style="color:red;"></p><div class="input-group"><span class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span><div><input style="display:inline-block;width:100%"  id="Director'+director+'" name="Director'+director+'" placeholder="Director Name" class="form-control" Director type="text"></div></div></div></div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vdirectorpic'+director+'" style="color:red;"></P><div class="input-group"><input id="Directorpic'+director+'" name="Directorpic'+director+'" accept=".png, .jpg, .jpeg,.JPG" Director type="file" style="font-size: 120%"></div></div></div></div>');
+  $('#directoradd').append('<div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vdirector'+director+'" style="color:red;"></p><div class="input-group"><span class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span><div><input style="display:inline-block;width:100%"  id="Director'+director+'" name="Director'+director+'" placeholder="Director Name" class="form-control" Director type="text"></div></div></div></div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vdirectorpic'+director+'" style="color:red;"></P><div class="input-group"><input id="Directorpic'+director+'" name="Directorpic'+director+'" accept=".png, .jpg, .jpeg,.JPG"  type="file" style="font-size: 120%"></div></div></div></div>');
   document.getElementById('numdirector').value=director;
 }
 
 function addproducer()
 {
   producer++
-  $('#produceradd').append('<div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vproducer'+producer+'" style="color:red;"></p><div class="input-group"><span class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span><div><input style="display:inline-block;width:100%"  id="producer'+producer+'" name="producer'+producer+'" placeholder="Producer Name" class="form-control" Director type="text"></div></div></div></div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vproducerpic'+producer+'" style="color:red;"></p><div class="input-group"><input id="producerpic'+producer+'" name="producerpic'+producer+'" accept=".png, .jpg, .jpeg,.JPG" Director type="file" style="font-size: 120%"></div></div></div></div>');
+  $('#produceradd').append('<div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vproducer'+producer+'" style="color:red;"></p><div class="input-group"><span class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span><div><input style="display:inline-block;width:100%"  id="producer'+producer+'" name="producer'+producer+'" placeholder="Producer Name" class="form-control"  type="text"></div></div></div></div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vproducerpic'+producer+'" style="color:red;"></p><div class="input-group"><input id="producerpic'+producer+'" name="producerpic'+producer+'" accept=".png, .jpg, .jpeg,.JPG" type="file" style="font-size: 120%"></div></div></div></div>');
   document.getElementById('numproducer').value=producer;
 }
 
 function addactor()
 {
   actor++
-  $('#actoradd').append('<div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vactor'+actor+'" style="color:red;"></p><div class="input-group"><span class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span><div><input style="display:inline-block;width:100%"  id="actor'+actor+'" name="actor'+actor+'" placeholder="Actor Name" class="form-control" type="text"></div></div></div></div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vactorpic'+actor+'" style="color:red;"></p><div class="input-group"><input id="actorpic'+actor+'" name="actorpic'+actor+'" accept=".png, .jpg, .jpeg,.JPG" Director type="file" style="font-size: 120%"></div></div></div></div>');
+  $('#actoradd').append('<div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vactor'+actor+'" style="color:red;"></p><div class="input-group"><span class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span><div><input style="display:inline-block;width:100%"  id="actor'+actor+'" name="actor'+actor+'" placeholder="Actor Name" class="form-control" type="text"></div></div></div></div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vactorpic'+actor+'" style="color:red;"></p><div class="input-group"><input id="actorpic'+actor+'" name="actorpic'+actor+'" accept=".png, .jpg, .jpeg,.JPG" type="file" style="font-size: 120%"></div></div></div></div>');
   document.getElementById('numactor').value=actor;
 }
 
 function addactress()
 {
   actress++
-  $('#actressadd').append('<div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vactress'+actress+'" style="color:red;"></p><div class="input-group"><span class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span><div><input style="display:inline-block;width:100%"  id="actress'+actress+'" name="actress'+actress+'" placeholder="Actress Name" class="form-control" type="text"></div></div></div></div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vactresspic'+actress+'" style="color:red;"></p><div class="input-group"><input id="actresspic'+actress+'" name="actresspic'+actress+'" accept=".png, .jpg, .jpeg,.JPG" Director type="file" style="font-size: 120%"></div></div></div></div>');
+  $('#actressadd').append('<div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vactress'+actress+'" style="color:red;"></p><div class="input-group"><span class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span><div><input style="display:inline-block;width:100%"  id="actress'+actress+'" name="actress'+actress+'" placeholder="Actress Name" class="form-control" type="text"></div></div></div></div><div class="form-group"><label class="col-md-4 control-label"></label><div class="col-md-8 inputGroupContainer"><p id="vactresspic'+actress+'" style="color:red;"></p><div class="input-group"><input id="actresspic'+actress+'" name="actresspic'+actress+'" accept=".png, .jpg, .jpeg,.JPG" type="file" style="font-size: 120%"></div></div></div></div>');
   document.getElementById('numactress').value=actress;
 }
 
@@ -107,6 +107,51 @@ function  adddetailes()
     }
   }
 
+  //film actors
+  var numactor=document.getElementById('numactor').value;
+  for (var i = 0; i <= numactor; i++)
+  {
+    var Actor=new Array();
+    document.getElementById('vactor'+i).innerHTML="";
+    Actor[i]=document.getElementById('actor'+i).value;
+    if(Actor[i]=="")
+    {
+      document.getElementById('vactor'+i).innerHTML="Please fill actor name field";
+      return false;
+    }
+    var Actorpic=new Array();
+    document.getElementById('vactorpic'+i).innerHTML="";
+    Actorpic[i]=document.getElementById('actorpic'+i).value;
+    if(Actorpic[i]=="")
+    {
+      document.getElementById('vactorpic'+i).innerHTML="Please select actor pic";
+      return false;
+    }
+  }
+
+  //film actress
+  var numactress=document.getElementById('numactress').value;
+  for (var i = 0; i <= numactress; i++)
+  {
+    var Actress=new Array();
+    document.getElementById('vactress'+i).innerHTML="";
+    Actress[i]=document.getElementById('actress'+i).value;
+    if(Actress[i]=="")
+    {
+      document.getElementById('vactress'+i).innerHTML="Please fill actress name field";
+      return false;
+    }
+    var Actresspic=new Array();
+    document.getElementById('vactresspic'+i).innerHTML="";
+    Actresspic[i]=document.getElementById('actresspic'+i).value;
+    if(Actresspic[i]=="")
+    {
+      document.getElementById('vactresspic'+i).innerHTML="Please select actress pic";
+      return false;
+    }
+  }
+
+
 //film music directors
 document.getElementById("vmusic").innerHTML="";
 var Mdirector=document.getElementById('mdirector').value;
@@ -125,49 +170,24 @@ if(Language==0)
   return false;
 }
 
-//film actors
-var numactor=document.getElementById('numactor').value;
-for (var i = 0; i <= numactor; i++)
+//film Category
+document.getElementById("vcaregory").innerHTML="";
+var Category = [];
+$.each($("input[id='caregory']:checked"), function(){
+    Category.push($(this).val());
+});
+
+var categories=Category.join("-");
+//document.getElementById("categories").value=categories;
+var len=Category.length;
+if(len==0)
 {
-  var Actor=new Array();
-  document.getElementById('vactor'+i).innerHTML="";
-  Actor[i]=document.getElementById('actor'+i).value;
-  if(Actor[i]=="")
-  {
-    document.getElementById('vactor'+i).innerHTML="Please fill actor name field";
+  document.getElementById("vcaregory").innerHTML="Please select Category";
     return false;
-  }
-  var Actorpic=new Array();
-  document.getElementById('vactorpic'+i).innerHTML="";
-  Actorpic[i]=document.getElementById('actorpic'+i).value;
-  if(Actorpic[i]=="")
-  {
-    document.getElementById('vactorpic'+i).innerHTML="Please select actor pic";
-    return false;
-  }
 }
 
-//film actress
-var numactress=document.getElementById('numactress').value;
-for (var i = 0; i <= numactress; i++)
-{
-  var Actress=new Array();
-  document.getElementById('vactress'+i).innerHTML="";
-  Actress[i]=document.getElementById('actress'+i).value;
-  if(Actress[i]=="")
-  {
-    document.getElementById('vactress'+i).innerHTML="Please fill actress name field";
-    return false;
-  }
-  var Actresspic=new Array();
-  document.getElementById('vactresspic'+i).innerHTML="";
-  Actresspic[i]=document.getElementById('actresspic'+i).value;
-  if(Actresspic[i]=="")
-  {
-    document.getElementById('vactresspic'+i).innerHTML="Please select actress pic";
-    return false;
-  }
-}
+
+
 
 //film Description
 document.getElementById("vdescription").innerHTML="";

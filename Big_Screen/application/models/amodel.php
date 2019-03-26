@@ -13,7 +13,7 @@ class amodel extends CI_Model
 			$this->db->join('tbl_details','tbl_login.username=tbl_details.email','inner');
 			$this->db->join('tbl_district','tbl_details.did=tbl_district.did','inner');
 			$this->db->join('tbl_state','tbl_district.sid=tbl_state.id','inner');
-  		$querys=$this->db->get_where('tbl_login',array('type'=>$type,'lstatus'=>'0'));
+  		$querys=$this->db->get_where('tbl_login',array('type'=>$type,'lstatus'=>'1'));
   		return $querys->result();
   	}
 
@@ -24,13 +24,13 @@ class amodel extends CI_Model
 				$this->db->join('tbl_details','tbl_login.username=tbl_details.email','inner');
 				$this->db->join('tbl_district','tbl_details.did=tbl_district.did','inner');
 				$this->db->join('tbl_state','tbl_district.sid=tbl_state.id','inner');
-				$querys=$this->db->get_where('tbl_login',array('type'=>$type,'lstatus'=>'0'));
+				$querys=$this->db->get_where('tbl_login',array('type'=>$type,'lstatus'=>'1'));
 				return $querys->result();
 			}
 
     function countlist($a)
   	{
-  		$query=$this->db->get_where('tbl_login',array('type'=>$a,'lstatus!='=>0));
+  		$query=$this->db->get_where('tbl_login',array('type'=>$a,'lstatus!='=>1));
   		$c=$query->num_rows();
   		return $c;
   	}
@@ -38,7 +38,7 @@ class amodel extends CI_Model
   //count no of appovel
   	function countapproval($a)
   	{
-  		$query=$this->db->get_where('tbl_login',array('type'=>$a,'lstatus'=>0));
+  		$query=$this->db->get_where('tbl_login',array('type'=>$a,'lstatus'=>1));
   		$c=$query->num_rows();
   		return $c;
   	}
@@ -62,7 +62,7 @@ class amodel extends CI_Model
 			$this->db->join('tbl_details','tbl_login.username=tbl_details.email','inner');
 			$this->db->join('tbl_district','tbl_details.did=tbl_district.did','inner');
 			$this->db->join('tbl_state','tbl_district.sid=tbl_state.id','inner');
-			$querys=$this->db->get_where('tbl_login',array('type'=>$type,'lstatus!='=>0));
+			$querys=$this->db->get_where('tbl_login',array('type'=>$type,'lstatus!='=>1));
 			return $querys->result();
 		}
 
@@ -113,7 +113,7 @@ function searchtheatre($search)
 	$this->db->join('tbl_details','tbl_login.username=tbl_details.email','inner');
 	$this->db->join('tbl_district','tbl_details.did=tbl_district.did','inner');
 	$this->db->join('tbl_state','tbl_district.sid=tbl_state.id','inner');
-	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>2,'lstatus'=>'0'));
+	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>2,'lstatus'=>'1'));
 	return $querys->result();
 }
 
@@ -122,7 +122,7 @@ function searchdistributor($search)
 	$this->db->join('tbl_details','tbl_login.username=tbl_details.email','inner');
 	$this->db->join('tbl_district','tbl_details.did=tbl_district.did','inner');
 	$this->db->join('tbl_state','tbl_district.sid=tbl_state.id','inner');
-	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>3,'lstatus'=>'0'));
+	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>3,'lstatus'=>'1'));
 	return $querys->result();
 }
 
@@ -131,7 +131,7 @@ function searchtheatrelist($search)
 	$this->db->join('tbl_details','tbl_login.username=tbl_details.email','inner');
 	$this->db->join('tbl_district','tbl_details.did=tbl_district.did','inner');
 	$this->db->join('tbl_state','tbl_district.sid=tbl_state.id','inner');
-	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>2,'lstatus!='=>'0'));
+	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>2,'lstatus!='=>'1'));
 	return $querys->result();
 }
 
@@ -140,7 +140,7 @@ function searchuserlist($search)
 	$this->db->join('tbl_details','tbl_login.username=tbl_details.email','inner');
 	$this->db->join('tbl_district','tbl_details.did=tbl_district.did','inner');
 	$this->db->join('tbl_state','tbl_district.sid=tbl_state.id','inner');
-	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>1,'lstatus!='=>'0'));
+	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>1,'lstatus!='=>'1'));
 	return $querys->result();
 }
 
@@ -149,7 +149,7 @@ function searchdistributorlist($search)
 	$this->db->join('tbl_details','tbl_login.username=tbl_details.email','inner');
 	$this->db->join('tbl_district','tbl_details.did=tbl_district.did','inner');
 	$this->db->join('tbl_state','tbl_district.sid=tbl_state.id','inner');
-	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>3,'lstatus!='=>'0'));
+	$querys=$this->db->get_where('tbl_login',array('name'=>$search,'type'=>3,'lstatus!='=>'1'));
 	return $querys->result();
 }
 

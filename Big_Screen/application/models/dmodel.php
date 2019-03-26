@@ -10,7 +10,7 @@ class dmodel extends CI_Model
   //films select
   	function films($data,$msg)
   	{
-  		$this->db->join('tbl_moviedetails','tbl_login.lid=tbl_moviedetails.distributer_id','inner');
+  		$this->db->join('tbl_moviedetails','tbl_login.lid=tbl_moviedetails.distributor_id','inner');
   		$this->db->join('tbl_details','tbl_login.username=tbl_details.email','inner');
   		$this->db->order_by("mid", "desc");
   		$query = $this->db->get_where('tbl_login',array($msg=>$data));
@@ -39,6 +39,38 @@ class dmodel extends CI_Model
     	$querys=$this->db->get_where('tbl_filmselection',array('distributer_id'=>$lid,'status !='=>0));
     	return $querys->result();
     }
+
+		function filmcategory()
+		{
+			$querys = $this->db->get_where('tbl_film_category');
+			return $querys->result();
+		}
+
+		//insert movie detailes
+			function insertmovie($data)
+			{
+				$this->db->insert('tbl_moviedetails',$data);
+			}
+
+			function filmsingle($value)
+			{
+				$query = $this->db->get_where('tbl_moviedetails',array('mid'=>$value));
+				return $query->result();
+
+			}
+
+			function theatreaccepted($lid)
+			{
+				$this->db->join('tbl_moviedetails','tbl_filmselection.mid=tbl_moviedetails.mid','inner');
+				$querys=$this->db->get_where('tbl_filmselection',array('lid'=>$lid,'status'=>'1'));
+				return $querys->result();
+			}
+
+			function category($cat)
+			{
+				$query = $this->db->get_where('tbl_film_category',array('cid'=>$cat));
+				return $query->result();
+			}
 
 
 }

@@ -1,7 +1,7 @@
 
-
-function  signup()
+function  signup1()
 {
+
 document.getElementById("vname").innerHTML="";
 document.getElementById("vemail").innerHTML="";
 document.getElementById("vphone").innerHTML="";

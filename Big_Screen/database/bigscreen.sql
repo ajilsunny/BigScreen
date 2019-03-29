@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2019 at 04:32 PM
+-- Generation Time: Mar 29, 2019 at 07:09 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -79,7 +79,7 @@ INSERT INTO `tbl_details` (`regid`, `name`, `email`, `phone`, `did`, `place`, `p
 (7, 'APPU', 'appu@gmail.com', '7410258963', 2, 'kiliyanthara', 963258, 'profilepic.png', '1552233796'),
 (9, 'ARUN', 'arun@gmail.com', '7410852963', 14, 'chemperi', 741258, 'profilepic.png', '1552831938Abin BCA 20180510_211945.jpg'),
 (11, 'ASHIL', 'ashil@gmai', '7410852123', 256, 'ytre', 444512, 'profilepic.png', '1552882465'),
-(3, 'JITHU', 'jithu@gmail.com', '9638527410', 1, 'chemperi', 670706, 'profilepic.png', '1551849444Object Diagram.png'),
+(3, 'Jithu Benny', 'jithu@gmail.com', '8593967684', 1, '`manikadavu', 670706, '1553619937Appu B 20150503_175757.jpg', '1551849444Object Diagram.png'),
 (5, 'JOBIN', 'jobin@gmail.com', '9638520147', 5, 'koovapally', 741852, 'profilepic.png', '1551941005Activity Diagram.png'),
 (6, 'RONIYA', 'roniya@gmail.com', '7410852963', 1, 'chemperi', 963852, 'profilepic.png', '1551942180State Chart Diagram.png'),
 (10, 'SUNNY', 'sunny@gmail.com', '7410852963', 4, 'vallithodu', 670706, 'profilepic.png', '1552879267');
@@ -903,7 +903,7 @@ INSERT INTO `tbl_login` (`lid`, `username`, `password`, `type`, `lstatus`) VALUE
 
 CREATE TABLE `tbl_moviedetails` (
   `mid` int(11) NOT NULL,
-  `distributer_id` int(11) NOT NULL,
+  `distributor_id` int(11) NOT NULL,
   `film_name` varchar(100) NOT NULL,
   `poster_pic` varchar(500) NOT NULL,
   `cover_pic` varchar(500) NOT NULL,
@@ -913,6 +913,7 @@ CREATE TABLE `tbl_moviedetails` (
   `producer_pic` varchar(500) NOT NULL,
   `mdirector` varchar(50) NOT NULL,
   `language` varchar(50) NOT NULL,
+  `categories` varchar(100) NOT NULL,
   `actor` varchar(50) NOT NULL,
   `actor_pic` varchar(500) NOT NULL,
   `actress` varchar(50) NOT NULL,
@@ -926,16 +927,9 @@ CREATE TABLE `tbl_moviedetails` (
 -- Dumping data for table `tbl_moviedetails`
 --
 
-INSERT INTO `tbl_moviedetails` (`mid`, `distributer_id`, `film_name`, `poster_pic`, `cover_pic`, `director`, `director_pic`, `producer`, `producer_pic`, `mdirector`, `language`, `actor`, `actor_pic`, `actress`, `actress_pic`, `description`, `date`, `price`) VALUES
-(1, 5, 'Theevandi', '1540657901images.jpg', '1540657901theevandicover.jpg', 'Fellini T. P', '1540657901maxresdefault.jpg', 'Shaji Nadesan', '1540657901producer.jpeg', 'Kailas Menon', 'Malayalam', 'Tovino Thomas', '1540657901Tovino_Thomas.jpg', 'Samyuktha Menon', '1540657901Samyuktha.jpg', 'The story takes place in the fictional village of Pullinad. Damodaran, a resident of Pullinad, is unable to take his pregnant wife to the hospital due to heavy rain and the rebellion following the murder of Rajiv Gandhi. His wife\'s brother(referred to as Ammavan by the protagonist and his friends) arranges for a midwife. Although he was initially against it, Damodaran later agrees. However the child dies causing great disappointment to Damodaran. He places the child on a table and goes to see his wife whose condition has worsened. Ammavan, a chain smoker, blows the smoke at the dead child which leads to its survival. The child is named Bineesh. As a child Bineesh buys cigarettes for his uncle as he gets to buy something using the balance amount. When he becomes a teenager he is prompted by his friend Safar to smoke a cigarette which eventually leads to him getting addicted to it. He is caught in the school for smoking due to a foolish statement made by Safar and is asked to bring his parents. He decides to bring his uncle. That night while going to meet his uncle he sees a packet of cigarette and decides to smoke one. He moves out and smokes peacefully. However he gets mistaken for a thief by 2 police constables and is taken to police station where everyone gets to know about his secret. As time passes he is addicted and gets the title of Theevandi (chainsmoker, colloquially). As time passes, his elder sister gets married to Vijith, a BSCL (Bharatiya Socialist Congress League) party member and he falls in love with his childhood friend Devi. Devi is the daughter of Madhu, an active BSCL member. He is against the affair of his daughter with Bineesh but later relents on the condition that Bineesh reduces his smoking. ', '2018', '2000000'),
-(2, 5, 'Kayamkulam Kochunni', '1540661206images1.jpg', '1540661206kopchunni.jpg', 'Rosshan Andrrews', '1540661206rosshan-andrrews_0.jpg', 'Gokulam Gopalan', '1540661206md1.jpg', 'Gopi Sundar', 'Malayalam', 'Mohanlal', '1540661206Mohanlal_DN_0.jpg', 'Priya Anand ', '15406612061.jpg', 'Kayamkulam Kochunni was born in 1818, near Kottukulangara, Karthikapally Taluk in Travancore (present-day Kerala), British India. He spent his childhood and younger ages in Evoor. After his father\'s death, the family fell to poverty and Kochunni was employed in a grocery store. Later he began stealing and became an outlaw. He was known for stealing from the rich and giving to the poor. Kochunni was once caught by the officials after his girlfriend betrayed him, he escaped and killed her along with her assistant. He was in hideout after that, during which he stole the Shaligram belonging to the Padmanabhaswamy Temple. Ayilyam Thirunal Rama Varma was the ruler of Travancore and T. Madhava Rao was the Diwan of Travancore at the time. Kochunni was accused of several thefts and two homicides. Both the Palace and police officials failed to find Kochunni, afterwhich a warrior, Arattupuzha Velayudha Panicker, was enlisted with the task, who eventually captured him and submitted to the Diwan. Panicker was honoured by the King. Kochunni was remanded for one year, during which he died in the Travancore jail in 1859. His remains was buried at the Pettah Juma Masjid.[4] According to historians, the Central Archives building in present-day Thiruvananthapuram was formerly a prison in the 19th century and is believed to be the first Travancore prison, which is likely where Kochunni was incarcerated.[5]', '2018', '2500000'),
-(3, 13, 'Spadikam', '1541920022Spadikam.jpg', '1541920022cover.jpg', 'Bhadran', '1541920022220px-Director_Bhadran.jpg', 'R. Mohan', '1541920022producer.jpg', 'S. P. Venkatesh', 'Malayalam', 'Mohanlal', '1541920022Mohanlal.jpg', 'Urvashi', '1541920022urvashi.jpg', 'homas Chacko, or \"Aadu Thoma\" as he is widely known, is a local gangster and a quarry owner, who is notorious for being the undefeated champion in his confronts and the unrivaled contender in the trade. He is feared in the locality for his atypical practices, like drinking the blood of black male goats before fights (an act that is believed to be the source of his strength) and using his Mundu as a weapon during fights. In spite of his frightening nature, he is known to have a good heart, gambling with his life for just cause. He is the son of the retired school headmaster Chacko (Chacko master), the President\'s medal winner in mathematics. Thoma is the never-ending headache of his \'respectable\' father, both never getting along on any occasion. His mother and sister are caught in the row, left to choose between sides; while Chacko master\'s brother – Manimala Vakkachan, supports Thoma whatsoever. Pookoya, a local baron, is the newly-made enemy of Thoma, along with his sub-inspector (S.I.) friend Kuttikkadan; for supporting Pookoya\'s daughter\'s relationship with a penniless teacher. Due to Thoma\'s relationship with a prostitute, revealed when the police shame him publicly, the arranged marriage of his sister almost fail, further angering his father. This force him to rat his son out to the police on a later occasion, thrashing him with a cane like he used to do in the early days; surprising even the S.I. with the act.', '2018', '4500000'),
-(4, 13, 'The King', '1541937927poster.jpg', '1541937927cover.jpg', 'Shaji Kailas', '1541937927Shaji_kailas.jpg', 'Manjalamkuzhi Ali', '1541937927manjalamkuzhi-ali.jpeg', 'Rajamani', 'Malayalam', 'Mammootty', '1541937927Mammootty.jpg', 'Vani Viswanath', '1541937927vani.jpg', 'he city of Kozhikode is victimized by a massive communal riot against the slums, costing the lives of 12 people. Madhu Kumar (Appa Haja), a wildlife photographer, witnesses a group of criminals transporting explosives through the local forest check post, so he calls up the local police commissioner Shankar (Devan) and passes the information. Shankar asks him to wait for his officers to pick him up. But instead of the police, it is the same goons who come for Madhu, resulting in his death. While having the police to fight against the rioters, the aggressive and belligerent, yet honorable and incorruptible district collector Joseph Alex IAS (Mammootty) is suspicious of Shankar\'s activities and decides to investigate the case. He is assisted by ASP Prasad (K. B. Ganesh Kumar), one of the sincere officers who admires Joseph for his arrogant way of dealing politicians and officials. Also tagging along with Joseph is the young assistant district collector Anura Mukerji IAS (Vani Viswanath), whose freecare style conflicts against Joseph\'s strict behavior because of her tragic childhood. It later turns out that Anura\'s behavior was rooted from a horrible experience of when her father continuously cheated on her mother a lot, and that her mother prayed to her to no avail, which is why Anura pretended to be a freak to ease her pain. Upon learning this, Alex decides to warm up to her.', '2018', '3500000'),
-(5, 13, 'Sarkar', '1541939099Sarkar_2018_poster.jpg', '1541939099cover.jpg', 'AR Murugadoss', '1541939099Murugadoss.jpg', 'Kalanithi Maran', '1541939099producer.jpg', 'A. R. Rahman', 'Tamil', 'Vijay', '1541939099Vijay.jpg', 'Keerthy Suresh', '1541939099Keerthy Suresh jpg.jpg', 'Sundar Ramasamy (Vijay) is an USA-based highly successful NRI businessman known for his ruthless nature. He arrives in Chennai to cast his vote in the Tamil Nadu Assembly election. However, he finds out to his shock that someone else had already voted in his name and therefore is unable to cast his vote. Sundar approaches the Tamil Nadu Election Commission, seeking a stay on the election result for his constituency, annulling the vote of the fraud elector and allowing him to legitimately cast his vote, to which they agree. Sundar further raises awareness among the public regarding fraud voting and many of the people admit that they too could not vote in the election due to the fraud voting. Meanwhile, Sundar rekindles his romance with his estranged sister-in-law\'s (Papri Ghosh) sister Nila (Keerthy Suresh), whom he had last met five years ago.\r\n\r\nHowever, Sundar\'s actions bring him into confrontation with two influential and corrupt politicians, M. Masilamani (Pala. Karuppiah), who is the Chief Minister of Tamil Nadu, and his brother Malarvannan alias Rendu (Radha Ravi). Though Masilamani\'s party wins in the elections, due to many people admitting that they were not able to vote due to fraud, the election result is annulled and fresh elections are scheduled to take place within the next fifteen days. After attempts are made on his life by Malarvannan\'s henchmen, Sundar decides to contest the election against Masilamani as an Independent and resigns from his company to avoid any conflict-of-interest.', '2018', '6000000'),
-(6, 14, 'Jacobinte Swargarajyam', '1542728071Jacobinte_Swargarajyam_poster.jpg', '1542728071Jacobinte-Swargarajyam.jpg', 'Vineeth Sreenivasan', '1542728071producer.jpg', 'Noble Babu Thomas', '1542728071Noble-Babu-Thomas_1.jpg', 'Shaan Rahman', 'Malayalam', 'Nivin Pauly', '154272807158378985.jpg', 'Lakshmy Ramakrishnan', '1542728071images.jpg', 'Jacob (Renji Panicker) is a successful businessman settled in Dubai with wife Sherly (Lakshmy Ramakrishnan) and their four kids – Jerry (Nivin Pauly), Abin (Sreenath Bhasi), Ammu (Aima Sebastian), and Chris (Stacen). Jacob is always respected for his ideas by his colleagues and he had done many businesses before starting a steel business. Then comes global recession and Jacob moves for a lucrative trade through his Pakistani colleague, Ajmal, by taking a total of 8 million dirhams from his investors. Ajmal cheats Jacob and Jacob is left in a debt of 8 million dirhams which he happens to know on his 25th wedding anniversary. Soon Jacob\'s credibility and trustful way of doing business is lost and is forced to travel to Liberia to get a deal, but doesn\'t go well and is forced to stay there to avoid arrest. With no other way and continued complaints from the investors especially from Murali Menon (Ashwin Kumar), Jerry decides to give his best to solve the problems by stepping into his dad\'s shoes.\r\n\r\nJerry, without a trade license or an office, faces many difficulties at first. He decides to go out completely with what his father has taught him about business. He meets a self-made businessman Yusuf Shah (Vineeth Sreenivasan) and strikes a deal with him, eventually he earns his trust and the business grows. Jerry motivates Abin to start a tours and travel company and they succeed in it. Jerry settles most of the debts and gains trust with them. But investor Murali Menon pressurizes him for full payment, Jerry with his mother tries to close deals and collect money, but they were only able to collect a half of what they owed. Finally Murali moves the case against Jerry in Dubai High court but the case is rejected because the case was against the company and it is registered under Jacob\'s name. Murali who also is affected by recession is in deep debt, he is forced to agree with Jerry\'s conditions. ', '2018', '2000000'),
-(7, 14, '96', '1542729501p15911775_v_v8_aa.jpg', '15427295017fe357a5c52e82db686d4ec7c5e2aa21.jpg', 'C. Prem Kumar', '1542729501download.jpg', 'S. Nanthagopal', '1542729501download (1).jpg', 'Govind Vasantha', 'Tamil', 'Vijay Sethupathi', '1542729501download (2).jpg', 'Trisha Krishnan', '1542729501trisha.jpg', 'Ram (Vijay Sethupathi) is a happy-go-lucky freelance travel photographer whose passion makes him travel all over India. An introduction to Ram\'s life (the very start of the movie) is aptly summarized in the beautiful song \'The Life of Ram\'. This song showcases the travel exploits of Ram such as an underwater scuba diving and photo shoot in Andaman and Nicobar Islands, Rajasthan Desert expedition at Jaisalmer, wonderful views of Rohtang Pass and capturing day to day life in and around Calcutta and Howrah Bridge to name a few. At the end of the song, the actual story begins with Ram instructing his students about photography and the nuances of taking great pictures in a temple in Kumbakonam. At the end of the day, Ram is tired and asks if any one of them knows driving. Prabha volunteers first, mentioning that she can drive. Ram asks her to get ready early next morning for the drive back to Chennai. Prabha starts driving early next morning with Ram fast asleep in the passenger seat. Sometime, near the strike of dawn, Ram gets up and sees around the place and surroundings. Prabha informs him that they are currently in Thanjavur and they had to route through Thanjavur and Trichy to reach Chennai due to traffic issues in the original route. She also mentions to Ram that Google maps is switched on. Ram asks Prabha to ignore Google and drive as per his instructions. They drive through Thanjavur main city when Ram gets excited seeing the same. He reveals to Prabha that he is from the same city. He gets excited and points out the corporation bus stand mentioning that his parents landed up here, first after their marriage. His excitement continues and he explains to Prabha about other things that come in the way of their drive (such as the Government Hospital where he was born, the first shopping complex that came up in their city and a bakery that was very famous that made you hungry anytime). As they are further driving through the city, he shows Prabha a place mentioning that\'s where his old home would have been long before. When Prabha asks Ram if she needs to stop the car, he asks her to continue driving since he feels he may have to talk to people if they were to stop. As they continue the drive, the car passes by a small crossing over a river stream and Ram gets super excited seeing the same. He starts to say something to Prabha but then immediately keeps quiet.', '2018', '2000000'),
-(8, 14, 'Odiyan', '1542731690download.jpg', '1542731690odiyan.jpg', 'V. A. Shrikumar Menon', '154273169051905_v.jpg', 'Antony Perumbavoor', '1542731690image.png', 'M. Jayachandran', 'Malayalam', 'Mohanlal', '1542731690mohanla.jpg', 'Manju Warrier', '1542731690Manju_Warrier_0.jpeg', 'Odiyan is an upcoming Indian Malayalam-language fantasy thriller film directed by V. A. Shrikumar Menon in his feature film debut. It was written by Harikrishnan and is based on the legend of the Odiyan clan, who in Kerala folklore are men possessing shapeshifting abilities, who could assume animal form. Odiyans are said to have inhabited the Malabar region of Kerala during pre-electricity era. The film stars Mohanlal in the title role, alongside Prakash Raj and Manju Warrier. The film was produced by Aashirvad Cinemas.\r\n\r\nPrincipal photography began in Varanasi, Uttar Pradesh in August 2017. Major part of the film was shot in Palakkad district, where the Thenkurissi village in the film was recreated. Some scenes were also filmed in Vagamon, Athirappilly, and Kochi. The film was completed after 145 days shooting. Sam C. S. composed the film\'s score and it also features songs composed by M. Jayachandran. Odiyan is set to release on 14 December 2018 in over 4000 screens worldwide.[1]', '2018', '2000000'),
-(9, 5, 'Spider-Man: Homecoming', '1542765411Spider-Man_Homecoming_poster.jpg', '1542765411max1506545262-frontback-cover.jpg', 'Jon Watts', '1542765411Jon_Watts_by_Gage_Skidmore_2.jpg', 'Kevin Feige', '1542765411(cropped).jpg', 'Michael Giacchino', 'English', 'Tom Holland', '1542765411Tom_Holland_by_Gage_Skidmore.jpg', 'Zendaya', '1542765411Zendaya.png', 'Spider-Man: Homecoming is a 2017 American superhero film based on the Marvel Comics character Spider-Man, co-produced by Columbia Pictures and Marvel Studios, and distributed by Sony Pictures Releasing. It is the second Spider-Man film reboot and the sixteenth film in the Marvel Cinematic Universe (MCU). The film is directed by Jon Watts, from a screenplay by the writing teams of Jonathan Goldstein and John Francis Daley, Watts and Christopher Ford, and Chris McKenna and Erik Sommers. Tom Holland stars as Peter Parker / Spider-Man, alongside Michael Keaton, Jon Favreau, Zendaya, Donald Glover, Tyne Daly, Marisa Tomei, and Robert Downey Jr. In Spider-Man: Homecoming, Peter Parker tries to balance high school life with being Spider-Man, while facing the Vulture.\r\n\r\nIn February 2015, Marvel Studios and Sony reached a deal to share the character rights of Spider-Man, integrating the character into the established MCU. The following June, Holland was cast as the title character and Watts was hired to direct. This was followed shortly by the hiring of Daley and Goldstein. In April 2016, the film\'s title was revealed, along with additional cast, including Downey in his MCU role of Tony Stark / Iron Man. Principal photography began in June 2016 at Pinewood Atlanta Studios in Fayette County, Georgia, and continued in Atlanta, Los Angeles, and New York City. The other screenwriters were revealed during filming, which concluded in Berlin in October 2016. The production team made efforts to differentiate the film from previous Spider-Man films.', '2018', '2500000');
+INSERT INTO `tbl_moviedetails` (`mid`, `distributor_id`, `film_name`, `poster_pic`, `cover_pic`, `director`, `director_pic`, `producer`, `producer_pic`, `mdirector`, `language`, `categories`, `actor`, `actor_pic`, `actress`, `actress_pic`, `description`, `date`, `price`) VALUES
+(1, 2, 'SPADIKAM', '1553059069Spadikam.jpg', '15530590691541920022cover.jpg', 'Bhadran', '1553059068Director_Bhadran.jpg', 'R. Mohan', '1553059068download.jpg', 'S. P. Venkatesh', '3', '1,6,16', 'Mohanlal,Thilakan', '1553059068Mohanlal_DN_0.jpg,1553059068Thilakan.jpg', 'Urvashi,Silk Smitha,K. P. A. C. Lalitha', '1553059068Urvashi.jpg,1553059069Silk_Smitha_2.jpg,1553059069K. P. A. C. Lalitha.jpg', 'Spadikam (English: Crystal) is a 1995 Indian Malayalam-language action drama film written and directed by Bhadran and starring Mohanlal in the lead role. Dialogues were written by Rajendra Babu. The title \"Spadikam\" means \"crystal\" or \"prism\", the splitting of light by a prism being a metaphor for human nature. The film also stars Thilakan, Urvashi, Spadikam George, K. P. A. C. Lalitha, Rajan P. Dev, Silk Smitha, Nedumudi Venu, Chippy, and V. K. Sreeraman.\r\n\r\nSpadikam was the highest-grossing Malayalam film of the year 1995, collecting more than ?5 crore (US$700,000) from the box office.[1] Mohanlal won the Kerala State Film Award for Best Actor and Filmfare Award for Best Actor – Malayalam for his portrayal of Thomas \"Aadu Thoma\" Chacko, a rogue youngster estranged from his narcissistic father, Chacko Master (Thilakan), upon failing to meet the latter\'s high expectations.[2][3] The film was remade into Tamil, Telugu, and Kannada languages.', '2018', '5000'),
+(2, 2, 'NATTURAJAVU', '1553091375Natturajavu.jpg', '1553091375925047040s.jpg', 'Shaji Kailas', '1553091374Shaji_kailas.jpg', 'Antony Perumbavoor', '1553091374image.png', 'M. Jayachandran', '3', '1,13,16', 'Mohanlal,Kalabhavan Mani', '155309137465603579.jpg,1553091374download.jpg', 'Meena,Nayanthara', '1553091374meena.jpg,1553091375Nayanthara-hairstyle-in-raja-rani.jpg', 'Naatturajavu (English: Native King) is a 2004 Indian Malayalam-language action-drama film directed by Shaji Kailas and written by T. A. Shahid. The film stars Mohanlal in the lead role and Meena, Nayantara, Kalabhavan Mani, Kaviyoor Ponnamma , K. P. A. C. Lalitha, and Siddique in supporting roles. M. Jayachandran composed the soundtrack.[2] It was produced by Antony Perumbavoor through Aashirvad Cinemas. Naatturajavu was released in India on 20 August 2004, it was well received at the box office becoming one of the highest-grossing Malayalam films of the year.', '2018', '4000');
 
 -- --------------------------------------------------------
 
@@ -957,7 +951,7 @@ CREATE TABLE `tbl_news` (
 --
 
 INSERT INTO `tbl_news` (`nid`, `heading`, `photo`, `description`, `ndate`, `nstatus`) VALUES
-(42, 'Nun20 days', '1552979697Picture1.jpg', 'wretryty', '2019/03/19  08:14:57am', 0);
+(42, 'sanjay', '1552979697Picture1.jpg', 'wretryty', '2019/03/28  05:54:40am', 0);
 
 -- --------------------------------------------------------
 
@@ -976,7 +970,7 @@ CREATE TABLE `tbl_otp` (
 --
 
 INSERT INTO `tbl_otp` (`oid`, `email`, `otp`) VALUES
-(33, 'ajilsunny007@gmail.com', 455283);
+(34, 'ajilsunny007@gmail.com', 121439);
 
 -- --------------------------------------------------------
 
@@ -1075,36 +1069,59 @@ INSERT INTO `tbl_status` (`sid`, `sname`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_theatredetails`
+--
+
+CREATE TABLE `tbl_theatredetails` (
+  `tid` int(11) NOT NULL,
+  `lid` int(11) NOT NULL,
+  `theatre_name` varchar(100) NOT NULL,
+  `t_pro_pic` text NOT NULL,
+  `t_cov_pic` text NOT NULL,
+  `t_email` varchar(100) NOT NULL,
+  `t_phone` varchar(15) NOT NULL,
+  `t_district` int(11) NOT NULL,
+  `t_place` varchar(100) NOT NULL,
+  `t_description` text NOT NULL,
+  `t_screens` int(11) NOT NULL,
+  `t_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_theatredetails`
+--
+
+INSERT INTO `tbl_theatredetails` (`tid`, `lid`, `theatre_name`, `t_pro_pic`, `t_cov_pic`, `t_email`, `t_phone`, `t_district`, `t_place`, `t_description`, `t_screens`, `t_status`) VALUES
+(1, 3, 'SSS', '1553704574download.png', '1553704574gixxer10.jpg', 'ajilsunny007@gmail.com', '8593967684', 4, 'kannur', 'sssssssssssssssssssss', 2, 0),
+(2, 3, 'AAAAAAAAAAAAA', '1553708043Screenshot (19).png', '1553708043Screenshot (25).png', 'ajil@gmail.com', '7410852963', 381, 'kannur', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', 1, 0),
+(3, 3, 'AJIL', '1553880012Screenshot (21).png', '1553880012gixxer10.jpg', 'albin@gmail.com', '9632587410', 46, 'kannur', 'ajil sunny', 2, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_theatreseating`
 --
 
 CREATE TABLE `tbl_theatreseating` (
+  `thid` int(11) NOT NULL,
   `tid` int(11) NOT NULL,
-  `lid` int(11) NOT NULL,
-  `c_row` int(11) NOT NULL,
-  `c_column` int(11) NOT NULL,
-  `c_price` int(11) NOT NULL,
-  `l_rows` int(11) NOT NULL,
-  `l_column` int(11) NOT NULL,
-  `l_price` int(11) NOT NULL,
-  `b_rows` int(11) NOT NULL,
-  `b_column` int(11) NOT NULL,
-  `b_price` int(11) NOT NULL,
-  `no_of_shows` int(11) NOT NULL,
-  `time1` varchar(20) NOT NULL,
-  `time2` varchar(20) NOT NULL,
-  `time3` varchar(20) NOT NULL,
-  `time4` varchar(20) NOT NULL,
-  `time5` varchar(20) NOT NULL,
+  `screen_no` int(11) NOT NULL,
+  `row` int(11) NOT NULL,
+  `cols` int(11) NOT NULL,
+  `seat_arrangement` text NOT NULL,
+  `classes_names` text NOT NULL,
+  `class_rows` text NOT NULL,
+  `class_amount` text NOT NULL,
   `status` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_theatreseating`
 --
 
-INSERT INTO `tbl_theatreseating` (`tid`, `lid`, `c_row`, `c_column`, `c_price`, `l_rows`, `l_column`, `l_price`, `b_rows`, `b_column`, `b_price`, `no_of_shows`, `time1`, `time2`, `time3`, `time4`, `time5`, `status`) VALUES
-(13, 4, 20, 15, 100, 20, 15, 150, 20, 15, 200, 4, '10:00', '13:00', '16:00', '19:00', '', 1);
+INSERT INTO `tbl_theatreseating` (`thid`, `tid`, `screen_no`, `row`, `cols`, `seat_arrangement`, `classes_names`, `class_rows`, `class_amount`, `status`) VALUES
+(3, 2, 1, 10, 20, '1-1,1-2,1-3,1-4,1-5,1-6,1-7,1-8,1-10,1-11,1-12,1-13,1-14,1-15', 'aa,ss', '1,2', '3,11', 0),
+(4, 3, 2, 10, 30, '1-1,1-3,3-9,5-22,3-24,3-26,3-27,7-22,7-19,6-17,5-17,7-20,9-22,9-23,8-23,7-23,6-24,6-26,7-26,8-30', 'aa,ss', '1,2', '22,2', 0);
 
 -- --------------------------------------------------------
 
@@ -1213,11 +1230,17 @@ ALTER TABLE `tbl_status`
   ADD PRIMARY KEY (`sid`);
 
 --
+-- Indexes for table `tbl_theatredetails`
+--
+ALTER TABLE `tbl_theatredetails`
+  ADD PRIMARY KEY (`tid`),
+  ADD KEY `lid` (`lid`);
+
+--
 -- Indexes for table `tbl_theatreseating`
 --
 ALTER TABLE `tbl_theatreseating`
-  ADD PRIMARY KEY (`tid`),
-  ADD UNIQUE KEY `lid` (`lid`);
+  ADD PRIMARY KEY (`thid`);
 
 --
 -- Indexes for table `tbl_usertype`
@@ -1269,7 +1292,7 @@ ALTER TABLE `tbl_login`
 -- AUTO_INCREMENT for table `tbl_moviedetails`
 --
 ALTER TABLE `tbl_moviedetails`
-  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_news`
@@ -1281,7 +1304,7 @@ ALTER TABLE `tbl_news`
 -- AUTO_INCREMENT for table `tbl_otp`
 --
 ALTER TABLE `tbl_otp`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tbl_runningmovietime`
@@ -1299,13 +1322,19 @@ ALTER TABLE `tbl_state`
 -- AUTO_INCREMENT for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_theatredetails`
+--
+ALTER TABLE `tbl_theatredetails`
+  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_theatreseating`
 --
 ALTER TABLE `tbl_theatreseating`
-  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `thid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_usertype`
@@ -1335,6 +1364,12 @@ ALTER TABLE `tbl_news`
 --
 ALTER TABLE `tbl_otp`
   ADD CONSTRAINT `tbl_otp_ibfk_1` FOREIGN KEY (`email`) REFERENCES `tbl_details` (`email`);
+
+--
+-- Constraints for table `tbl_theatredetails`
+--
+ALTER TABLE `tbl_theatredetails`
+  ADD CONSTRAINT `tbl_theatredetails_ibfk_1` FOREIGN KEY (`lid`) REFERENCES `tbl_login` (`lid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -10,21 +10,23 @@ if($a==1)
 <div style="background-image:url(<?php echo base_url('images/distributorhome.jpg');?>);height:800px;width:auto;" align="center">
 <br><br>
 <?php
-  if(!$dis){
+  if(!$dis)
+  {
     echo '<center><h1 style="font-family:Times New Roman, Times, serif;font-size:36px;color:#FF0090"; >No Film added...!!</h1></center>';
   }
+
 ?>
 
 	<div id="myTabContent" class="tab-content" style="padding-top: 30px;padding-left: 20px">
-		<?php
-			foreach($dis as $row)
-			{
-          $fid=$row->mid;
-					$fname=$row->film_name;
-					$pic=$row->poster_pic;
+    <?php
+    foreach($dis as $row)
+    {
+        $fid=$row->mid;
+        $fname=$row->film_name;
+        $pic=$row->poster_pic;
 
 
-			?>
+    ?>
       <form action="<?php echo site_url('dcontroller/filmviewdistributor');?>" method="post">
 		<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab" >
 			<div class="w3_agile_featured_movies" >

@@ -116,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<ul class="dropdown-menu">
 									<li>
 									<div class="col-sm-4">
-										<li><a href="<?php echo site_url('tcontroller/theatreseating');?>">Seating & Time</a></li>
+										<li><a href="<?php echo site_url('tcontroller/theatre_profile_seating');?>">Seating & Time</a></li>
 										<li><a href="<?php echo site_url('tcontroller/theatrerunningtime');?>">Film Time Setting</a></li>
 										<li><a href="<?php echo site_url('tcontroller/theatrefilmrunningtime');?>">Running Film Time</a></li>
 									<div class="clearfix"></div>
@@ -135,8 +135,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</li>
 								</ul>
 							</li>
-							<li><a href="<?php echo site_url('tcontroller/theatreownerprofile');?>">Theatre Profile</a></li>
-							<li><a href="<?php echo site_url('tcontroller/theatreprofile');?>">Owner Profile</a></li>
+							<li><a href="<?php echo site_url('tcontroller/theatreprofile');?>">Theatres Profile</a></li>
+							<li><a href="<?php echo site_url('tcontroller/theatreownerprofile');?>">Owner Profile</a></li>
 							<li><a href="<?php echo site_url('tcontroller/theatrecontact');?>">Contact Us</a></li>
 							<li></li>
 						</ul>

@@ -18,4 +18,50 @@ class tmodel extends CI_Model
 		return $querys->result();
 	}
 
+	function update_profile($data,$email)
+	{
+		$this->db->where('email',$email);
+		$this->db->update('tbl_details',$data);
+	}
+
+	function states()
+	{
+
+		$querys=$this->db->get_where('tbl_state');
+		return $querys->result();
+	}
+
+	function inserttheatre($data)
+	{
+		$this->db->insert('tbl_theatredetails',$data);
+	}
+
+	//Check film in database
+		function checktheatre($theatrename,$email)
+		{
+			$quuery=$this->db->get_where('tbl_theatredetails',array('theatre_name'=>$theatrename,'t_email'=>$email));
+			$c=$quuery->num_rows();
+			return($c);
+		}
+
+		function theatreprofiles($lid)
+		{
+			$querys=$this->db->get_where('tbl_theatredetails',array('lid'=>$lid));
+			return $querys->result();
+		}
+
+		function insertseating($data)
+		{
+			$this->db->insert('tbl_theatreseating',$data);
+		}
+		function theatrescreens($tid)
+		{
+			$querys=$this->db->get_where('tbl_theatredetails',array('tid'=>$tid));
+			return $querys->result();
+		}
+		function theatreseating($tid,$screen)
+		{
+			$querys=$this->db->get_where('tbl_theatreseating',array('tid'=>$tid,'screen_no'=>$screen));
+			return $querys->result();
+		}
 }

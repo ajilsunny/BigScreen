@@ -40,6 +40,14 @@ class dmodel extends CI_Model
     	return $querys->result();
     }
 
+		//Check film in database
+			function checkmovie($data)
+			{
+				$quuery=$this->db->get_where('tbl_moviedetails',array('film_name'=>$data));
+				$c=$quuery->num_rows();
+				return($c);
+			}
+
 		function filmcategory()
 		{
 			$querys = $this->db->get_where('tbl_film_category');

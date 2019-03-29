@@ -384,7 +384,7 @@ function filmviewtheatres()
 	}
 }
 
-	
+
 	//updeate distributor profile
 function user_profile_edit()
 {
@@ -402,56 +402,7 @@ function user_profile_edit()
 	}
 
 
-//update theatre profile
-function theatre_profile_update()
-{
-$name=$this->input->post('name');
-if(isset($name))
-{
-$email=$this->input->post('email');
-$phone=$this->input->post('phone');
-$place=$this->input->post('place');
-$pin=$this->input->post('pin');
-$button=$this->input->post('action');
-if($button=='cancel')
-{
-$username=$this->session->userdata('username');
-$result['dis']=$this->Mymodel->disuser($username);
-$this->load->view('theatre_profile',$result);
-}
-else
-{
-if($_FILES['profilepic']['name'] !=="")
-{
-	$p=$_FILES['profilepic']['name']	;
-	$folderPath = "../Big_Screen/images/profile/";
-	$image =  time().$_FILES['profilepic']['name'];
-	move_uploaded_file($_FILES['profilepic']['tmp_name'],$folderPath.$image);
-	$sourceProperties = getimagesize($folderPath.$image);
-	$ext = pathinfo($_FILES['profilepic']['name'], PATHINFO_EXTENSION);
-	$this->imagecheck($sourceProperties,$folderPath.$image);
-	$data=array('name'=>$name,'phone'=>$phone,'place'=>$place,'pin'=>$pin,'profile_pic'=>$image);
-	$this->Mymodel->update_profile($data,$email);
-	$result['dis']=$this->Mymodel->disuser($email);
-	$this->session->set_userdata('name',$name);
-	$this->load->view('theatre_profile',$result);
-}
-else
-{
-	$data=array('name'=>$name,'phone'=>$phone,'place'=>$place,'pin'=>$pin);
-	$this->Mymodel->update_profile($data,$email);
-	$result['dis']=$this->Mymodel->disuser($email);
-	$this->load->view('theatre_profile',$result);
-}
-}
-}
-else
-{
-$username=$this->session->userdata('username');
-$result['dis']=$this->Mymodel->disuser($username);
-$this->load->view('theatre_profile',$result);
-}
-}
+
 
 
 function user_profile_update()
@@ -837,7 +788,6 @@ function countapprove($a)
 $approve=$this->amodel->countapproval($a);
 return($approve);
 }
-
 function runningtimeadd()
 {
 $mid = $this->input->post('mid');

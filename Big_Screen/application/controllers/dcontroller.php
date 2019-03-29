@@ -287,7 +287,7 @@ class dcontroller extends CI_Controller
 	function moviedetailesinsert()
 	{
 		$filmName1=$this->input->post('filmName');
-		$res=$this->Mymodel->checkmovie($filmName1);
+		$res=$this->dmodel->checkmovie($filmName1);
 		if($res == 0)
 		{
 			$director=array();

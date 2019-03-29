@@ -108,13 +108,7 @@ function districtselect($sid)
 	}
 
 
-//Check film in database
-	function checkmovie($data)
-	{
-		$quuery=$this->db->get_where('tbl_moviedetails',array('film_name'=>$data));
-		$c=$quuery->num_rows();
-		return($c);
-	}
+
 	//count numer of users
 		function countlist($a)
 		{
@@ -141,11 +135,7 @@ function districtselect($sid)
 		return $querys->result();
 	}
 //distributer profile update
-function update_profile($data,$email)
-{
-	$this->db->where('email',$email);
-	$this->db->update('tbl_details',$data);
-}
+
 
 function allfilms()
 {

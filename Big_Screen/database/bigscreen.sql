@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2019 at 07:09 PM
+-- Generation Time: Mar 31, 2019 at 09:39 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -1092,9 +1092,7 @@ CREATE TABLE `tbl_theatredetails` (
 --
 
 INSERT INTO `tbl_theatredetails` (`tid`, `lid`, `theatre_name`, `t_pro_pic`, `t_cov_pic`, `t_email`, `t_phone`, `t_district`, `t_place`, `t_description`, `t_screens`, `t_status`) VALUES
-(1, 3, 'SSS', '1553704574download.png', '1553704574gixxer10.jpg', 'ajilsunny007@gmail.com', '8593967684', 4, 'kannur', 'sssssssssssssssssssss', 2, 0),
-(2, 3, 'AAAAAAAAAAAAA', '1553708043Screenshot (19).png', '1553708043Screenshot (25).png', 'ajil@gmail.com', '7410852963', 381, 'kannur', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', 1, 0),
-(3, 3, 'AJIL', '1553880012Screenshot (21).png', '1553880012gixxer10.jpg', 'albin@gmail.com', '9632587410', 46, 'kannur', 'ajil sunny', 2, 0);
+(1, 3, 'NEW INDIA', '1553920924crown-theatre.jpg', '1553920924Kanakakkunnu_Palace_Kerala_8875.jpg', 'newindia@gmail.com', '9638527410', 4, 'iritty', 'A nice multiplex theater with decent crowd. Came here to witness the cinema experience in South India. Definitely worth a visit in case u are a big fan of watching movies first day no matter which place!!', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -1120,8 +1118,7 @@ CREATE TABLE `tbl_theatreseating` (
 --
 
 INSERT INTO `tbl_theatreseating` (`thid`, `tid`, `screen_no`, `row`, `cols`, `seat_arrangement`, `classes_names`, `class_rows`, `class_amount`, `status`) VALUES
-(3, 2, 1, 10, 20, '1-1,1-2,1-3,1-4,1-5,1-6,1-7,1-8,1-10,1-11,1-12,1-13,1-14,1-15', 'aa,ss', '1,2', '3,11', 0),
-(4, 3, 2, 10, 30, '1-1,1-3,3-9,5-22,3-24,3-26,3-27,7-22,7-19,6-17,5-17,7-20,9-22,9-23,8-23,7-23,6-24,6-26,7-26,8-30', 'aa,ss', '1,2', '22,2', 0);
+(1, 1, 1, 10, 20, '1-5,1-7,1-15,1-13,1-12,1-11,1-10,1-9,1-8,1-1,1-2,1-3,1-4,1-19,1-18,1-17,1-16,1-20,2-1,2-2,2-3,2-4,2-5,2-7,2-8,2-9,2-10,2-11,2-12,2-13,2-15,2-16,2-17,2-18,2-19,3-1,3-2,3-3,3-4,3-5,3-7,3-8,3-10,3-11,3-12,3-13,3-17,3-18,3-19,3-20,5-1,5-5,5-13,5-20,5-2,5-3,5-4,5-7,5-8,5-9,5-10,5-11,5-12,5-15,5-16,5-17,5-18,5-19,6-1,6-2,6-3,6-4,6-5,6-7,6-8,6-9,6-10,6-11,6-12,6-13,6-15,6-16,6-17,6-18,6-19,6-20,7-1,7-2,7-3,7-4,7-5,7-8,7-9,7-10,7-11,7-12,7-13,7-15,7-16,7-17,7-18,7-19,7-20,9-1,9-2,9-3,9-4,9-5,9-7,9-8,9-9,9-10,9-11,9-12,9-13,9-15,9-16,9-17,9-18,9-19,9-20,10-1,10-2,10-3,10-4,10-5,10-7,10-8,10-9,10-10,10-12,10-13,10-15,10-18,10-19,10-20,3-9,3-15,3-16,2-20,10-11,10-16,10-17,7-7', 'Balcoly,First Class,Second Class', '9,5,1', '200,150,100', 0);
 
 -- --------------------------------------------------------
 
@@ -1328,13 +1325,13 @@ ALTER TABLE `tbl_status`
 -- AUTO_INCREMENT for table `tbl_theatredetails`
 --
 ALTER TABLE `tbl_theatredetails`
-  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_theatreseating`
 --
 ALTER TABLE `tbl_theatreseating`
-  MODIFY `thid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `thid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_usertype`

@@ -1,5 +1,5 @@
 <?php
-
+ 
 $CI =& get_instance();
  $a= $CI->sessionin() ;
 if($a==1)
@@ -10,6 +10,13 @@ if($a==1)
 <div style="background-image:url(<?php echo base_url('images/theaterhome.jpg');?>);height:800px;width:auto;padding:3%">
 
   <?php
+  if(!$dis)
+  {
+    echo '<center><h1 style="font-family:Times New Roman, Times, serif;font-size:36px;color:#FF0000" >No Theatres...!!</h1></center>';
+  }
+  else
+  {
+
   foreach($dis as $row)
   {
     $tid=$row->tid;
@@ -37,6 +44,7 @@ if($a==1)
 
     <?php
   }
+}
    ?>
 
 </div>

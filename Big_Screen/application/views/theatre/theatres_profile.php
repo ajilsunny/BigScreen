@@ -15,7 +15,7 @@ foreach($dis as $row)
   $tid=$row->tid;
   $propic=$row->t_pro_pic;
   $name=$row->theatre_name;
-  ?>
+  ?> 
 
   <form action="<?php echo site_url('tcontroller/viewtheatre');?>" method="post">
   <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab" >

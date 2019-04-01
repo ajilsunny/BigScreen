@@ -183,7 +183,7 @@ if($a==1)
         <td></td>
         <form action="<?php echo site_url('usercontroller/filmviewdistributor');?>" method="post">
         <input type="hidden" name="mid" value="<?php echo $fid ?>">
-        <td><input type="submit" value="Remove" style="background:#FF8D1B;color:white;padding:0px 30%;border:hidden;border-radius:5px" disabled></td>
+        <td><input type="submit" value="Edit" style="background:#FF8D1B;color:white;padding:0px 30%;border:hidden;border-radius:5px" disabled></td>
         </form>
       </tr>
     </tbody>

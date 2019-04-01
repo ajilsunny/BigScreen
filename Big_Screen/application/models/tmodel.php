@@ -64,4 +64,22 @@ class tmodel extends CI_Model
 			$querys=$this->db->get_where('tbl_theatreseating',array('tid'=>$tid,'screen_no'=>$screen));
 			return $querys->result();
 		}
+		function viewtheatre($tid)
+		{
+			$this->db->join('tbl_theatredetails','tbl_login.lid=tbl_theatredetails.lid','inner');
+			$this->db->join('tbl_district','tbl_theatredetails.t_district=tbl_district.did','inner');
+			$this->db->join('tbl_state','tbl_district.sid=tbl_state.id','inner');
+
+			$querys=$this->db->get_where('tbl_login',array('tid'=>$tid));
+			return $querys->result();
+		}
+		function days()
+		{
+			$querys=$this->db->get_where('tbl_day');
+			return $querys->result();
+		}
+		function add_screens_time($data)
+		{
+			$this->db->insert('tbl_showtime',$data);
+		}
 }

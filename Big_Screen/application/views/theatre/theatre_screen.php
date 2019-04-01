@@ -23,11 +23,12 @@ if($a==1)
     <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab" >
     <div class="w3_agile_featured_movies" >
       <div class="col-md-2 w3l-movie-gride-agile" >
-      <button type="submit" href="" name="submit" class="hvr-shutter-out-horizontal" ><img src="<?php echo base_url('images/theatreprofile/1553880012Screenshot (21).png')?>" title="View Theatre Detailes" class="img-responsive" alt=" " />
-          <div class="w3l-action-icon"><i class="glyphicon glyphicon-film " aria-hidden="true" ></i></div>
+      <button type="submit" href="" name="submit" class="hvr-shutter-out-horizontal" >
+        <img src="<?php echo base_url('images/screen'.$i.'.png')?>" title="View Theatre Detailes" class="img-responsive" alt=" " />
+          <div class="w3l-action-icon"><i class="glyphicon  " aria-hidden="true" ></i></div>
         </a>
         <div class="w3l-movie-text" style="background-color: black;padding: 5%;border-radius: 10px">
-            <h6 ><a href=""  style="color: gold"><?php echo $i ?></a></h6>
+            <h6 ><a href=""  style="color: gold">Screen <?php echo $i ?></a></h6>
         </div>
             <div class="clearfix"></div>
 

@@ -101,14 +101,7 @@ function dist()
                               </div>
                            </div>
 
-                           <div class="form-group">
-                              <label class="col-xs-4 control-label">Theatre Type</label>
-                              <div class="col-xs-8 inputGroupContainer">
-                                <p id="vcost" style="color:red;"></P>
-                                 <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-cloud"></i></span>
-                                   <input id="type" name="type" placeholder="Selling Cost" class="form-control" Director type="text"></div>
-                              </div>
-                           </div>
+                           
 
                            </div>
                         </fieldset>

@@ -47,15 +47,31 @@ class tcontroller extends CI_Controller
 		$result['tid']=$tid;
 	  $this->load->view('theatre/theatre_screen',$result);
 	}
+	function theatre_screens_time()
+	{
+		$tid=$this->input->post('tid');
+		$result['dis']=$this->tmodel->theatrescreens($tid);
+		$result['tid']=$tid;
+	  $this->load->view('theatre/screen_time',$result);
+	}
   function theatreseating()
   {
 		$tid=$this->input->post('tid');
-		$screen=$this->input->post('screen');;
+		$screen=$this->input->post('screen');
 	  $result['dis']=$this->tmodel->theatreseating($tid,$screen);
 		$result['tid']=$tid;
 		$result['screen']=$screen;
 	  $this->load->view('theatre/theatre_seating',$result);
   }
+	function screen_times_set()
+	{
+		$tid=$this->input->post('tid');
+		$screen=$this->input->post('screen');
+		//$result['dis']=$this->tmodel->theatreseating($tid,$screen);
+		$result['tid']=$tid;
+		$result['screen']=$screen;
+	  $this->load->view('theatre/theatre_add_screentimes',$result);
+	}
 	function  theatre_profile_seating()
 	{
 		$lid=$this->session->userdata('id');
@@ -64,14 +80,14 @@ class tcontroller extends CI_Controller
 	}
   function theatrerunningtime()
   {
-  $lid=$this->session->userdata('id');
-  $result['dis']=$this->Mymodel->theatrebooked($lid);
+	$lid=$this->session->userdata('id');
+	$result['dis']=$this->tmodel->theatreprofiles($lid);
   $this->load->view('theatre/theatre_runningfilmtime',$result);
   }
   function theatrefilmrunningtime()
   {
-  $lid=$this->session->userdata('id');
-  $result['dis']=$this->Mymodel->tfilmrunningtime($lid);
+	$lid=$this->session->userdata('id');
+	$result['dis']=$this->tmodel->theatreprofiles($lid);
   $this->load->view('theatre/theatre_runningtime',$result);
   }
   function theatrefilmselection()
@@ -348,6 +364,34 @@ function theatre_profile_edit()
 		$this->theatre_profile_seating();
 
 
+	}
+
+	function viewtheatre()
+	{
+		//echo "hi";
+		$tid=$this->input->post('tid');
+		$result['dis']=$this->tmodel->viewtheatre($tid);
+  	$this->load->view('theatre/theatre_profile_single',$result);
+	}
+
+	function days()
+	{
+		$result['dis']=$this->tmodel->days();
+		return $result['dis'];
+	}
+
+	function add_screens_time()
+	{
+		$did=$this->input->post('day');
+		$screen=$this->input->post('screen');
+		$tid=$this->input->post('tid');
+		//$no_of_shows=$this->input->post('no_of_shows');
+		$show[]=$this->input->post('shows');
+		$shows=implode(',', $show);
+
+		$data=array('stid'=>NULL,'tid'=>$tid,'screen'=>$screen,'dayid'=>$did,'show_time'=>$shows,'status'=>0);
+		$this->tmodel->add_screens_time($data);
+		$this->theatrerunningtime();
 	}
 
 }

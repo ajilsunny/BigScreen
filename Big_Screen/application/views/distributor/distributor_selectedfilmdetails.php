@@ -1,7 +1,6 @@
 <?php
-
 $CI =& get_instance();
- $a= $CI->sessionin() ;
+ $a= $CI->sessionin(3) ;
 if($a==1)
 {
 	include('distributor_header.php');
@@ -14,7 +13,7 @@ if($a==1)
       echo '<center><h1 style="font-family:Times New Roman, Times, serif;font-size:36px;color:#FF0000" >No Film Selected...!!</h1></center>';
     }
     else {
-
+ 
     ?>
 <div class="col-xs-1"></div>
 <div class="col-xs-10" align=center height=auto width=70% style="background:#FF6600;">
@@ -23,7 +22,8 @@ if($a==1)
       <tr>
         <th style="color:#212121" scope="col">No</th>
         <th style="color:#212121" scope="col">Film</th>
-        <th style="color:#212121" scope="col">THEATRE</th>
+        <th style="color:#212121" scope="col">THEATRE Owner</th>
+        <th style="color:#212121" scope="col">THEATRE Name</th>
         <th style="color:#212121" scope="col">Date</th>
         <th style="color:#212121" scope="col">Action</th>
       </tr>
@@ -37,15 +37,17 @@ if($a==1)
         $lid=$row->lid;
         $fname=$row->film_name;
         $name=$row->name;
-        $date=$row->date;
+        $tname=$row->theatre_name;
+        $date=$row->sdate;
         $status=$row->status;
         $fid=$row->fs_id;
         ?>
-<form action="<?php echo site_url('usercontroller/filmapprove') ?>" method="post">
+<form action="<?php echo site_url('dcontroller/filmapprove') ?>" method="post">
       <tr>
         <th style="color:#212121" scope="row"><?php echo $no; ?></th>
         <td style="color:#212121"><?php echo $fname; ?></td>
         <td style="color:#212121"><?php echo $name; ?></td>
+        <td style="color:#212121"><?php echo $tname; ?></td>
         <td style="color:#212121"><?php echo $date; ?></td>
         <input type="hidden" id="status" name="status" value="<?php echo $status; ?>">
         <input type="hidden" id="fid" name="fid" value="<?php echo $fid; ?>">
@@ -69,6 +71,6 @@ if($a==1)
 	}
 	else
 	{
-		$CI->index() ;
+		$CI->mainindex() ;
 	}
 	?>

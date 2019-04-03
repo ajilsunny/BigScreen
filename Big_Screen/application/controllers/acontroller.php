@@ -150,14 +150,26 @@ class acontroller extends CI_Controller
 	}
 	//END ADMIN PAGES
 
-	function sessionin()
+	function sessionin($t)
 	{
 		$username=$this->session->userdata('username');
 		$password=$this->session->userdata('password');
 		$loginresult['login']=$this->Mymodel->loguser($username,$password);
 		if($loginresult['login'])
 		{
-			return(1);
+			foreach ($loginresult['login'] as $key)
+			{
+				$z=$key->type;
+				if($z==$t)
+				{
+					return(1);
+				}
+				else
+				{
+					return(0);
+				}
+			}
+
 		}
 		else
 		{

@@ -11,20 +11,32 @@ class tcontroller extends CI_Controller
 		$this->load->library(array('session','upload'));
 	}
 
-  function sessionin()
-  {
-  	$username=$this->session->userdata('username');
-  	$password=$this->session->userdata('password');
-  	$loginresult['login']=$this->Mymodel->loguser($username,$password);
-  	if($loginresult['login'])
-  	{
-  		return(1);
-  	}
-  	else
-  	{
-  		return(0);
-  	}
-  }
+	function sessionin($t)
+	{
+		$username=$this->session->userdata('username');
+		$password=$this->session->userdata('password');
+		$loginresult['login']=$this->Mymodel->loguser($username,$password);
+		if($loginresult['login'])
+		{
+			foreach ($loginresult['login'] as $key)
+			{
+				$z=$key->type;
+				if($z==$t)
+				{
+					return(1);
+				}
+				else
+				{
+					return(0);
+				}
+			}
+
+		}
+		else
+		{
+			return(0);
+		}
+	}
 
   function index()
   {
@@ -67,7 +79,7 @@ class tcontroller extends CI_Controller
 	{
 		$tid=$this->input->post('tid');
 		$screen=$this->input->post('screen');
-		//$result['dis']=$this->tmodel->theatreseating($tid,$screen);
+		$result['dis']=$this->tmodel->theatreshowtime($tid,$screen);
 		$result['tid']=$tid;
 		$result['screen']=$screen;
 	  $this->load->view('theatre/theatre_add_screentimes',$result);
@@ -87,25 +99,48 @@ class tcontroller extends CI_Controller
   function theatrefilmrunningtime()
   {
 	$lid=$this->session->userdata('id');
-	$result['dis']=$this->tmodel->theatreprofiles($lid);
+	$result['dis']=$this->tmodel->theatrebooked($lid);
   $this->load->view('theatre/theatre_runningtime',$result);
   }
   function theatrefilmselection()
   {
+	$i=0;
+	$m=array();
   $lid=$this->session->userdata('id');
-  $result['dis']=$this->Mymodel->allfilms();
+  $result['dis']=$this->tmodel->allfilms();
+	$result['select']=$this->tmodel->selectfilms($lid);
+
+	$i = 0;
+
+	foreach ($result['dis'] as $row)
+	{
+		$flag = false;
+		foreach ($result['select'] as $row1)
+		{
+			if($row->mid == $row1->mid)
+			{
+				$flag = true;
+			}
+		}
+
+		if(!$flag){
+			$m[$i]=$row;
+			$i++;
+		}
+	}
+	$result['movies']=$m;
   $this->load->view('theatre/theatre_filmselection',$result);
   }
   function theatreacceptfilm()
   {
   $lid=$this->session->userdata('id');
-  $result['dis']=$this->Mymodel->theatreaccepted($lid);
+  $result['dis']=$this->tmodel->theatreaccepted($lid);
   $this->load->view('theatre/theatre_acceptedfilms',$result);
   }
   function theatrebookedfilm()
   {
   $lid=$this->session->userdata('id');
-  $result['dis']=$this->Mymodel->theatrebooked($lid);
+  $result['dis']=$this->tmodel->theatrebooked($lid);
   $this->load->view('theatre/theatre_bookedfilms',$result);
   }
   function theatreprofile()
@@ -385,13 +420,121 @@ function theatre_profile_edit()
 		$did=$this->input->post('day');
 		$screen=$this->input->post('screen');
 		$tid=$this->input->post('tid');
-		//$no_of_shows=$this->input->post('no_of_shows');
-		$show[]=$this->input->post('shows');
-		$shows=implode(',', $show);
+		$n=$this->tmodel->checkshowtime($tid,$screen,$did);
+		if($n ==0)
+		{
+			//$no_of_shows=$this->input->post('no_of_shows');
+			$show[]=$this->input->post('shows');
+			$shows=implode(',', $show);
 
-		$data=array('stid'=>NULL,'tid'=>$tid,'screen'=>$screen,'dayid'=>$did,'show_time'=>$shows,'status'=>0);
-		$this->tmodel->add_screens_time($data);
-		$this->theatrerunningtime();
+			$data=array('stid'=>NULL,'tid'=>$tid,'screen'=>$screen,'dayid'=>$did,'show_time'=>$shows,'status'=>0);
+			$this->tmodel->add_screens_time($data);
+
+			$result['dis']=$this->tmodel->theatreshowtime($tid,$screen);
+			$result['tid']=$tid;
+			$result['screen']=$screen;
+			$this->session->set_flashdata("msg","Show added successfully.");
+		  $this->load->view('theatre/theatre_add_screentimes',$result);
+		}
+		else
+		{
+			$result['dis']=$this->tmodel->theatreshowtime($tid,$screen);
+			$result['tid']=$tid;
+			$result['screen']=$screen;
+			$this->session->set_flashdata("msg","Show Already added.");
+			$this->load->view('theatre/theatre_add_screentimes',$result);
+		}
+		//$this->theatrerunningtime();
 	}
+
+	//films view in theaters
+function filmviewtheatres()
+{
+	$lid=$this->session->userdata('id');
+	$fid=$this->input->post('fid');
+	if(isset($fid))
+	{
+		$result['dis']=$this->tmodel->filmsingle($fid);
+		$this->load->view('theatre/theatre_selected_single',$result);
+	}
+	else
+	{
+
+			$result['dis']=$this->Mymodel->theatreaccepted($lid);
+			$this->load->view('theatre_acceptedfilms',$result);
+	}
+}
+function category($cat)
+{
+	$result['dis']=$this->tmodel->category($cat);
+	foreach ($result['dis'] as $row)
+	{
+		return $row->catname;
+	}
+
+}
+
+function bookstatus($mid,$lid)
+{
+	$a['dis']=$this->tmodel->bookstatus($mid,$lid);
+	foreach($a['dis'] as $row)
+	{
+		$fid=$row->status;
+		return $fid;
+	}
+}
+
+function filmbookrequest()
+{
+
+	$mid=$this->input->post('mid');
+	$lid=$this->input->post('lid');
+	$date=date("Y/m/d");
+	//$data1=array('lid'=>NULL,'username'=>$email,'password'=>$pass,'type'=>$type,'status'=>'1');
+	$data=array('fs_id'=>NULL,'mid'=>$mid,'lid'=>$lid,'status'=>'0','sdate'=>$date);
+	$a['dis']=$this->tmodel->filmbookstatus($data,$mid,$lid);
+	foreach($a['dis'] as $row)
+	{
+		$fid=$row->status;
+		echo $fid;
+	}
+}
+function filmbookrequestcancel()
+{
+$mid=$this->input->post('mid');
+$lid=$this->input->post('lid');
+//$data1=array('lid'=>NULL,'username'=>$email,'password'=>$pass,'type'=>$type,'status'=>'1');
+$data=array('mid'=>$mid,'lid'=>$lid);
+$a=$this->tmodel->filmbookstatuscancel($data);
+echo $a;
+}
+
+function language($langu)
+{
+	$a['dis']=$this->tmodel->language($langu);
+	foreach($a['dis'] as $row)
+	{
+		$lname=$row->la_name;
+		return $lname;
+	}
+}
+
+function showrunningfilmtime()
+{
+$lid=$this->session->userdata('id');
+$mid = $this->input->post('fid');
+if(isset($mid))
+{
+$result['dis']=$this->tmodel->showrunningmoviedetailes($mid);
+$result['theatre']=$this->tmodel->theatres($lid);
+$this->load->view('theatre/theatre_filmtimeshow',$result);
+}
+else
+{
+$lid=$this->session->userdata('id');
+$result['dis']=$this->tmodel->tfilmrunningtime($lid);
+$this->load->view('theatre/theatre_runningtime',$result);
+}
+}
 
 }

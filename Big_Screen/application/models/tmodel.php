@@ -82,4 +82,96 @@ class tmodel extends CI_Model
 		{
 			$this->db->insert('tbl_showtime',$data);
 		}
+		function theatreshowtime($tid,$screen)
+		{
+			$this->db->join('tbl_day','tbl_showtime.dayid=tbl_day.did','inner');
+			$querys=$this->db->get_where('tbl_showtime',array('tid'=>$tid,'screen'=>$screen));
+			return $querys->result();
+		}
+		function checkshowtime($tid,$screen,$did)
+		{
+			$querys=$this->db->get_where('tbl_showtime',array('tid'=>$tid,'screen'=>$screen,'dayid'=>$did));
+			$c=$querys->num_rows();
+			return $c;
+		}
+		function allfilms()
+		{
+			$this->db->order_by("mid", "desc");
+			$querys=$this->db->get_where('tbl_moviedetails');
+			return $querys->result();
+		}
+		function selectfilms($lid)
+		{
+			$querys=$this->db->get_where('tbl_filmselection',array('lid'=>$lid,'status!='=>0));
+			return $querys->result();
+		}
+		function filmsingle($value)
+		{
+			$query = $this->db->get_where('tbl_moviedetails',array('mid'=>$value));
+			return $query->result();
+
+		}
+
+		function category($cat)
+		{
+			$query = $this->db->get_where('tbl_film_category',array('cid'=>$cat));
+			return $query->result();
+		}
+
+		function bookstatus($mid,$lid)
+		{
+				$querys=$this->db->get_where('tbl_filmselection',array('mid'=>$mid,'lid'=>$lid));
+				return $querys->result();
+		}
+
+		function filmbookstatus($data,$mid,$lid)
+		{
+			$this->db->insert('tbl_filmselection',$data);
+			$querys=$this->db->get_where('tbl_filmselection',array('mid'=>$mid,'lid'=>$lid));
+			return $querys->result();
+		}
+
+		function filmbookstatuscancel($data)
+		{
+				$this->db->where($data);
+		   	$this->db->delete('tbl_filmselection');
+				return 0;
+		}
+
+		function theatreaccepted($lid)
+		{
+			$this->db->join('tbl_moviedetails','tbl_filmselection.mid=tbl_moviedetails.mid','inner');
+			$querys=$this->db->get_where('tbl_filmselection',array('lid'=>$lid,'status'=>'1'));
+			return $querys->result();
+		}
+
+		function theatrebooked($lid)
+		{
+			$this->db->join('tbl_moviedetails','tbl_filmselection.mid=tbl_moviedetails.mid','inner');
+			$querys=$this->db->get_where('tbl_filmselection',array('lid'=>$lid,'status'=>'2'));
+			return $querys->result();
+		}
+		function language($langu)
+		{
+			$querys=$this->db->get_where('tbl_language',array('la_id'=>$langu));
+			return $querys->result();
+		}
+		function showrunningmoviedetailes($mid)
+		{
+			//$this->db->join('tbl_moviedetails','tbl_runningmovietime.mid=tbl_moviedetails.mid','inner');
+			$querys=$this->db->get_where('tbl_moviedetails',array('mid'=>$mid));
+			return $querys->result();
+		}
+		function tfilmrunningtime($lid)
+		{
+			$this->db->join('tbl_moviedetails','tbl_runningmovietime.mid=tbl_moviedetails.mid','inner');
+			$querys=$this->db->get_where('tbl_runningmovietime',array('lid'=>$lid));
+			return $querys->result();
+		}
+		function theatres($lid)
+		{
+			$querys=$this->db->get_where('tbl_theatredetails',array('lid'=>$lid));
+			return $querys->result();
+		}
+
 }

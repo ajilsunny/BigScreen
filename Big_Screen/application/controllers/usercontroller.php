@@ -6,6 +6,7 @@ class Usercontroller extends CI_Controller
 		parent::__construct();
 		$this->load->model('Mymodel');
 		$this->load->model('amodel');
+		$this->load->model('tmodel');
 		$this->load->helpers(array('url','form'));
 		$this->load->library(array('session','upload'));
 	}
@@ -267,7 +268,7 @@ function loginn()
 			if(!$loginresult['login'])
 			{
 				$this->session->set_userdata('msg','Username or Password Wrong...!!');
-				$this->load->view('home');
+				$this->index();
 			}
 			else
 			{
@@ -282,13 +283,13 @@ function loginn()
 					if($status=='2')
 					{
 						$this->session->set_userdata('msg','Blocked login..!!');
-						$this->load->view('home');
+						$this->index();
 					}
 					else
 					{
 						if($type=='0')
 						{
-							$data= array('id'  => $lid, 'name' => $name, 'username'=> $username,'password'=>$password);
+							$data= array('id'  => $lid, 'name' => $name, 'username'=> $username,'password'=>$password,);
 							$this->session->set_userdata($data);
 							$this->load->view('admin/admin_home');
 						}
@@ -366,23 +367,6 @@ function filmviewdistributor()
 			$this->load->view('distributor_selectedfilmdetails',$result);
 		}
 	}
-	//films view in theaters
-function filmviewtheatres()
-{
-	$lid=$this->session->userdata('id');
-	$fid=$this->input->post('fid');
-	if(isset($fid))
-	{
-		$result['dis']=$this->Mymodel->filmsingle($fid);
-		$this->load->view('theatre_selected_single',$result);
-	}
-	else
-	{
-
-			$result['dis']=$this->Mymodel->theatreaccepted($lid);
-			$this->load->view('theatre_acceptedfilms',$result);
-	}
-}
 
 
 	//updeate distributor profile
@@ -563,54 +547,6 @@ $ii++;
 echo json_encode($distt);
 }
 
-function filmbookrequest()
-{
-
-$mid=$this->input->post('mid');
-$lid=$this->input->post('lid');
-$date=date("Y/m/d");
-//$data1=array('lid'=>NULL,'username'=>$email,'password'=>$pass,'type'=>$type,'status'=>'1');
-$data=array('fs_id'=>NULL,'mid'=>$mid,'lid'=>$lid,'status'=>'0','date'=>$date);
-$a['dis']=$this->Mymodel->filmbookstatus($data,$mid,$lid);
-foreach($a['dis'] as $row)
-{
-$fid=$row->status;
-echo $fid;
-}
-}
-
-function filmapprove()
-{
-$status=$this->input->post('status');
-$fid=$this->input->post('fid');
-$action=1;
-$a=$this->Mymodel->filmapprove($fid,$action);
-$lid=$this->session->userdata('id');
-$result['dis']=$this->Mymodel->filmsselect($lid);
-$this->load->view('distributor_selectedfilmdetails',$result);
-
-}
-
-function filmbookrequestcancel()
-{
-$mid=$this->input->post('mid');
-$lid=$this->input->post('lid');
-//$data1=array('lid'=>NULL,'username'=>$email,'password'=>$pass,'type'=>$type,'status'=>'1');
-$data=array('mid'=>$mid,'lid'=>$lid);
-$a=$this->Mymodel->filmbookstatuscancel($data);
-echo $a;
-}
-
-function bookstatus($mid,$lid)
-{
-$a['dis']=$this->Mymodel->bookstatus($mid,$lid);
-foreach($a['dis'] as $row)
-{
-$fid=$row->status;
-return $fid;
-}
-}
-
 function bankpayment()
 {
 $mid = $this->input->post('mid');
@@ -629,96 +565,84 @@ $this->load->view('theatre_acceptedfilms',$result);
 
 function payment()
 {
-$bank = $this->input->post('banktype');
-if(isset($bank))
-{
-$cardnumber = $this->input->post('cardnumber');
-$month = $this->input->post('month');
-$year = $this->input->post('year');
-$cardCVV = $this->input->post('cardCVV');
-$holdername = $this->input->post('holdername');
-$price = $this->input->post('price');
-$mid = $this->input->post('mid');
-$lid=$this->session->userdata('id');
-$data=array('banktype'=>$bank,'card_no'=>$cardnumber,'month'=>$month,'year'=>$year,'cvv'=>$cardCVV,'name'=>$holdername);
-$count['dis']=$this->Mymodel->payment($data);
-if($count['dis'])
-{
-foreach ($count['dis'] as $row)
-{
-$bankid=$row->bid;
-$amount=$row->amount;
-if($amount > $price)
-{
-	$balance=$amount - $price;
-	$count1['dis1']=$this->Mymodel->select_id($mid,$lid);
-	foreach ($count1['dis1'] as $row1)
+	$bank = $this->input->post('banktype');
+	if(isset($bank))
 	{
-		$fs_id=$row1->fs_id;
-		$this->Mymodel->select_film_status($fs_id);
-		$this->Mymodel->update_bank_balabce($balance,$bankid);
-		echo "<script>alert('Payment Successful')</script>";
-		$result['dis']=$this->Mymodel->theatrebooked($lid);
-		$this->load->view('theatre_bookedfilms',$result);
+		$cardnumber = $this->input->post('cardnumber');
+		$month = $this->input->post('month');
+		$year = $this->input->post('year');
+		$cardCVV = $this->input->post('cardCVV');
+		$holdername = $this->input->post('holdername');
+		$price = $this->input->post('price');
+		$mid = $this->input->post('mid');
+		$lid=$this->session->userdata('id');
+		$data=array('banktype'=>$bank,'card_no'=>$cardnumber,'month'=>$month,'year'=>$year,'cvv'=>$cardCVV,'name'=>$holdername);
+		$count['dis']=$this->Mymodel->payment($data);
+		if($count['dis'])
+		{
+			foreach ($count['dis'] as $row)
+			{
+				$bankid=$row->bid;
+				$count1['dis1']=$this->Mymodel->select_id($mid,$lid);
+				foreach ($count1['dis1'] as $row1)
+				{
+					$fs_id=$row1->fs_id;
+					$this->Mymodel->select_film_status($fs_id);
+					//$this->Mymodel->update_bank_balabce($balance,$bankid);
+					echo "<script>alert('Payment Successful')</script>";
+					$result['dis']=$this->tmodel->theatrebooked($lid);
+					$this->load->view('theatre/theatre_bookedfilms',$result);
+				}
+			}
+		}
+	else
+	{
+		echo "<script>alert('Payment Card Details Incorrect')</script>";
+		$lid=$this->session->userdata('id');
+		$result['dis']=$this->tmodel->theatreaccepted($lid);
+		$this->load->view('theatre_acceptedfilms',$result);
 	}
 }
 else
 {
-	echo "<script>alert('Account contain insufficient balance')</script>";
 	$lid=$this->session->userdata('id');
-	$result['dis']=$this->Mymodel->theatreaccepted($lid);
+	$result['dis']=$this->tmodel->theatreaccepted($lid);
 	$this->load->view('theatre_acceptedfilms',$result);
 }
 }
-}
-else
-{
-echo "<script>alert('Payment Card Details Incorrect')</script>";
-$lid=$this->session->userdata('id');
-$result['dis']=$this->Mymodel->theatreaccepted($lid);
-$this->load->view('theatre_acceptedfilms',$result);
-}
-}
-else
-{
-$lid=$this->session->userdata('id');
-$result['dis']=$this->Mymodel->theatreaccepted($lid);
-$this->load->view('theatre_acceptedfilms',$result);
-}
-}
 
-function theaterseatingadd()
-{
-$lid=$this->session->userdata('id');
-$c_rows = $this->input->post('c_rows');
-if(isset($c_rows))
-{
-$c_column = $this->input->post('c_column');
-$c_price = $this->input->post('c_price');
-$l_rows = $this->input->post('l_rows');
-$l_column = $this->input->post('l_column');
-$l_price = $this->input->post('l_price');
-$b_rows = $this->input->post('b_rows');
-$b_column = $this->input->post('b_column');
-$b_price = $this->input->post('b_price');
-$shows = $this->input->post('shows');
-$time1 = $this->input->post('time1');
-$time2 = $this->input->post('time2');
-$time3 = $this->input->post('time3');
-$time4 = $this->input->post('time4');
-$time5 = $this->input->post('time5');
-$data=array('lid'=>$lid,'c_row'=>$c_rows,'c_column'=>$c_column,'c_price'=>$c_price,'l_rows'=>$l_rows,'l_column'=>$l_column,'l_price'=>$l_price,'b_rows'=>$b_rows,'b_column'=>$b_column,'b_price'=>$b_price,'no_of_shows'=>$shows,'time1'=>$time1,'time2'=>$time2,'time3'=>$time3,'time4'=>$time4,'time5'=>$time5,'status'=>'0');
-$this->Mymodel->theaterseatingadd($data);
-$result['dis']=$this->Mymodel->seatingselection($lid);
-$this->load->view('theatre_seating',$result);
-}
-else
-{
-$lid=$this->session->userdata('id');
-$result['dis']=$this->Mymodel->seatingselection($lid);
-$this->load->view('theatre_seating',$result);
-}
-}
+// function theaterseatingadd()
+// {
+// $lid=$this->session->userdata('id');
+// $c_rows = $this->input->post('c_rows');
+// if(isset($c_rows))
+// {
+// $c_column = $this->input->post('c_column');
+// $c_price = $this->input->post('c_price');
+// $l_rows = $this->input->post('l_rows');
+// $l_column = $this->input->post('l_column');
+// $l_price = $this->input->post('l_price');
+// $b_rows = $this->input->post('b_rows');
+// $b_column = $this->input->post('b_column');
+// $b_price = $this->input->post('b_price');
+// $shows = $this->input->post('shows');
+// $time1 = $this->input->post('time1');
+// $time2 = $this->input->post('time2');
+// $time3 = $this->input->post('time3');
+// $time4 = $this->input->post('time4');
+// $time5 = $this->input->post('time5');
+// $data=array('lid'=>$lid,'c_row'=>$c_rows,'c_column'=>$c_column,'c_price'=>$c_price,'l_rows'=>$l_rows,'l_column'=>$l_column,'l_price'=>$l_price,'b_rows'=>$b_rows,'b_column'=>$b_column,'b_price'=>$b_price,'no_of_shows'=>$shows,'time1'=>$time1,'time2'=>$time2,'time3'=>$time3,'time4'=>$time4,'time5'=>$time5,'status'=>'0');
+// $this->Mymodel->theaterseatingadd($data);
+// $result['dis']=$this->Mymodel->seatingselection($lid);
+// $this->load->view('theatre_seating',$result);
+// }
+// else
+// {
+// $lid=$this->session->userdata('id');
+// $result['dis']=$this->Mymodel->seatingselection($lid);
+// $this->load->view('theatre_seating',$result);
+// }
+// }
 
 function seatingselection()
 {
@@ -819,22 +743,6 @@ $this->load->view('theatre_filmtimesetting',$result);
 
 }
 
-function showrunningfilmtime()
-{
-$lid=$this->session->userdata('id');
-$mid = $this->input->post('fid');
-if(isset($mid))
-{
-$result['dis']=$this->Mymodel->showrunningmoviedetailes($lid,$mid);
-$this->load->view('theatre_filmtimeshow',$result);
-}
-else
-{
-$lid=$this->session->userdata('id');
-$result['dis']=$this->Mymodel->tfilmrunningtime($lid);
-$this->load->view('theatre_runningtime',$result);
-}
-}
 
 
 

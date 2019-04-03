@@ -1,7 +1,7 @@
 <?php
- 
+
 $CI =& get_instance();
- $a= $CI->sessionin() ;
+ $a= $CI->sessionin(2) ;
 if($a==1)
 {
 	include('theatre_header.php');

@@ -1,7 +1,7 @@
 <?php
 
 $CI =& get_instance();
- $a= $CI->sessionin() ;
+ $a= $CI->sessionin(3) ;
 if($a==1)
 {
 	include('distributor_header.php');
@@ -29,7 +29,8 @@ if($a==1)
       $producer_pics = explode(',',$producer_pic);
 
       $mdirector=$row->mdirector;
-      $language=$row->language;
+      $langu=$row->language;
+      $language=$CI->language($langu);
       $category=$row->categories;
       $categories=explode(',',$category);
       $actor=$row->actor;
@@ -47,7 +48,7 @@ if($a==1)
       $description=$row->description;
       $price=$row->price;
       $fid=$row->mid;
-    ?>
+    ?> 
 <div class="col-xs-12" style="background: #F8F8F8">
 	<div class="col-xs-9 " style="height: auto">
 		<div align="center" class="col-xs-12" style="height: 90%;width: 100%;background-size:cover"><br>
@@ -112,7 +113,7 @@ if($a==1)
           <?php
           for ($i=0; $i < sizeof($Directors); $i++)
           {
-          echo $Directors[$i]." ,  ";
+          echo $Directors[$i];
           }
           ?>
         </td>
@@ -123,7 +124,7 @@ if($a==1)
           <?php
           for ($i=0; $i < sizeof($producers); $i++)
           {
-          echo $producers[$i]." ,  ";
+          echo $producers[$i];
           }
           ?>
         </td>
@@ -138,7 +139,7 @@ if($a==1)
           <?php
           for ($i=0; $i < sizeof($actors); $i++)
           {
-          echo $actors[$i]." , <br>   ";
+          echo $actors[$i]." <br>   ";
           }
           ?>
         </td>
@@ -149,7 +150,7 @@ if($a==1)
           <?php
           for ($i=0; $i < sizeof($actresss); $i++)
           {
-          echo $actresss[$i]." , <br> ";
+          echo $actresss[$i]."  <br> ";
           }
           ?>
       </td>
@@ -166,14 +167,14 @@ if($a==1)
           for ($i=0; $i < sizeof($categories) ; $i++)
           {
             $cat=$CI->category($categories[$i]);
-            echo $cat." ,<br>  ";
+            echo $cat." <br>  ";
           }
           ?>
         </td>
       </tr>
       <tr>
         <td>Price </td>
-        <td>: ₹<?php echo $price." /day" ?></td>
+        <td>: ₹25000</td>
       </tr>
       <tr>
         <td></td>
@@ -200,6 +201,6 @@ if($a==1)
 	}
 	else
 	{
-		$CI->index() ;
+		$CI->mainindex() ;
 	}
 	?>

@@ -1,7 +1,7 @@
 <?php
 
 $CI =& get_instance();
- $a= $CI->sessionin() ;
+ $a= $CI->sessionin(3) ;
 if($a==1)
 {
 	include('distributor_header.php');
@@ -24,7 +24,8 @@ if($a==1)
     <tr>
       <th style="color:#212121" scope="col">No</th>
       <th style="color:#212121" scope="col">Film</th>
-      <th style="color:#212121" scope="col">THEATRE</th>
+      <th style="color:#212121" scope="col">THEATRE OWNER</th>
+      <th style="color:#212121" scope="col">THEATRE Name</th>
       <th style="color:#212121" scope="col">Date</th>
     </tr>
   </thead>
@@ -37,7 +38,8 @@ if($a==1)
       $lid=$row->lid;
       $fname=$row->film_name;
       $name=$row->name;
-      $date=$row->date;
+      $tname=$row->theatre_name;
+      $date=$row->sdate;
       $status=$row->status;
       $fid=$row->fs_id;
       ?>
@@ -46,17 +48,18 @@ if($a==1)
       <th style="color:#212121" scope="row"><?php echo $no; ?></th>
       <td style="color:#212121"><?php echo $fname; ?></td>
       <td style="color:#212121"><?php echo $name; ?></td>
+      <td style="color:#212121"><?php echo $tname; ?></td>
       <td style="color:#212121"><?php echo $date; ?></td>
       <td style="color:#212121">
         <?php
         if($status==1)
         {
          ?>
-        <input type="submit" value="Unpayed" class="btn-primary" style="background:#ff0000;border:hidden;color:black;border-radius: 5px;padding:2px 25px">
+        <input type="submit" value="Unpayed" class="btn-primary" style="background:#ff0000;border:hidden;color:black;border-radius: 5px;padding:2px 25px" disabled>
         <?php }
         elseif($status==2)
         {?>
-          <input type="submit" value="payed" class="btn-primary" style="background:#00b300;border:hidden;color:black;border-radius: 5px;padding:2px 33px">
+          <input type="submit" value="payed" class="btn-primary" style="background:#00b300;border:hidden;color:black;border-radius: 5px;padding:2px 33px" disabled>
         <?php } ?>
       </td>
       <input type="hidden" id="status" name="status" value="<?php echo $status; ?>">
@@ -80,6 +83,6 @@ if($a==1)
 	}
 	else
 	{
-		$CI->index() ;
+		$CI->indemainindexx() ;
 	}
 	?>

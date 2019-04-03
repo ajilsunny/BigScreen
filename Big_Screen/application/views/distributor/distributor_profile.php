@@ -1,7 +1,7 @@
 <?php
 
 $CI =& get_instance();
- $a= $CI->sessionin() ;
+ $a= $CI->sessionin(3) ;
 if($a==1)
 {
 	include('distributor_header.php');

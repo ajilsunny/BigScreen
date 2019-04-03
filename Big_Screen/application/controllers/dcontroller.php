@@ -16,14 +16,26 @@ class dcontroller extends CI_Controller
   	$this->load->view('home',$result);
   }
 
-	function sessionin()
+	function sessionin($t)
 	{
 		$username=$this->session->userdata('username');
 		$password=$this->session->userdata('password');
 		$loginresult['login']=$this->Mymodel->loguser($username,$password);
 		if($loginresult['login'])
 		{
-			return(1);
+			foreach ($loginresult['login'] as $key)
+			{
+				$z=$key->type;
+				if($z==$t)
+				{
+					return(1);
+				}
+				else
+				{
+					return(0);
+				}
+			}
+
 		}
 		else
 		{
@@ -419,5 +431,25 @@ function filmviewdistributor()
 
 	}
 
+	function filmapprove()
+	{
+	$status=$this->input->post('status');
+	$fid=$this->input->post('fid');
+	$action=1;
+	$a=$this->dmodel->filmapprove($fid,$action);
+	$lid=$this->session->userdata('id');
+	$result['dis']=$this->dmodel->filmsselect($lid);
+	$this->load->view('distributor/distributor_selectedfilmdetails',$result);
+
+	}
+	function language($langu)
+	{
+		$a['dis']=$this->dmodel->language($langu);
+		foreach($a['dis'] as $row)
+		{
+			$lname=$row->la_name;
+			return $lname;
+		}
+	}
 }
 ?>

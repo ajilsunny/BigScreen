@@ -1,7 +1,7 @@
 <?php
 
 $CI =& get_instance();
- $a= $CI->sessionin() ;
+ $a= $CI->sessionin(2) ;
 if($a==1)
 {
 	include('theatre_header.php');
@@ -19,12 +19,12 @@ if($a==1)
 
 
       ?>
-      <form action="<?php echo site_url('usercontroller/filmviewtheatres');?>" method="post">
+      <form action="<?php echo site_url('tcontroller/filmviewtheatres');?>" method="post">
     <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab" >
       <div class="w3_agile_featured_movies" >
         <div class="col-md-2 w3l-movie-gride-agile" >
           <input type="hidden" name="fid" value="<?php echo $fid; ?>" >
-        <button type="submit" href="" name="submit" class="hvr-shutter-out-horizontal" ><img src="../../images/movie/poster/<?php echo $pic ?>" title="album-name" class="img-responsive" alt=" " />
+        <button type="submit" href="" name="submit" class="hvr-shutter-out-horizontal" ><img src="<?php echo base_url('images/movie/poster/').$pic;?>" title="album-name" class="img-responsive" alt=" " />
             <div class="w3l-action-icon"><i class="fa fa-th-large" aria-hidden="true" ></i></div>
           </a>
           <div class="w3l-movie-text" style="background-color: black;padding: 5%;border-radius: 10px">

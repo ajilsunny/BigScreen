@@ -167,11 +167,11 @@ function dist()
 								<h3>Create an account</h3>
 								<form name="signup" id="signup" action="<?php echo site_url('usercontroller/insert')?>" method="post" onsubmit="return signup1()" enctype="multipart/form-data">
 									<p id="vname" style="color:red;"></P>
-								  <input type="text" name="Name" id="Name" placeholder="Name" pattern="^[a-zA-Z]+$" maxlength="15" onkeyup="this.value = this.value.toUpperCase();" >
+								  <input type="text" name="Name" id="Name" placeholder="Name" pattern="^[a-zA-Z]+$" required="name only alphabets" maxlength="15" onkeyup="this.value = this.value.toUpperCase();" >
 									<p id="vemail" style="color:red;"></P>
-									<input type="email" name="Email" id="Email" placeholder="Email Address">
+									<input type="email" name="Email" id="Email" placeholder="Email Address" required="enter valid email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 									<p id="vphone" style="color:red;"></P>
-									<input type="text" name="Phone" id="Phone" placeholder="Phone Number" maxlength="10" pattern="^\d{10}$" >
+									<input type="text" name="Phone" id="Phone" placeholder="Phone Number" maxlength="10" pattern="^\d{10}$" required="enter valid phone number" >
 									<p id="vtype" style="color:red;"></P>
 									<select name="Type" id="Type" placeholder="Select" style="width:100%;height:100%;margin-bottom:5%;padding:4% 4%" onchange="return user()">
 								  <option value="0">Select Type</option>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2019 at 09:39 AM
+-- Generation Time: Apr 03, 2019 at 07:28 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -46,8 +46,33 @@ CREATE TABLE `tbl_bank` (
 --
 
 INSERT INTO `tbl_bank` (`bid`, `bank_name`, `banktype`, `account_no`, `card_no`, `month`, `year`, `cvv`, `name`, `status`) VALUES
-(1, 'FEDERAL BANK', 'FDC', '7410852096301234', '7410852096301234', 'Nov', 2022, 123, 'AJIL SUNNY', 1),
+(1, 'FEDERAL BANK', 'FDC', '11740100106648', '11740100106648', 'Nov', 2022, 123, 'AJIL SUNNY', 1),
 (2, 'SBI', 'ODC', '9630852074107894', '9630852074107894', 'May', 2023, 789, 'AMAL SUNNY', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_day`
+--
+
+CREATE TABLE `tbl_day` (
+  `did` int(11) NOT NULL,
+  `dname` varchar(50) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_day`
+--
+
+INSERT INTO `tbl_day` (`did`, `dname`, `status`) VALUES
+(1, 'Monday', 0),
+(2, 'Tuesday', 0),
+(3, 'Wednesday', 0),
+(4, 'Thursday', 0),
+(5, 'Friday', 0),
+(6, 'Saturday', 0),
+(7, 'Sunday', 0);
 
 -- --------------------------------------------------------
 
@@ -72,17 +97,13 @@ CREATE TABLE `tbl_details` (
 --
 
 INSERT INTO `tbl_details` (`regid`, `name`, `email`, `phone`, `did`, `place`, `pin`, `profile_pic`, `cpic`) VALUES
-(12, 'ABIN', 'abin@gmail.com', '9638520147', 4, 'chedikulam', 670706, 'profilepic.png', '1552959708'),
 (1, 'admin', 'admin', '123456789', 0, '0', 0, '0', '0'),
 (2, 'Ajil Sunny', 'ajilsunny007@gmail.com', '8593967684', 2, 'kiliyanthara', 670706, '1552406856IMG_8800 (2).JPG', '1551848513Class Diagram.png'),
 (4, 'ALAN', 'alan@gmail.com', '7410258963', 1, 'sreekandapuram', 670705, 'profilepic.png', '1551867465Sequence Diagram.png'),
 (7, 'APPU', 'appu@gmail.com', '7410258963', 2, 'kiliyanthara', 963258, 'profilepic.png', '1552233796'),
-(9, 'ARUN', 'arun@gmail.com', '7410852963', 14, 'chemperi', 741258, 'profilepic.png', '1552831938Abin BCA 20180510_211945.jpg'),
-(11, 'ASHIL', 'ashil@gmai', '7410852123', 256, 'ytre', 444512, 'profilepic.png', '1552882465'),
-(3, 'Jithu Benny', 'jithu@gmail.com', '8593967684', 1, '`manikadavu', 670706, '1553619937Appu B 20150503_175757.jpg', '1551849444Object Diagram.png'),
+(3, 'Jithu Benny', 'jithu@gmail.com', '8593967684', 1, '`manikadavu', 670706, '1554256626IMG_20190206_100028.jpg', '1551849444Object Diagram.png'),
 (5, 'JOBIN', 'jobin@gmail.com', '9638520147', 5, 'koovapally', 741852, 'profilepic.png', '1551941005Activity Diagram.png'),
-(6, 'RONIYA', 'roniya@gmail.com', '7410852963', 1, 'chemperi', 963852, 'profilepic.png', '1551942180State Chart Diagram.png'),
-(10, 'SUNNY', 'sunny@gmail.com', '7410852963', 4, 'vallithodu', 670706, 'profilepic.png', '1552879267');
+(6, 'RONIYA', 'roniya@gmail.com', '7410852963', 1, 'chemperi', 963852, 'profilepic.png', '1551942180State Chart Diagram.png');
 
 -- --------------------------------------------------------
 
@@ -808,24 +829,15 @@ CREATE TABLE `tbl_filmselection` (
   `mid` int(11) NOT NULL,
   `lid` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  `date` date NOT NULL
+  `sdate` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_filmselection`
 --
 
-INSERT INTO `tbl_filmselection` (`fs_id`, `mid`, `lid`, `status`, `date`) VALUES
-(65, 1, 11, 1, '2018-11-16'),
-(66, 2, 11, 1, '2018-11-15'),
-(67, 3, 11, 0, '2018-11-10'),
-(68, 2, 4, 1, '2018-11-02'),
-(74, 4, 4, 0, '2018-11-19'),
-(70, 1, 4, 1, '2018-11-17'),
-(76, 3, 4, 2, '2018-11-20'),
-(77, 8, 4, 1, '2018-11-23'),
-(79, 6, 4, 0, '2019-02-19'),
-(81, 9, 9, 1, '2019-03-18');
+INSERT INTO `tbl_filmselection` (`fs_id`, `mid`, `lid`, `status`, `sdate`) VALUES
+(1, 1, 3, 2, '2019-04-02');
 
 -- --------------------------------------------------------
 
@@ -867,6 +879,29 @@ INSERT INTO `tbl_film_category` (`cid`, `catname`, `cstatus`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_language`
+--
+
+CREATE TABLE `tbl_language` (
+  `la_id` int(11) NOT NULL,
+  `la_name` varchar(30) NOT NULL,
+  `la_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_language`
+--
+
+INSERT INTO `tbl_language` (`la_id`, `la_name`, `la_status`) VALUES
+(1, 'English', 0),
+(2, 'Hindi', 0),
+(3, 'Malayalam', 0),
+(4, 'Kannada', 0),
+(5, 'Tamil', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_login`
 --
 
@@ -889,11 +924,7 @@ INSERT INTO `tbl_login` (`lid`, `username`, `password`, `type`, `lstatus`) VALUE
 (4, 'alan@gmail.com', '02558a70324e7c4f269c69825450cec8', 3, 0),
 (5, 'jobin@gmail.com', 'e6758b2a3b13423bdd3fe1b8e273909c', 2, 0),
 (6, 'roniya@gmail.com', '202cb962ac59075b964b07152d234b70', 2, 0),
-(7, 'appu@gmail.com', '622622b00805c54040dd9a15674a5117', 1, 0),
-(9, 'arun@gmail.com', '722279e9e630b3e731464b69968ea4b4', 2, 0),
-(10, 'sunny@gmail.com', '533c5ba8368075db8f6ef201546bd71a', 1, 0),
-(11, 'ashil@gmai', '06c56a89949d617def52f371c357b6db', 1, 0),
-(12, 'abin@gmail.com', 'aca873b8c1bce59ec3135a6553abb18b', 1, 0);
+(7, 'appu@gmail.com', '622622b00805c54040dd9a15674a5117', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -928,8 +959,10 @@ CREATE TABLE `tbl_moviedetails` (
 --
 
 INSERT INTO `tbl_moviedetails` (`mid`, `distributor_id`, `film_name`, `poster_pic`, `cover_pic`, `director`, `director_pic`, `producer`, `producer_pic`, `mdirector`, `language`, `categories`, `actor`, `actor_pic`, `actress`, `actress_pic`, `description`, `date`, `price`) VALUES
-(1, 2, 'SPADIKAM', '1553059069Spadikam.jpg', '15530590691541920022cover.jpg', 'Bhadran', '1553059068Director_Bhadran.jpg', 'R. Mohan', '1553059068download.jpg', 'S. P. Venkatesh', '3', '1,6,16', 'Mohanlal,Thilakan', '1553059068Mohanlal_DN_0.jpg,1553059068Thilakan.jpg', 'Urvashi,Silk Smitha,K. P. A. C. Lalitha', '1553059068Urvashi.jpg,1553059069Silk_Smitha_2.jpg,1553059069K. P. A. C. Lalitha.jpg', 'Spadikam (English: Crystal) is a 1995 Indian Malayalam-language action drama film written and directed by Bhadran and starring Mohanlal in the lead role. Dialogues were written by Rajendra Babu. The title \"Spadikam\" means \"crystal\" or \"prism\", the splitting of light by a prism being a metaphor for human nature. The film also stars Thilakan, Urvashi, Spadikam George, K. P. A. C. Lalitha, Rajan P. Dev, Silk Smitha, Nedumudi Venu, Chippy, and V. K. Sreeraman.\r\n\r\nSpadikam was the highest-grossing Malayalam film of the year 1995, collecting more than ?5 crore (US$700,000) from the box office.[1] Mohanlal won the Kerala State Film Award for Best Actor and Filmfare Award for Best Actor – Malayalam for his portrayal of Thomas \"Aadu Thoma\" Chacko, a rogue youngster estranged from his narcissistic father, Chacko Master (Thilakan), upon failing to meet the latter\'s high expectations.[2][3] The film was remade into Tamil, Telugu, and Kannada languages.', '2018', '5000'),
-(2, 2, 'NATTURAJAVU', '1553091375Natturajavu.jpg', '1553091375925047040s.jpg', 'Shaji Kailas', '1553091374Shaji_kailas.jpg', 'Antony Perumbavoor', '1553091374image.png', 'M. Jayachandran', '3', '1,13,16', 'Mohanlal,Kalabhavan Mani', '155309137465603579.jpg,1553091374download.jpg', 'Meena,Nayanthara', '1553091374meena.jpg,1553091375Nayanthara-hairstyle-in-raja-rani.jpg', 'Naatturajavu (English: Native King) is a 2004 Indian Malayalam-language action-drama film directed by Shaji Kailas and written by T. A. Shahid. The film stars Mohanlal in the lead role and Meena, Nayantara, Kalabhavan Mani, Kaviyoor Ponnamma , K. P. A. C. Lalitha, and Siddique in supporting roles. M. Jayachandran composed the soundtrack.[2] It was produced by Antony Perumbavoor through Aashirvad Cinemas. Naatturajavu was released in India on 20 August 2004, it was well received at the box office becoming one of the highest-grossing Malayalam films of the year.', '2018', '4000');
+(1, 2, 'SPADIKAM', '1553059069Spadikam.jpg', '15530590691541920022cover.jpg', 'Bhadran', '1553059068Director_Bhadran.jpg', 'R. Mohan', '1553059068download.jpg', 'S. P. Venkatesh', '3', '1,6,16', 'Mohanlal,Thilakan', '1553059068Mohanlal_DN_0.jpg,1553059068Thilakan.jpg', 'Urvashi,Silk Smitha,K. P. A. C. Lalitha', '1553059068Urvashi.jpg,1553059069Silk_Smitha_2.jpg,1553059069K. P. A. C. Lalitha.jpg', 'Spadikam (English: Crystal) is a 1995 Indian Malayalam-language action drama film written and directed by Bhadran and starring Mohanlal in the lead role. Dialogues were written by Rajendra Babu. The title \"Spadikam\" means \"crystal\" or \"prism\", the splitting of light by a prism being a metaphor for human nature. The film also stars Thilakan, Urvashi, Spadikam George, K. P. A. C. Lalitha, Rajan P. Dev, Silk Smitha, Nedumudi Venu, Chippy, and V. K. Sreeraman.\r\n\r\nSpadikam was the highest-grossing Malayalam film of the year 1995, collecting more than ?5 crore (US$700,000) from the box office.[1] Mohanlal won the Kerala State Film Award for Best Actor and Filmfare Award for Best Actor – Malayalam for his portrayal of Thomas \"Aadu Thoma\" Chacko, a rogue youngster estranged from his narcissistic father, Chacko Master (Thilakan), upon failing to meet the latter\'s high expectations.[2][3] The film was remade into Tamil, Telugu, and Kannada languages.', '2018', '25000'),
+(2, 2, 'NATTURAJAVU', '1553091375Natturajavu.jpg', '1553091375925047040s.jpg', 'Shaji Kailas', '1553091374Shaji_kailas.jpg', 'Antony Perumbavoor', '1553091374image.png', 'M. Jayachandran', '3', '1,13,16', 'Mohanlal,Kalabhavan Mani', '155309137465603579.jpg,1553091374download.jpg', 'Meena,Nayanthara', '1553091374meena.jpg,1553091375Nayanthara-hairstyle-in-raja-rani.jpg', 'Naatturajavu (English: Native King) is a 2004 Indian Malayalam-language action-drama film directed by Shaji Kailas and written by T. A. Shahid. The film stars Mohanlal in the lead role and Meena, Nayantara, Kalabhavan Mani, Kaviyoor Ponnamma , K. P. A. C. Lalitha, and Siddique in supporting roles. M. Jayachandran composed the soundtrack.[2] It was produced by Antony Perumbavoor through Aashirvad Cinemas. Naatturajavu was released in India on 20 August 2004, it was well received at the box office becoming one of the highest-grossing Malayalam films of the year.', '2018', '25000'),
+(3, 4, 'JACOBINTE SWARGARAJYAM', '1554258022Jacobinte_Swargarajyam_poster.jpg', '1554258022Jacobinte-Swargarajyam.jpg', 'Vineeth Sreenivasan', '1554258022Vineeth_Sreenivasan_Aravindante_Athidhikal.jpg', 'Noble Babu Thomas', '1554258022Noble-Babu-Thomas_1.jpg', 'Shaan Rahman', '3', '11,16,19', 'Nivin Pauly,Renji Panicker', '155425802266509862.jpg,155425802267433395.jpg', 'Lakshmy Ramakrishnan', '1554258022Lakshmy Ramakrishnan.jpg', 'Jacob (Renji Panicker) is a successful businessman settled in Dubai with wife Sherly (Lakshmy Ramakrishnan) and their four kids – Jerry (Nivin Pauly), Abin (Sreenath Bhasi), Ammu (Aima Sebastian), and Chris (Stacen). Jacob is always respected for his ideas by his colleagues and he had done many businesses before starting a steel business. Then comes global recession and Jacob moves for a lucrative trade through his Pakistani colleague, Ajmal, by taking a total of 8 million dirhams from his investors. Ajmal cheats Jacob and Jacob is left in a debt of 8 million dirhams which he happens to know on his 25th wedding anniversary. Soon Jacob\'s credibility and trustful way of doing business is lost and is forced to travel to Liberia to get a deal, but doesn\'t go well and is forced to stay there to avoid arrest. With no other way and continued complaints from the investors especially from Murali Menon (Ashwin Kumar), Jerry decides to give his best to solve the problems by stepping into his dad\'s shoes.', '2018', '25000'),
+(4, 4, 'LUCIFER', '1554260209Lucifer_film_poster.jpg', '15542602091553746858_lucifer.jpg', 'Prithviraj Sukumaran', '1554260208image.jpg', 'Antony Perumbavoor', '1554260208A428177_list_20180122175653.jpg', 'Deepak Dev', '3', '1,7,13,16', 'Mohanlal,Vivek Oberoi,Tovino Thomas,Indrajith Suku', '1554260208190326 Mohanlal._resources1.jpg,155426020865623054.jpg,155426020863395979.jpg,1554260209A315698_list_20160518161519.jpg', 'Manju Warrier', '1554260209manju_warrier.jpg', 'Lucifer is a 2019 Indian Malayalam-language film directed by Prithviraj Sukumaran and written by Murali Gopy. Produced by Antony Perumbavoor through the production house Aashirvad Cinemas, the film marks Prithviraj\'s directorial debut and features Mohanlal in the lead role as Stephen Nedumpally, alongside a supporting cast including Prithviraj Sukumaran, Vivek Oberoi, Manju Warrier, Tovino Thomas, Indrajith Sukumaran, Saniya Iyappan, Saikumar, Kalabhavan Shajohn, and Nyla Usha. Deepak Dev composed the music for the film, and the cinematography was handled by Sujith Vaassudev.\r\n\r\nDevelopment of the film began in 2016 when Murali pitched a story to Prithviraj at the sets of Tiyaan in Ramoji Film City, it was when he decided to make Lucifer his directorial debut. Title of the film was taken from an unrealised project of director Rajesh Pillai which was also written by Murali with another story. Pre-production of Lucifer began in 2017 and Murali completed the final draft of the screenplay in February 2018. Principal photography began in mid-July that year and lasted till January 2019, with filming carried out in Idukki, Thiruvananthapuram, Ernakulam, and Kollam districts, and Mumbai, Bangalore, Lakshadweep, and Russia.', '2018', '50000');
 
 -- --------------------------------------------------------
 
@@ -998,6 +1031,33 @@ CREATE TABLE `tbl_runningmovietime` (
 INSERT INTO `tbl_runningmovietime` (`runid`, `mid`, `lid`, `no_of_shows`, `time1`, `time2`, `time3`, `time4`, `time5`, `status`) VALUES
 (8, 3, 4, 2, '10:00', '16:00', '00:00', '00:00', '00:00', 1),
 (9, 2, 4, 3, '10:00', '13:00', '16:00', '00:00', '00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_showtime`
+--
+
+CREATE TABLE `tbl_showtime` (
+  `stid` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
+  `screen` int(11) NOT NULL,
+  `dayid` int(11) NOT NULL,
+  `show_time` text NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_showtime`
+--
+
+INSERT INTO `tbl_showtime` (`stid`, `tid`, `screen`, `dayid`, `show_time`, `status`) VALUES
+(1, 1, 1, 1, '10:30 AM,1:00 PM,4:00 PM,8:00 PM', 0),
+(2, 1, 1, 2, '11:00 AM,2:30 PM,7:30 PM', 0),
+(3, 1, 1, 3, '10:00 AM,1:00 PM,4:00 PM,7:30 PM', 0),
+(4, 1, 1, 4, '11:00 AM,4:00 PM', 0),
+(5, 1, 2, 6, '05:00 AM,08:00 AM,11:00 AM,2:30 PM,8:30 PM', 0),
+(12, 1, 2, 7, '4:30 PM,9:00 PM', 0);
 
 -- --------------------------------------------------------
 
@@ -1153,6 +1213,13 @@ ALTER TABLE `tbl_bank`
   ADD PRIMARY KEY (`bid`);
 
 --
+-- Indexes for table `tbl_day`
+--
+ALTER TABLE `tbl_day`
+  ADD PRIMARY KEY (`did`),
+  ADD KEY `status` (`status`);
+
+--
 -- Indexes for table `tbl_details`
 --
 ALTER TABLE `tbl_details`
@@ -1178,6 +1245,13 @@ ALTER TABLE `tbl_film_category`
   ADD PRIMARY KEY (`cid`);
 
 --
+-- Indexes for table `tbl_language`
+--
+ALTER TABLE `tbl_language`
+  ADD PRIMARY KEY (`la_id`),
+  ADD KEY `la_status` (`la_status`);
+
+--
 -- Indexes for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
@@ -1190,7 +1264,8 @@ ALTER TABLE `tbl_login`
 --
 ALTER TABLE `tbl_moviedetails`
   ADD PRIMARY KEY (`mid`),
-  ADD UNIQUE KEY `film_name` (`film_name`);
+  ADD UNIQUE KEY `film_name` (`film_name`),
+  ADD KEY `distributor_id` (`distributor_id`);
 
 --
 -- Indexes for table `tbl_news`
@@ -1215,6 +1290,13 @@ ALTER TABLE `tbl_runningmovietime`
   ADD PRIMARY KEY (`runid`);
 
 --
+-- Indexes for table `tbl_showtime`
+--
+ALTER TABLE `tbl_showtime`
+  ADD PRIMARY KEY (`stid`),
+  ADD KEY `dayid` (`dayid`);
+
+--
 -- Indexes for table `tbl_state`
 --
 ALTER TABLE `tbl_state`
@@ -1231,13 +1313,15 @@ ALTER TABLE `tbl_status`
 --
 ALTER TABLE `tbl_theatredetails`
   ADD PRIMARY KEY (`tid`),
-  ADD KEY `lid` (`lid`);
+  ADD KEY `lid` (`lid`),
+  ADD KEY `t_status` (`t_status`);
 
 --
 -- Indexes for table `tbl_theatreseating`
 --
 ALTER TABLE `tbl_theatreseating`
-  ADD PRIMARY KEY (`thid`);
+  ADD PRIMARY KEY (`thid`),
+  ADD KEY `tid` (`tid`);
 
 --
 -- Indexes for table `tbl_usertype`
@@ -1256,10 +1340,16 @@ ALTER TABLE `tbl_bank`
   MODIFY `bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tbl_day`
+--
+ALTER TABLE `tbl_day`
+  MODIFY `did` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `tbl_details`
 --
 ALTER TABLE `tbl_details`
-  MODIFY `regid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `regid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_district`
@@ -1271,7 +1361,7 @@ ALTER TABLE `tbl_district`
 -- AUTO_INCREMENT for table `tbl_filmselection`
 --
 ALTER TABLE `tbl_filmselection`
-  MODIFY `fs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `fs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_film_category`
@@ -1280,16 +1370,22 @@ ALTER TABLE `tbl_film_category`
   MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT for table `tbl_language`
+--
+ALTER TABLE `tbl_language`
+  MODIFY `la_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `lid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `lid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_moviedetails`
 --
 ALTER TABLE `tbl_moviedetails`
-  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_news`
@@ -1308,6 +1404,12 @@ ALTER TABLE `tbl_otp`
 --
 ALTER TABLE `tbl_runningmovietime`
   MODIFY `runid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tbl_showtime`
+--
+ALTER TABLE `tbl_showtime`
+  MODIFY `stid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_state`
@@ -1344,11 +1446,29 @@ ALTER TABLE `tbl_usertype`
 --
 
 --
+-- Constraints for table `tbl_day`
+--
+ALTER TABLE `tbl_day`
+  ADD CONSTRAINT `tbl_day_ibfk_1` FOREIGN KEY (`status`) REFERENCES `tbl_status` (`sid`);
+
+--
+-- Constraints for table `tbl_language`
+--
+ALTER TABLE `tbl_language`
+  ADD CONSTRAINT `tbl_language_ibfk_1` FOREIGN KEY (`la_status`) REFERENCES `tbl_status` (`sid`);
+
+--
 -- Constraints for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
   ADD CONSTRAINT `tbl_login_ibfk_1` FOREIGN KEY (`username`) REFERENCES `tbl_details` (`email`),
   ADD CONSTRAINT `tbl_login_ibfk_2` FOREIGN KEY (`lstatus`) REFERENCES `tbl_status` (`sid`);
+
+--
+-- Constraints for table `tbl_moviedetails`
+--
+ALTER TABLE `tbl_moviedetails`
+  ADD CONSTRAINT `tbl_moviedetails_ibfk_1` FOREIGN KEY (`distributor_id`) REFERENCES `tbl_login` (`lid`);
 
 --
 -- Constraints for table `tbl_news`
@@ -1363,10 +1483,23 @@ ALTER TABLE `tbl_otp`
   ADD CONSTRAINT `tbl_otp_ibfk_1` FOREIGN KEY (`email`) REFERENCES `tbl_details` (`email`);
 
 --
+-- Constraints for table `tbl_showtime`
+--
+ALTER TABLE `tbl_showtime`
+  ADD CONSTRAINT `tbl_showtime_ibfk_1` FOREIGN KEY (`dayid`) REFERENCES `tbl_day` (`did`);
+
+--
 -- Constraints for table `tbl_theatredetails`
 --
 ALTER TABLE `tbl_theatredetails`
-  ADD CONSTRAINT `tbl_theatredetails_ibfk_1` FOREIGN KEY (`lid`) REFERENCES `tbl_login` (`lid`);
+  ADD CONSTRAINT `tbl_theatredetails_ibfk_1` FOREIGN KEY (`lid`) REFERENCES `tbl_login` (`lid`),
+  ADD CONSTRAINT `tbl_theatredetails_ibfk_2` FOREIGN KEY (`t_status`) REFERENCES `tbl_status` (`sid`);
+
+--
+-- Constraints for table `tbl_theatreseating`
+--
+ALTER TABLE `tbl_theatreseating`
+  ADD CONSTRAINT `tbl_theatreseating_ibfk_1` FOREIGN KEY (`tid`) REFERENCES `tbl_theatredetails` (`tid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

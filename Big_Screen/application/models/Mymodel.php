@@ -118,12 +118,7 @@ function districtselect($sid)
 		}
 
 
-	function filmsingle($value)
-	{
-		$query = $this->db->get_where('tbl_moviedetails',array('mid'=>$value));
-		return $query->result();
 
-	}
 //display details access
 	function disuser($user)
 	{
@@ -137,26 +132,11 @@ function districtselect($sid)
 //distributer profile update
 
 
-function allfilms()
-{
-	$this->db->order_by("mid", "desc");
-	$querys=$this->db->get_where('tbl_moviedetails');
-	return $querys->result();
-}
 
-function filmbookstatus($data,$mid,$lid)
-{
-	$this->db->insert('tbl_filmselection',$data);
-	$querys=$this->db->get_where('tbl_filmselection',array('mid'=>$mid,'lid'=>$lid));
-	return $querys->result();
-}
 
-function filmbookstatuscancel($data)
-{
-		$this->db->where($data);
-   	$this->db->delete('tbl_filmselection');
-		return 0;
-}
+
+
+
 function paymentfilm($mid)
 {
 	$querys=$this->db->get_where('tbl_moviedetails',array('mid'=>$mid));
@@ -169,27 +149,6 @@ function filmapprove($fid,$action)
 	$this->db->update('tbl_filmselection',array('status'=>$action));
 }
 
-function bookstatus($mid,$lid)
-{
-		$querys=$this->db->get_where('tbl_filmselection',array('mid'=>$mid,'lid'=>$lid));
-		return $querys->result();
-}
-
-
-
-function theatreaccepted($lid)
-{
-	$this->db->join('tbl_moviedetails','tbl_filmselection.mid=tbl_moviedetails.mid','inner');
-	$querys=$this->db->get_where('tbl_filmselection',array('lid'=>$lid,'status'=>'1'));
-	return $querys->result();
-}
-
-function theatrebooked($lid)
-{
-	$this->db->join('tbl_moviedetails','tbl_filmselection.mid=tbl_moviedetails.mid','inner');
-	$querys=$this->db->get_where('tbl_filmselection',array('lid'=>$lid,'status'=>'2'));
-	return $querys->result();
-}
 
 function payment($data)
 {
@@ -253,12 +212,6 @@ function theaterseatingupdate($data,$lid)
  	$query = $this->db->get_where('tbl_filmselection',array('tbl_moviedetails.mid'=>$mid));
  	return $query->result();
  }
-function tfilmrunningtime($lid)
-{
-	$this->db->join('tbl_moviedetails','tbl_runningmovietime.mid=tbl_moviedetails.mid','inner');
-	$querys=$this->db->get_where('tbl_runningmovietime',array('lid'=>$lid));
-	return $querys->result();
-}
 function runningtimeadd($data,$lid)
 {
 	$this->db->insert('tbl_runningmovietime',$data);
@@ -267,12 +220,7 @@ function runningtimeadd($data,$lid)
 	return $querys->result();
 }
 
-function showrunningmoviedetailes($lid,$mid)
-{
-	$this->db->join('tbl_moviedetails','tbl_runningmovietime.mid=tbl_moviedetails.mid','inner');
-	$querys=$this->db->get_where('tbl_runningmovietime',array('lid'=>$lid,'tbl_runningmovietime.mid'=>$mid));
-	return $querys->result();
-}
+
 
 
 

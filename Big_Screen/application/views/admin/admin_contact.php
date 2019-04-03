@@ -1,6 +1,6 @@
 <?php
 $CI =& get_instance();
- $a= $CI->sessionin() ;
+ $a= $CI->sessionin(0) ;
 if($a==1)
 {
 include('admin_header.php');
@@ -47,7 +47,7 @@ include('admin_header.php');
 					<ul>
 						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span class="text">Facebook</span></a></li>
 						<li class="twt"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span class="text">Twitter</span></a></li>
-						<li class="ggp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><span class="text">Google+</span></a></li>	
+						<li class="ggp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><span class="text">Google+</span></a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -63,7 +63,7 @@ include('admin_header.php');
 		</div>
 	</div>
 				<!-- Map-JavaScript -->
-			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>        
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 			<script type="text/javascript">
 				google.maps.event.addDomListener(window, 'load', init);
 				function init() {
@@ -87,6 +87,6 @@ include('footer.php');
 	}
 	else
 	{
-		$CI->index() ;
+		$CI->mainindex() ;
 	}
 ?>

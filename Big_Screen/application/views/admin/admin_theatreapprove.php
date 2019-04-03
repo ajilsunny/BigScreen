@@ -1,6 +1,6 @@
 <?php
 $CI =& get_instance();
- $a= $CI->sessionin() ;
+ $a= $CI->sessionin(0) ;
 if($a==1)
 {
 	include('admin_header.php');

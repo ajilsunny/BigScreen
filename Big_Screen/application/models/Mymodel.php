@@ -65,6 +65,14 @@ function updatepassword($email,$password)
 		return $querys->result();
 	}
 
+	function allfilms()
+	{
+		$this->db->order_by("mid", "desc");
+		$querys=$this->db->get_where('tbl_moviedetails');
+		return $querys->result();
+	}
+
+
 //check the user is registerd or not
 	function checkreguser($user)
 	{
@@ -219,6 +227,7 @@ function runningtimeadd($data,$lid)
 	$querys=$this->db->get_where('tbl_runningmovietime',array('lid'=>$lid));
 	return $querys->result();
 }
+
 
 
 

@@ -147,7 +147,7 @@ function dist()
                                        <div class="col-xs-8 inputGroupContainer">
                                          <p id="vcost" style="color:red;"></P>
                                           <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-send"></i></span>
-                                            <input id="Place" name="Place" placeholder="Theatre Place" class="form-control" Director type="text"></div>
+                                            <input id="Place" name="Place" placeholder="Theatre Place" class="form-control" type="text" onkeyup="this.value = this.value.toUpperCase();"></div>
                                        </div>
                                     </div>
                                      <div class="form-group">

@@ -63,6 +63,11 @@ $(document).ready(function(){
     );
 });
 </script>
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
 <!-- //Bootstrap Core JavaScript -->
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">

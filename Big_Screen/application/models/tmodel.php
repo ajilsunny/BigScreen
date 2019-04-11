@@ -173,5 +173,41 @@ class tmodel extends CI_Model
 			$querys=$this->db->get_where('tbl_theatredetails',array('lid'=>$lid));
 			return $querys->result();
 		}
+		function showtimeselect($theatre,$screen)
+		{
+			$this->db->join('tbl_day','tbl_showtime.dayid=tbl_day.did','inner');
+			$querys=$this->db->get_where('tbl_showtime',array('tid'=>$theatre,'screen'=>$screen));
+			return $querys->result();
+		}
+		function showtimebooked($theatre,$screen)
+		{
+			$querys=$this->db->get_where('tbl_runningmovietime',array('tid'=>$theatre,'screen'=>$screen));
+			return $querys->result();
+		}
+		function showtimeinsert($data,$theatre,$screen)
+		{
+			$this->db->insert('tbl_runningmovietime',$data);
+
+		}
+		function showtimecheck($mid,$lid)
+		{
+			$this->db->join('tbl_runningmovietime','tbl_theatredetails.tid=tbl_runningmovietime.tid','inner');
+			$querys=$this->db->get_where('tbl_theatredetails',array('mid'=>$mid,'lid'=>$lid));
+			return $querys->result();
+		}
+		function showt($a)
+		{
+			$this->db->join('tbl_day','tbl_showtime.dayid=tbl_day.did','inner');
+			$querys=$this->db->get_where('tbl_showtime',array('stid'=>$a));
+			return $querys->result();
+		}
+		function showtimechecks($theatre,$screen)
+		{
+			$querys=$this->db->get_where('tbl_runningmovietime',array('tid'=>$theatre,'screen'=>$screen));
+			// $count=$querys->num_rows();
+			// return $count;
+			return $querys->result();
+		}
+
 
 }

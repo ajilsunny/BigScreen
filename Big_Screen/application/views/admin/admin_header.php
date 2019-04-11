@@ -60,6 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	});
 </script>
+
 <!--validation registration-->
 	 <!-- start-smoth-scrolling -->
 </head>

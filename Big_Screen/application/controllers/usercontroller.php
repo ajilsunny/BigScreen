@@ -78,17 +78,8 @@ $this->load->view('Header',$result1);
 //end Theatre page
 
 //user PAGES
-function userhome()
-{
-$result['dis']=$this->Mymodel->allfilms();
-$this->load->view('user_home',$result);
-}
-function userprofile()
-{
-	$username=$this->session->userdata('username');
-	$result['dis']=$this->Mymodel->disuser($username);
-	$this->load->view('user_profile',$result);
-}
+
+
 function englishfilms()
 {
 	$language='English';
@@ -298,7 +289,7 @@ function loginn()
 							$data= array('id'  => $lid, 'name' => $name, 'username'=> $username,'password'=>$password);
 							$this->session->set_userdata($data);
 							$result['dis']=$this->Mymodel->allfilms();
-							$this->load->view('user_home',$result);
+							$this->load->view('user/user_home',$result);
 						}
 						else if($type=='2')
 						{
@@ -370,74 +361,13 @@ function filmviewdistributor()
 
 
 	//updeate distributor profile
-function user_profile_edit()
-{
-		$email=$this->input->post('email');
-		if(isset($email))
-		{
-			$result['dis']=$this->Mymodel->disuser($email);
-			$this->load->view('user_editprofile',$result);
-		}
-		else {
-			$username=$this->session->userdata('username');
-			$result['dis']=$this->Mymodel->disuser($username);
-			$this->load->view('user_profile',$result);
-		}
-	}
 
 
 
 
 
-function user_profile_update()
-{
-$name=$this->input->post('name');
-if(isset($name))
-{
-$email=$this->input->post('email');
-$phone=$this->input->post('phone');
-$place=$this->input->post('place');
-$pin=$this->input->post('pin');
-$button=$this->input->post('action');
-if($button=='cancel')
-{
-$username=$this->session->userdata('username');
-$result['dis']=$this->Mymodel->disuser($username);
-$this->load->view('user_profile',$result);
-}
-else
-{
-if($_FILES['profilepic']['name'] !=="")
-{
-	$p=$_FILES['profilepic']['name']	;
-	$folderPath = "../Big_Screen/images/profile/";
-	$image =  time().$_FILES['profilepic']['name'];
-	move_uploaded_file($_FILES['profilepic']['tmp_name'],$folderPath.$image);
-	$sourceProperties = getimagesize($folderPath.$image);
-	$ext = pathinfo($_FILES['profilepic']['name'], PATHINFO_EXTENSION);
-	$this->imagecheck($sourceProperties,$folderPath.$image);
-	$data=array('name'=>$name,'phone'=>$phone,'place'=>$place,'pin'=>$pin,'profile_pic'=>$image);
-	$this->Mymodel->update_profile($data,$email);
-	$result['dis']=$this->Mymodel->disuser($email);
-	$this->session->set_userdata('name',$name);
-	$this->load->view('user_profile',$result);
-}
-else
-{
-	$data=array('name'=>$name,'phone'=>$phone,'place'=>$place,'pin'=>$pin);
-	$this->Mymodel->update_profile($data,$email);
-	$result['dis']=$this->Mymodel->disuser($email);
-	$this->load->view('user_profile',$result);
-}
-}
-}
-else
-{
-$username=$this->session->userdata('username');
-$result['dis']=$this->Mymodel->disuser($username);
-$this->load->view('user_profile',$result);
-}
-}
+
+
 
 function imagecheckposter($sourceProperties,$path)
 {
@@ -576,7 +506,7 @@ function payment()
 		$price = $this->input->post('price');
 		$mid = $this->input->post('mid');
 		$lid=$this->session->userdata('id');
-		$data=array('banktype'=>$bank,'card_no'=>$cardnumber,'month'=>$month,'year'=>$year,'cvv'=>$cardCVV,'name'=>$holdername);
+		$data=array('banktype'=>$bank,'card_no'=>$cardnumber,'month'=>$month,'year'=>$year,'cvv'=>$cardCVV);
 		$count['dis']=$this->Mymodel->payment($data);
 		if($count['dis'])
 		{

@@ -48,7 +48,7 @@ if($a==1)
       $description=$row->description;
       $price=$row->price;
       $fid=$row->mid;
-    ?> 
+    ?>
 <div class="col-xs-12" style="background: #F8F8F8">
 	<div class="col-xs-9 " style="height: auto">
 		<div align="center" class="col-xs-12" style="height: 90%;width: 100%;background-size:cover"><br>
@@ -56,21 +56,32 @@ if($a==1)
 			<div class="col-xs-12" style="height: 78%">
 
 			</div>
-			<div class="col-xs-12" style="padding-right: 10%;">
+      <div class="col-xs-11 scrollmenu">
+      <div class="col-xs-12" style="padding-right: 10%;">
         <?php for ($i=0; $i < sizeof($Director_pics); $i++)
         {
           ?>
+
           <div style="display:inline-block;" align="center" >
             <img class="imgcircle bod"  src="<?php echo base_url('images/movie/director/').$Director_pics[$i] ?>">
+            <div>
+              <label><?php echo $Directors[$i]; ?></label><br>
+              <h5>Director</h5>
+            </div>
           </div>
+
         <?php
         }
         ?>
         <?php for ($i=0; $i < sizeof($producer_pics); $i++)
         {
           ?>
-          <div style="display:inline-block;" align="center" >
+          <div style="display:inline-block;margin-left:2%" align="center" >
             <img class="imgcircle bod"  src="<?php echo base_url('images/movie/producer/').$producer_pics[$i] ?>">
+            <div>
+              <label><?php echo $producers[$i]; ?></label><br>
+              <h5>Producer</h5>
+            </div>
           </div>
         <?php
         }
@@ -78,8 +89,12 @@ if($a==1)
         <?php for ($i=0; $i < sizeof($actor_pics); $i++)
         {
           ?>
-          <div style="display:inline-block;" align="center" >
+          <div style="display:inline-block;margin-left:2%" align="center" >
             <img class="imgcircle bod"  src="<?php echo base_url('images/movie/actor/').$actor_pics[$i] ?>">
+            <div>
+              <label><?php echo $actors[$i]; ?></label><br>
+              <h5>Actor</h5>
+            </div>
           </div>
         <?php
         }
@@ -87,14 +102,19 @@ if($a==1)
         <?php for ($i=0; $i < sizeof($actress_pics); $i++)
         {
           ?>
-          <div style="display:inline-block;" align="center" >
+          <div style="display:inline-block;margin-left:2%" align="center" >
             <img class="imgcircle bod"  src="<?php echo base_url('images/movie/actress/').$actress_pics[$i] ?>">
+            <div>
+              <label><?php echo $actresss[$i]; ?></label><br>
+              <h5>Actress</h5>
+            </div>
           </div>
         <?php
         }
         ?>
 
-			</div>
+      </div>
+    </div>
 		</div>
     <div align=left class="col-xs-12 tblstyle1">
       <br>

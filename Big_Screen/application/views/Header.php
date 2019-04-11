@@ -60,6 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	});
 </script>
+
 <!--validation registration-->
 <script>
 function user()
@@ -167,7 +168,7 @@ function dist()
 								<h3>Create an account</h3>
 								<form name="signup" id="signup" action="<?php echo site_url('usercontroller/insert')?>" method="post" onsubmit="return signup1()" enctype="multipart/form-data">
 									<p id="vname" style="color:red;"></P>
-								  <input type="text" name="Name" id="Name" placeholder="Name" pattern="^[a-zA-Z]+$" required="name only alphabets" maxlength="15" onkeyup="this.value = this.value.toUpperCase();" >
+								  <input type="text" name="Name" id="Name" placeholder="Name" pattern="^[a-zA-Z\s]+" required="name only alphabets" maxlength="15" onkeyup="this.value = this.value.toUpperCase();" >
 									<p id="vemail" style="color:red;"></P>
 									<input type="email" name="Email" id="Email" placeholder="Email Address" required="enter valid email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 									<p id="vphone" style="color:red;"></P>
@@ -198,7 +199,7 @@ function dist()
 										<option value="0">Select District</option>
 									</select>
 									<p id="vplace" style="color:red;"></P>
-								  <input type="text" name="Place" id="Place" placeholder="Place" pattern="^[a-zA-Z]+$" >
+								  <input type="text" name="Place" id="Place" placeholder="Place" pattern="^[a-zA-Z\s]+" onkeyup="this.value = this.value.toUpperCase();">
 									<p id="vpin" style="color:red;"></P>
 									<input type="text" name="Pin" id="Pin" placeholder="Pincode" pattern="^\d{6}$" >
 									<p id="vpass1" style="color:red;"></P>

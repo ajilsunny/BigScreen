@@ -523,18 +523,105 @@ function showrunningfilmtime()
 {
 $lid=$this->session->userdata('id');
 $mid = $this->input->post('fid');
-if(isset($mid))
-{
 $result['dis']=$this->tmodel->showrunningmoviedetailes($mid);
 $result['theatre']=$this->tmodel->theatres($lid);
+$result['show']=$this->tmodel->showtimecheck($mid,$lid);
 $this->load->view('theatre/theatre_filmtimeshow',$result);
 }
-else
+function showtime()
 {
-$lid=$this->session->userdata('id');
-$result['dis']=$this->tmodel->tfilmrunningtime($lid);
-$this->load->view('theatre/theatre_runningtime',$result);
+	$day=array();
+	$i=0;
+	$theatre = $this->input->post('theatre');
+	$screen = $this->input->post('screen');
+	$day['day']=$this->tmodel->showtimeselect($theatre,$screen);
+	$day['book']=$this->tmodel->showtimebooked($theatre,$screen);
+	$a=array();
+	$z=0;
+	foreach($day['day'] as $row)
+	{
+		if($day['book'])
+		{
+		$flag = false;
+		foreach ($day['book'] as $key)
+		{
+			$f=$key->showstime;
+			$times=explode(",",$f);
+			for ($i=0; $i <sizeof($times) ; $i++)
+			{
+				if($row->stid == $times[$i])
+				{
+					$flag = true;
+				}
+			}
+			if(!$flag)
+			{
+				$a[$z]=$row;
+				$z++;
+			}
+		}
+	}
+	else
+	{
+		$a[]=$row;
+	}
+
 }
+	echo json_encode($a);
 }
+
+function showtimeinsert()
+{
+	$theatre = $this->input->post('theatre');
+	$screen = $this->input->post('screen');
+	$mid = $this->input->post('mid');
+	//$theatre = $this->input->post('theatre');
+	$shows = implode(',',$this->input->post('caregory'));
+	$data=array('runid'=>NULL,'mid'=>$mid,'tid'=>$theatre,'screen'=>$screen,'showstime'=>$shows,'status'=>'0');
+	$this->tmodel->showtimeinsert($data,$theatre,$screen);
+	$this->theatrefilmrunningtime();
+}
+function showt($a)
+{
+	$result['a']=$this->tmodel->showt($a);
+	return $result['a'];
+}
+
+function showtimecheck()
+{
+	$a;
+	$theatre = $this->input->post('theatre');
+	$screen = $this->input->post('screen');
+	$categories= $this->input->post('categories');
+	$result['a']=$this->tmodel->showtimechecks($theatre,$screen);
+	foreach ($result['a'] as $row)
+	{
+		$a=$row->showstime;
+	}
+	$as=explode(",",$a);
+	$bs=explode(",",$categories);
+	$flag=0;
+	for ($i=0; $i <sizeof($as) ; $i++)
+	{
+		for ($j=0; $j <sizeof($bs) ; $j++)
+		{
+			if($as[$i] == $bs[$j])
+			{
+				$flag=1;
+				break;
+			}
+		}
+	}
+	if($flag==1)
+	{
+		echo "1";
+	}
+	else
+	{
+		echo "0";
+	}
+}
+
+
 
 }

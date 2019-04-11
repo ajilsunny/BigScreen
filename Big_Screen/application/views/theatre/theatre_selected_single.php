@@ -104,51 +104,73 @@ function bookcancel()
   			<div class="col-xs-12" style="height: 78%">
 
   			</div>
-  			<div class="col-xs-12" style="padding-right: 10%;">
-          <?php for ($i=0; $i < sizeof($Director_pics); $i++)
-          {
-            ?>
-            <div style="display:inline-block;" align="center" >
-              <img class="imgcircle bod"  src="<?php echo base_url('images/movie/director/').$Director_pics[$i] ?>">
-            </div>
-          <?php
-          }
-          ?>
-          <?php for ($i=0; $i < sizeof($producer_pics); $i++)
-          {
-            ?>
-            <div style="display:inline-block;" align="center" >
-              <img class="imgcircle bod"  src="<?php echo base_url('images/movie/producer/').$producer_pics[$i] ?>">
-            </div>
-          <?php
-          }
-          ?>
-          <?php for ($i=0; $i < sizeof($actor_pics); $i++)
-          {
-            ?>
-            <div style="display:inline-block;" align="center" >
-              <img class="imgcircle bod"  src="<?php echo base_url('images/movie/actor/').$actor_pics[$i] ?>">
-            </div>
-          <?php
-          }
-          ?>
-          <?php for ($i=0; $i < sizeof($actress_pics); $i++)
-          {
-            ?>
-            <div style="display:inline-block;" align="center" >
-              <img class="imgcircle bod"  src="<?php echo base_url('images/movie/actress/').$actress_pics[$i] ?>">
-            </div>
-          <?php
-          }
-          ?>
-
-  			</div>
   		</div>
       <div align=left class="col-xs-12 tblstyle1">
         <br>
             <?php echo $description ?>
       <br><BR>
       </div>
+
+      <div class="col-xs-11 scrollmenu">
+      <div class="col-xs-12" style="padding-right: 10%;">
+        <?php for ($i=0; $i < sizeof($Director_pics); $i++)
+        {
+          ?>
+
+          <div style="display:inline-block;" align="center" >
+            <img class="imgcircle bod"  src="<?php echo base_url('images/movie/director/').$Director_pics[$i] ?>">
+            <div>
+              <label><?php echo $Directors[$i]; ?></label><br>
+              <h5>Director</h5>
+            </div>
+          </div>
+
+        <?php
+        }
+        ?>
+        <?php for ($i=0; $i < sizeof($producer_pics); $i++)
+        {
+          ?>
+          <div style="display:inline-block;margin-left:2%" align="center" >
+            <img class="imgcircle bod"  src="<?php echo base_url('images/movie/producer/').$producer_pics[$i] ?>">
+            <div>
+              <label><?php echo $producers[$i]; ?></label><br>
+              <h5>Producer</h5>
+            </div>
+          </div>
+        <?php
+        }
+        ?>
+        <?php for ($i=0; $i < sizeof($actor_pics); $i++)
+        {
+          ?>
+          <div style="display:inline-block;margin-left:2%" align="center" >
+            <img class="imgcircle bod"  src="<?php echo base_url('images/movie/actor/').$actor_pics[$i] ?>">
+            <div>
+              <label><?php echo $actors[$i]; ?></label><br>
+              <h5>Actor</h5>
+            </div>
+          </div>
+        <?php
+        }
+        ?>
+        <?php for ($i=0; $i < sizeof($actress_pics); $i++)
+        {
+          ?>
+          <div style="display:inline-block;margin-left:2%" align="center" >
+            <img class="imgcircle bod"  src="<?php echo base_url('images/movie/actress/').$actress_pics[$i] ?>">
+            <div>
+              <label><?php echo $actresss[$i]; ?></label><br>
+              <h5>Actress</h5>
+            </div>
+          </div>
+        <?php
+        }
+        ?>
+
+      </div>
+      </div>
+
   	</div>
   	<div class="col-md-3" style="height: auto;"><br>
     <center>  <img src="<?php echo base_url('images/movie/poster/').$poster_pic ?>" style="width:60%"><br>

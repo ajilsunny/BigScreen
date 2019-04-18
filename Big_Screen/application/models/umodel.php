@@ -85,6 +85,18 @@ function updatebooking($seat)
 {
 	$this->db->where('s_id',$seat);
 	$this->db->update('tbl_seatbooking',array('b_status'=>'0'));
+
+}
+function bookedcount($lid)
+{
+	$querys=$this->db->get_where('tbl_seatbooking',array('lid'=>$lid,'b_status!='=>'4'));
+	$c=$querys->num_rows();
+	return $c;
+	// return $querys->result();
+}
+function insertbooking($data)
+{
+	$this->db->insert('tbl_seatdetails',$data);
 }
 function disuser($user)
 {

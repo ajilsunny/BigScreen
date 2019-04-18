@@ -20,6 +20,22 @@ class Mymodel extends CI_Model
 		$this->db->insert('tbl_login',$data);
 
 	}
+	function news()
+	{
+		$this->db->order_by("nid", "desc");
+		$querys=$this->db->get_where('tbl_news');
+		return $querys->result();
+	}
+function newssingle($nid)
+{
+	$querys=$this->db->get_where('tbl_news',array('nid'=>$nid));
+	return $querys->result();
+}
+function languages()
+{
+	$querys=$this->db->get_where('tbl_language');
+	return $querys->result();
+}
 // END OF usert registraion details insert
 function forgotpasswordemailcheck($email)
 {
@@ -290,6 +306,7 @@ function runningtimeadd($data,$lid)
         redirect(base_url().'controller/index','refresh');
     }
 }
+
 
 }
 ?>

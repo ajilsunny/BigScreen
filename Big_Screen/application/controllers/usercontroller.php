@@ -14,6 +14,7 @@ class Usercontroller extends CI_Controller
 	//NORMAL USER
 function index()
 {
+$result['cover']=$this->Mymodel->allfilms();
 $result['dis']=$this->Mymodel->states();
 $this->load->view('home',$result);
 }
@@ -21,12 +22,35 @@ $this->load->view('home',$result);
 function about()
 {
 $result['dis']=$this->Mymodel->states();
-$this->load->view('about');
+$this->load->view('about',$result);
 }
 function contact()
 {
 $result['dis']=$this->Mymodel->states();
-$this->load->view('contact');
+$this->load->view('contact',$result);
+}
+function news()
+{
+$result['dis']=$this->Mymodel->states();
+$result['news']=$this->Mymodel->news();
+$this->load->view('news',$result);
+}
+function newssingle()
+{
+	$nid=$this->input->post('nid');
+	$result['dis']=$this->Mymodel->states();
+	$result['news']=$this->Mymodel->news();
+	$result['newssing']=$this->Mymodel->newssingle($nid);
+	$this->load->view('news_single',$result);
+}
+function languages()
+{
+	$result['languages']=$this->Mymodel->languages();
+	return $result['languages'];
+}
+function selectfilms()
+{
+	$this->load->view('user/selectlanguage');
 }
 
 function forgotpassword()
@@ -47,12 +71,6 @@ $this->index();
 
 }
 
-// function uindex()
-// {
-// 	$uname=$this->session->userdata('username');
-// 	$result['dis']=$this->Mymodel->disuser($uname);
-// 	$this->load->view('user_home',$result);
-// }
 function aindex()
 {
 $uname=$this->session->userdata('username');

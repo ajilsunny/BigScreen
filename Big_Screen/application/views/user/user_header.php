@@ -131,14 +131,23 @@ div.scrollmenu a:hover {
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Choose Film<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li>
+
 									<div class="col-sm-4">
-										<li><a href="<?php echo site_url('usercontroller/englishfilms');?>">English</a></li>
-										<li><a href="<?php echo site_url('usercontroller/malayalamfilms');?>">Malayalam</a></li>
-										<li><a href="<?php echo site_url('usercontroller/hindifilms');?>">Hindi</a></li>
-										<li><a href="<?php echo site_url('usercontroller/tamilfilms');?>">Tamil</a></li>
-										<li><a href="<?php echo site_url('usercontroller/kannadafilms');?>">Kannada</a></li>
-										<li><a href="<?php echo site_url('usercontroller/telugufilms');?>">Telugu</a></li>
+										<?php
+										$language['result']=$CI->languages();
+										foreach ($language['result'] as $key)
+										{
+											$laid=$key->la_id;
+											?>
+
+											<li>
+												<form action="<?php echo site_url('usercontroller/selectfilms');?>" method="post">
+													<input type="hidden" name="laid" value="<?php echo $laid; ?>">
+													<input type="submit" value="<?php echo $key->la_name; ?>" style="background:none;border:none;">
+												</form>
+										</li>
+									<?php	}
+										 ?>
 									<div class="clearfix"></div>
 									</li>
 								</ul>

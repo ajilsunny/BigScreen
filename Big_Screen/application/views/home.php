@@ -5,12 +5,18 @@ include('Header.php');
 <!-- banner -->
 	<div id="slidey" style="display:none;">
 		<ul>
-			<li><img src="<?php echo base_url('images/movie/cover/15542602091553746858_lucifer.jpg');?>" alt=" "><p class='title'>Lucifer</p><p class='description'> Tarzan, having acclimated to life in London, is called back to his former home in the jungle to investigate the activities at a mining encampment.</p></li>
-			<li><img src="<?php echo base_url('images/movie/cover/1553091375925047040s.jpg');?>" alt=" "><p class='title'>NATTURAJAVU</p><p class='description'>Six children, genetically cross-bred with avian DNA, take flight around the country to discover their origins. Along the way, their mysterious past is ...</p></li>
-			<li><img src="<?php echo base_url('images/movie/cover/1554258022Jacobinte-Swargarajyam.jpg');?>" alt=" "><p class='title'>Independence</p><p class='description'>The fate of humanity hangs in the balance as the U.S. President and citizens decide if these aliens are to be trusted ...or feared.</p></li>
-			<li><img src="<?php echo base_url('images/movie/cover/15530590691541920022cover.jpg');?>" alt=" "><p class='title'>SPADIKAM</p><p class='description'>Bullied as a teen for being overweight, Bob Stone (Dwayne Johnson) shows up to his high school reunion looking fit and muscular. Claiming to be on a top-secret ...</p></li>
-			<li><img src="<?php echo base_url('images/6.jpg');?>" alt=" "><p class='title'>Ice Age</p><p class='description'>In the film's epilogue, Scrat keeps struggling to control the alien ship until it crashes on Mars, destroying all life on the planet.</p></li>
-			<li><img src="<?php echo base_url('images/7.jpg');?>" alt=" "><p class='title'>X - Man</p><p class='description'>In 1977, paranormal investigators Ed (Patrick Wilson) and Lorraine Warren come out of a self-imposed sabbatical to travel to Enfield, a borough in north ...</p></li>
+			<?php
+			foreach($cover as $row1)
+			{
+					$fname=$row1->film_name;
+					$cpic=$row1->cover_pic;
+					$d=$row1->description;
+					$disc = substr($d, 0, 320);
+			 ?>
+			<li><img src="<?php echo base_url('images/movie/cover/').$cpic;?>" alt=" "><p class='title'><?php echo $fname ?></p><p class='description'><?php echo $disc; ?></p></li>
+			<?php
+			}
+			?>
 		</ul>
     </div>
     <script src="<?php echo base_url('style/js/jquery.slidey.js');?>"></script>
@@ -30,33 +36,47 @@ include('Header.php');
 		<div class="container">
 			<div class="w3_agile_banner_bottom_grid">
 				<div id="owl-demo" class="owl-carousel owl-theme">
-				<?php for($i=1;$i<=8;$i++){ ?>
-					<div class="item">
-						<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-							<a href="#" class="hvr-shutter-out-horizontal"><img src="<?php echo base_url('images/m'.$i.'.jpg');?>" title="album-name" class="img-responsive" alt=" " />
-<!--								<div class="w3l-action-icon"><img src="images/play-button.png" style="height:50%;width:50%"/></div>
--->							</a>
-							<div class="mid-1 agileits_w3layouts_mid_1_home">
-								<div class="w3l-movie-text">
-									<h6><a href="#">Citizen Soldier</a></h6>
-								</div>
-								<div>
-									<b><p>2016</p></b>
-									<div class="block-stars">
-										<ul style="display:inline-block">
-										<?Php for($j=0;$j<5;$j++){?>
-										<img src="<?php echo base_url('images/star.png');?>" style="display:inline-block;height:10%;width:10%">
-										<?php } ?>
-										</ul>
+					<?php
+						foreach($cover as $row)
+						{
+								$fid=$row->mid;
+								$fname=$row->film_name;
+								$pic=$row->poster_pic;
+								$date=$row->date;
+
+						?>
+						<div class="item">
+	            <a data-toggle="modal" data-target="#myModal" onClick="return sess()">
+							<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+	              <input type="hidden" name="fid" value="<?php echo $fid; ?>" >
+								<button type="submit" href="" name="submit" class="hvr-shutter-out-horizontal" style="background:none;border:none">
+	                <img src="<?php echo base_url('images/movie/poster/'.$pic.'');?>" title="album-name" class="img-responsive" alt=" " />
+	              </button>
+	<!--								<div class="w3l-action-icon"><img src="images/play-button.png" style="height:50%;width:50%"/></div>
+	-->          </a>
+								<div class="mid-1 agileits_w3layouts_mid_1_home">
+									<div class="w3l-movie-text">
+										<h6><a href="#"><?php echo $fname; ?></a></h6>
 									</div>
-									<div class="clearfix"></div>
+									<div>
+										<b><p><?php echo $date; ?></p></b>
+										<div class="block-stars">
+											<ul style="display:inline-block">
+											<?Php for($j=0;$j<5;$j++){?>
+											<img src="<?php echo base_url('images/star.png');?>" style="display:inline-block;height:10%;width:10%">
+
+	                    <?php } ?>
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</div>
 								</div>
-							</div>
-							<div class="ribben">
-								<p>NEW</p>
+								<div class="ribben">
+									<p>NEW</p>
+								</div>
 							</div>
 						</div>
-					</div>
+
 					<?php } ?>
 
 				</div>
@@ -72,17 +92,14 @@ include('Header.php');
 			<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 				<ul id="myTab" class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active"><a href="#" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Featured</a></li>
-					<li role="presentation"><a href="#" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Top viewed</a></li>
-					<li role="presentation"><a href="#" id="rating-tab" role="tab" data-toggle="tab" aria-controls="rating" aria-expanded="true">Top Rating</a></li>
-					<li role="presentation"><a href="#" role="tab" id="imdb-tab" data-toggle="tab" aria-controls="imdb" aria-expanded="false">Recently Added</a></li>
-				</ul>
+					</ul>
 				<div id="myTabContent" class="tab-content">
 					<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
 						<div class="w3_agile_featured_movies">
 							<?php for($i=1;$i<=12;$i++){?>
 
 							<div class="col-md-2 w3l-movie-gride-agile">
-								<a href="#" class="hvr-shutter-out-horizontal"><img src="<?php echo base_url('images/m'.$i.'.jpg');?>" title="album-name" class="img-responsive" alt=" "/>
+								<a data-toggle="modal" data-target="#myModal" onClick="return sess()"><img src="<?php echo base_url('images/m'.$i.'.jpg');?>" title="album-name" class="img-responsive" alt=" "/>
 									<!--<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>-->
 								</a>
 								<div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -206,91 +223,6 @@ include('Header.php');
 		});
 	</script>
 <!-- //Latest-tv-series -->
-<!-- footer -->
-	<div class="footer">
-		<div class="container">
-			<div class="w3ls_footer_grid">
-				<div class="col-md-6 w3ls_footer_grid_left">
-					<div class="w3ls_footer_grid_left1">
-						<h2>Subscribe to us</h2>
-						<div class="w3ls_footer_grid_left1_pos">
-							<form action="#" method="post">
-								<input type="email" name="email" placeholder="Your email..." required="">
-								<input type="submit" value="Send">
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 w3ls_footer_grid_right">
-					<a href="#"><h2>Big<span>Screen</span></h2></a>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="col-md-5 w3ls_footer_grid1_left">
-				<p>&copy; 2018 Big Screen. All rights reserved | Design by <a href="#">ajilsunny007@gmail.com</a></p>
-			</div>
-			<div class="col-md-7 w3ls_footer_grid1_right">
-				<ul>
-					<li>
-						<a href="#">Movies</a>
-					</li>
-					<li>
-						<a href="#">FAQ</a>
-					</li>
-					<li>
-						<a href="#">Action</a>
-					</li>
-					<li>
-						<a href="#">Adventure</a>
-					</li>
-					<li>
-						<a href="#">Comedy</a>
-					</li>
-					<li>
-						<a href="#">Icons</a>
-					</li>
-					<li>
-						<a href="#">Contact Us</a>
-					</li>
-				</ul>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-<!-- //footer -->
-<!-- Bootstrap Core JavaScript -->
-<script src="<?php echo base_url('style/js/bootstrap.min.js');?>"></script>
-<script>
-$(document).ready(function(){
-    $(".dropdown").hover(
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-            $(this).toggleClass('open');
-        },
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-            $(this).toggleClass('open');
-        }
-    );
-});
-</script>
-<!-- //Bootstrap Core JavaScript -->
-<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
-
-			$().UItoTop({ easingType: 'easeOutQuart' });
-
-			});
-	</script>
-<!-- //here ends scrolling icon -->
-</body>
-</html>
+<?php
+include('footer.php');
+?>

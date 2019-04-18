@@ -192,79 +192,102 @@ function val(id,name)
   data1.append('booktime',booktime);
   data1.append('screen',screen);
   data1.append('seat',id);
+
   $.ajax({
     method:'post',
-    url:"<?php echo site_url("ucontroller/seatcheck"); ?>",
+    url:"<?php echo site_url("ucontroller/bookedcount"); ?>",
     processData: false,
     contentType: false,
     data: data1,
-    success:function(result1)
+    success:function(result2)
     {
-      //alert(result1);
-  		var r=JSON.parse(result1);
-      var rs=r.length;
-      if(rs)
+      if(result2<10)
       {
-        alert("Booked few seconds ago");
-        for (var i = 0; i < r.length; i++)
-        {
-          var amount1=r[i].amount;
-          var sbid=r[i].s_id;
-        }
-        var index1 = sid.indexOf(sbid);
-        var index = sename.indexOf(name);
+      //alert(result2);
 
-        if (index > -1)
+      $.ajax({
+        method:'post',
+        url:"<?php echo site_url("ucontroller/seatcheck"); ?>",
+        processData: false,
+        contentType: false,
+        data: data1,
+        success:function(result1)
         {
-          sename.splice(index, 1);
-          sid.splice(index1, 1);
-          z--;
-        var seaname=sename.toString();
-        }
-        //alert(amount1);
-        total=parseInt(total)-parseInt(amount1);
-        if(total<0)
-        {
-          total=0;
-          seaname=0;
-        }
-        document.getElementById("seats").value =seaname ;
-        document.getElementById("total").value =total ;
-        document.getElementById("sbid").value = sid;
-        document.getElementById(id).style.backgroundColor = ""
+          //alert(result1);
+      		var r=JSON.parse(result1);
+          var rs=r.length;
+          if(rs)
+          {
+            alert("Booked few seconds ago");
+            for (var i = 0; i < r.length; i++)
+            {
+              var amount1=r[i].amount;
+              var sbid=r[i].s_id;
+            }
+            var index1 = sid.indexOf(sbid);
+            var index = sename.indexOf(name);
+
+            if (index > -1)
+            {
+              sename.splice(index, 1);
+              sid.splice(index1, 1);
+              z--;
+            var seaname=sename.toString();
+            }
+            //alert(amount1);
+            total=parseInt(total)-parseInt(amount1);
+            if(total<0)
+            {
+              total=0;
+              seaname=0;
+            }
+            document.getElementById("seats").value =seaname ;
+            document.getElementById("total").value =total ;
+            document.getElementById("sbid").value = sid;
+            document.getElementById(id).style.backgroundColor = ""
+          }
+          else
+          {
+
+            sename[z]=name;
+            var seaname=sename.toString();
+            $.ajax({
+              method:'post',
+              url:"<?php echo site_url("ucontroller/bookseat"); ?>",
+              processData: false,
+              contentType: false,
+              data: data,
+              success:function(result){
+              //alert(result);
+              var r=JSON.parse(result);
+              //alert(r);
+              sid[z]=r;
+              total=parseInt(total)+parseInt(amount);
+              document.getElementById("date").value =bookdate ;
+              document.getElementById("time").value =booktime ;
+              document.getElementById("seats").value =seaname ;
+              document.getElementById("total").value =total ;
+              document.getElementById("sbid").value = sid;
+              document.getElementById(id).style.backgroundColor = "#77ff33"
+              z++;
+              }
+            });
+
+
+
+          }
+    		}
+      });
+
       }
       else
       {
-
-        sename[z]=name;
-        var seaname=sename.toString();
-        $.ajax({
-          method:'post',
-          url:"<?php echo site_url("ucontroller/bookseat"); ?>",
-          processData: false,
-          contentType: false,
-          data: data,
-          success:function(result){
-          //alert(result);
-          var r=JSON.parse(result);
-          //alert(r);
-          sid[z]=r;
-          total=parseInt(total)+parseInt(amount);
-          document.getElementById("date").value =bookdate ;
-          document.getElementById("time").value =booktime ;
-          document.getElementById("seats").value =seaname ;
-          document.getElementById("total").value =total ;
-          document.getElementById("sbid").value = sid;
-          document.getElementById(id).style.backgroundColor = "#77ff33"
-          z++;
-          }
-        });
-
-
+      alert("Only Book 10 Seats");
 
       }
-		}
-  });
+    }
+    });
+
 }
 function vals()
 {

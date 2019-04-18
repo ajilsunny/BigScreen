@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2019 at 07:28 PM
+-- Generation Time: Apr 15, 2019 at 04:10 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -66,13 +66,13 @@ CREATE TABLE `tbl_day` (
 --
 
 INSERT INTO `tbl_day` (`did`, `dname`, `status`) VALUES
-(1, 'Monday', 0),
-(2, 'Tuesday', 0),
-(3, 'Wednesday', 0),
-(4, 'Thursday', 0),
-(5, 'Friday', 0),
-(6, 'Saturday', 0),
-(7, 'Sunday', 0);
+(1, 'Sunday', 0),
+(2, 'Monday', 0),
+(3, 'Tuesday', 0),
+(4, 'Wednesday', 0),
+(5, 'Thursday', 0),
+(6, 'Friday', 0),
+(7, 'Saturday', 0);
 
 -- --------------------------------------------------------
 
@@ -100,9 +100,11 @@ INSERT INTO `tbl_details` (`regid`, `name`, `email`, `phone`, `did`, `place`, `p
 (1, 'admin', 'admin', '123456789', 0, '0', 0, '0', '0'),
 (2, 'Ajil Sunny', 'ajilsunny007@gmail.com', '8593967684', 2, 'kiliyanthara', 670706, '1552406856IMG_8800 (2).JPG', '1551848513Class Diagram.png'),
 (4, 'ALAN', 'alan@gmail.com', '7410258963', 1, 'sreekandapuram', 670705, 'profilepic.png', '1551867465Sequence Diagram.png'),
-(7, 'APPU', 'appu@gmail.com', '7410258963', 2, 'kiliyanthara', 963258, 'profilepic.png', '1552233796'),
-(3, 'Jithu Benny', 'jithu@gmail.com', '8593967684', 1, '`manikadavu', 670706, '1554256626IMG_20190206_100028.jpg', '1551849444Object Diagram.png'),
+(7, 'APPU', 'appu@gmail.com', '7410258963', 2, 'kiliyanthara', 963258, '1554947394Appu B 20150503_175757.jpg', '1552233796'),
+(9, 'ARUN THOMAS', 'arunthomas15011995@gmail.com', '9544103818', 3, 'THOPRANKUDY', 685609, 'profilepic.png', '1555042943DSC_0143.JPG'),
+(3, 'Jithu Benny', 'jithu@gmail.com', '8593967684', 1, '`manikadavu', 670706, '1554573879Jithu MCA 20190117_192633.jpg', '1551849444Object Diagram.png'),
 (5, 'JOBIN', 'jobin@gmail.com', '9638520147', 5, 'koovapally', 741852, 'profilepic.png', '1551941005Activity Diagram.png'),
+(8, 'LIFNA THANKACHA', 'lifna@gmail.com', '7410258963', 8, 'THIRUVAMBADY', 741258, 'profilepic.png', '1554861051'),
 (6, 'RONIYA', 'roniya@gmail.com', '7410852963', 1, 'chemperi', 963852, 'profilepic.png', '1551942180State Chart Diagram.png');
 
 -- --------------------------------------------------------
@@ -837,7 +839,12 @@ CREATE TABLE `tbl_filmselection` (
 --
 
 INSERT INTO `tbl_filmselection` (`fs_id`, `mid`, `lid`, `status`, `sdate`) VALUES
-(1, 1, 3, 2, '2019-04-02');
+(1, 1, 3, 2, '2019-04-02'),
+(4, 5, 3, 2, '2019-04-04'),
+(5, 2, 3, 1, '2019-04-10'),
+(7, 5, 9, 0, '2019-04-12'),
+(8, 3, 3, 0, '2019-04-12'),
+(10, 5, 5, 2, '2019-04-14');
 
 -- --------------------------------------------------------
 
@@ -924,7 +931,9 @@ INSERT INTO `tbl_login` (`lid`, `username`, `password`, `type`, `lstatus`) VALUE
 (4, 'alan@gmail.com', '02558a70324e7c4f269c69825450cec8', 3, 0),
 (5, 'jobin@gmail.com', 'e6758b2a3b13423bdd3fe1b8e273909c', 2, 0),
 (6, 'roniya@gmail.com', '202cb962ac59075b964b07152d234b70', 2, 0),
-(7, 'appu@gmail.com', '622622b00805c54040dd9a15674a5117', 1, 0);
+(7, 'appu@gmail.com', '622622b00805c54040dd9a15674a5117', 1, 0),
+(8, 'lifna@gmail.com', '4a39def561302c01e17cb46203273c44', 1, 0),
+(9, 'arunthomas15011995@gmail.com', '722279e9e630b3e731464b69968ea4b4', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -962,7 +971,8 @@ INSERT INTO `tbl_moviedetails` (`mid`, `distributor_id`, `film_name`, `poster_pi
 (1, 2, 'SPADIKAM', '1553059069Spadikam.jpg', '15530590691541920022cover.jpg', 'Bhadran', '1553059068Director_Bhadran.jpg', 'R. Mohan', '1553059068download.jpg', 'S. P. Venkatesh', '3', '1,6,16', 'Mohanlal,Thilakan', '1553059068Mohanlal_DN_0.jpg,1553059068Thilakan.jpg', 'Urvashi,Silk Smitha,K. P. A. C. Lalitha', '1553059068Urvashi.jpg,1553059069Silk_Smitha_2.jpg,1553059069K. P. A. C. Lalitha.jpg', 'Spadikam (English: Crystal) is a 1995 Indian Malayalam-language action drama film written and directed by Bhadran and starring Mohanlal in the lead role. Dialogues were written by Rajendra Babu. The title \"Spadikam\" means \"crystal\" or \"prism\", the splitting of light by a prism being a metaphor for human nature. The film also stars Thilakan, Urvashi, Spadikam George, K. P. A. C. Lalitha, Rajan P. Dev, Silk Smitha, Nedumudi Venu, Chippy, and V. K. Sreeraman.\r\n\r\nSpadikam was the highest-grossing Malayalam film of the year 1995, collecting more than ?5 crore (US$700,000) from the box office.[1] Mohanlal won the Kerala State Film Award for Best Actor and Filmfare Award for Best Actor – Malayalam for his portrayal of Thomas \"Aadu Thoma\" Chacko, a rogue youngster estranged from his narcissistic father, Chacko Master (Thilakan), upon failing to meet the latter\'s high expectations.[2][3] The film was remade into Tamil, Telugu, and Kannada languages.', '2018', '25000'),
 (2, 2, 'NATTURAJAVU', '1553091375Natturajavu.jpg', '1553091375925047040s.jpg', 'Shaji Kailas', '1553091374Shaji_kailas.jpg', 'Antony Perumbavoor', '1553091374image.png', 'M. Jayachandran', '3', '1,13,16', 'Mohanlal,Kalabhavan Mani', '155309137465603579.jpg,1553091374download.jpg', 'Meena,Nayanthara', '1553091374meena.jpg,1553091375Nayanthara-hairstyle-in-raja-rani.jpg', 'Naatturajavu (English: Native King) is a 2004 Indian Malayalam-language action-drama film directed by Shaji Kailas and written by T. A. Shahid. The film stars Mohanlal in the lead role and Meena, Nayantara, Kalabhavan Mani, Kaviyoor Ponnamma , K. P. A. C. Lalitha, and Siddique in supporting roles. M. Jayachandran composed the soundtrack.[2] It was produced by Antony Perumbavoor through Aashirvad Cinemas. Naatturajavu was released in India on 20 August 2004, it was well received at the box office becoming one of the highest-grossing Malayalam films of the year.', '2018', '25000'),
 (3, 4, 'JACOBINTE SWARGARAJYAM', '1554258022Jacobinte_Swargarajyam_poster.jpg', '1554258022Jacobinte-Swargarajyam.jpg', 'Vineeth Sreenivasan', '1554258022Vineeth_Sreenivasan_Aravindante_Athidhikal.jpg', 'Noble Babu Thomas', '1554258022Noble-Babu-Thomas_1.jpg', 'Shaan Rahman', '3', '11,16,19', 'Nivin Pauly,Renji Panicker', '155425802266509862.jpg,155425802267433395.jpg', 'Lakshmy Ramakrishnan', '1554258022Lakshmy Ramakrishnan.jpg', 'Jacob (Renji Panicker) is a successful businessman settled in Dubai with wife Sherly (Lakshmy Ramakrishnan) and their four kids – Jerry (Nivin Pauly), Abin (Sreenath Bhasi), Ammu (Aima Sebastian), and Chris (Stacen). Jacob is always respected for his ideas by his colleagues and he had done many businesses before starting a steel business. Then comes global recession and Jacob moves for a lucrative trade through his Pakistani colleague, Ajmal, by taking a total of 8 million dirhams from his investors. Ajmal cheats Jacob and Jacob is left in a debt of 8 million dirhams which he happens to know on his 25th wedding anniversary. Soon Jacob\'s credibility and trustful way of doing business is lost and is forced to travel to Liberia to get a deal, but doesn\'t go well and is forced to stay there to avoid arrest. With no other way and continued complaints from the investors especially from Murali Menon (Ashwin Kumar), Jerry decides to give his best to solve the problems by stepping into his dad\'s shoes.', '2018', '25000'),
-(4, 4, 'LUCIFER', '1554260209Lucifer_film_poster.jpg', '15542602091553746858_lucifer.jpg', 'Prithviraj Sukumaran', '1554260208image.jpg', 'Antony Perumbavoor', '1554260208A428177_list_20180122175653.jpg', 'Deepak Dev', '3', '1,7,13,16', 'Mohanlal,Vivek Oberoi,Tovino Thomas,Indrajith Suku', '1554260208190326 Mohanlal._resources1.jpg,155426020865623054.jpg,155426020863395979.jpg,1554260209A315698_list_20160518161519.jpg', 'Manju Warrier', '1554260209manju_warrier.jpg', 'Lucifer is a 2019 Indian Malayalam-language film directed by Prithviraj Sukumaran and written by Murali Gopy. Produced by Antony Perumbavoor through the production house Aashirvad Cinemas, the film marks Prithviraj\'s directorial debut and features Mohanlal in the lead role as Stephen Nedumpally, alongside a supporting cast including Prithviraj Sukumaran, Vivek Oberoi, Manju Warrier, Tovino Thomas, Indrajith Sukumaran, Saniya Iyappan, Saikumar, Kalabhavan Shajohn, and Nyla Usha. Deepak Dev composed the music for the film, and the cinematography was handled by Sujith Vaassudev.\r\n\r\nDevelopment of the film began in 2016 when Murali pitched a story to Prithviraj at the sets of Tiyaan in Ramoji Film City, it was when he decided to make Lucifer his directorial debut. Title of the film was taken from an unrealised project of director Rajesh Pillai which was also written by Murali with another story. Pre-production of Lucifer began in 2017 and Murali completed the final draft of the screenplay in February 2018. Principal photography began in mid-July that year and lasted till January 2019, with filming carried out in Idukki, Thiruvananthapuram, Ernakulam, and Kollam districts, and Mumbai, Bangalore, Lakshadweep, and Russia.', '2018', '50000');
+(4, 2, 'MADHURA RAJA', '1554559050Madhura_Raja.jpg', '1554559050Mammootty-madhura-raja.jpg', 'Vysakh', '1554559049vysakh.jpg', 'Nelson Ipe', '1554559049nelson.jpg', 'Gopi Sunder', '3', '1,7,16,19', 'Mammootty,Jai,Salim Kumar,Siddique', '155455904993c25ed943db94299e3fd494e9893d9d.jpg,1554559049jai-20131128174158-3366.jpg,1554559049Salim Kumar.jpg,1554559049Siddique.jpg', 'Anna Reshma Rajan,Anusree ', '1554559049Anna Rajan _8_.jpg,1554559050Anusree.jpg', 'Madhura Raja is an upcoming Indian Malayalam-language action film directed by Vysakh, written by Udaykrishna and starring Mammootty and Jai in the lead roles. Mammootty reprises his role Raja from the 2010 film Pokkiri Raja even though Madhura Raja is not a sequel.', '2018', '25000'),
+(5, 4, 'LUCIFER', '1554260209Lucifer_film_poster.jpg', '15542602091553746858_lucifer.jpg', 'Prithviraj Sukumaran', '1554260208image.jpg', 'Antony Perumbavoor', '1554260208A428177_list_20180122175653.jpg', 'Deepak Dev', '3', '1,7,13,16', 'Mohanlal,Vivek Oberoi,Tovino Thomas,Indrajith Suku', '1554260208190326 Mohanlal._resources1.jpg,155426020865623054.jpg,155426020863395979.jpg,1554260209A315698_list_20160518161519.jpg', 'Manju Warrier', '1554260209manju_warrier.jpg', 'Lucifer is a 2019 Indian Malayalam-language film directed by Prithviraj Sukumaran and written by Murali Gopy. Produced by Antony Perumbavoor through the production house Aashirvad Cinemas, the film marks Prithviraj\'s directorial debut and features Mohanlal in the lead role as Stephen Nedumpally, alongside a supporting cast including Prithviraj Sukumaran, Vivek Oberoi, Manju Warrier, Tovino Thomas, Indrajith Sukumaran, Saniya Iyappan, Saikumar, Kalabhavan Shajohn, and Nyla Usha. Deepak Dev composed the music for the film, and the cinematography was handled by Sujith Vaassudev.\r\n\r\nDevelopment of the film began in 2016 when Murali pitched a story to Prithviraj at the sets of Tiyaan in Ramoji Film City, it was when he decided to make Lucifer his directorial debut. Title of the film was taken from an unrealised project of director Rajesh Pillai which was also written by Murali with another story. Pre-production of Lucifer began in 2017 and Murali completed the final draft of the screenplay in February 2018. Principal photography began in mid-July that year and lasted till January 2019, with filming carried out in Idukki, Thiruvananthapuram, Ernakulam, and Kollam districts, and Mumbai, Bangalore, Lakshadweep, and Russia.', '2018', '50000');
 
 -- --------------------------------------------------------
 
@@ -1014,13 +1024,9 @@ INSERT INTO `tbl_otp` (`oid`, `email`, `otp`) VALUES
 CREATE TABLE `tbl_runningmovietime` (
   `runid` int(11) NOT NULL,
   `mid` int(11) NOT NULL,
-  `lid` int(11) NOT NULL,
-  `no_of_shows` int(11) NOT NULL,
-  `time1` varchar(20) NOT NULL,
-  `time2` varchar(20) NOT NULL,
-  `time3` varchar(20) NOT NULL,
-  `time4` varchar(20) NOT NULL,
-  `time5` varchar(20) NOT NULL,
+  `tid` int(11) NOT NULL,
+  `screen` int(11) NOT NULL,
+  `showstime` varchar(2000) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -1028,9 +1034,70 @@ CREATE TABLE `tbl_runningmovietime` (
 -- Dumping data for table `tbl_runningmovietime`
 --
 
-INSERT INTO `tbl_runningmovietime` (`runid`, `mid`, `lid`, `no_of_shows`, `time1`, `time2`, `time3`, `time4`, `time5`, `status`) VALUES
-(8, 3, 4, 2, '10:00', '16:00', '00:00', '00:00', '00:00', 1),
-(9, 2, 4, 3, '10:00', '13:00', '16:00', '00:00', '00:00', 1);
+INSERT INTO `tbl_runningmovietime` (`runid`, `mid`, `tid`, `screen`, `showstime`, `status`) VALUES
+(23, 1, 1, 1, '1,3', 0),
+(24, 5, 1, 1, '2,4,13,14,15', 0),
+(25, 5, 2, 1, '17,18,19,20,21,22', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_seatbooking`
+--
+
+CREATE TABLE `tbl_seatbooking` (
+  `s_id` bigint(11) NOT NULL,
+  `lid` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
+  `mid` int(11) NOT NULL,
+  `screen` int(11) NOT NULL,
+  `date` varchar(30) NOT NULL,
+  `time` varchar(30) NOT NULL,
+  `seat` varchar(30) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `b_status` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_seatbooking`
+--
+
+INSERT INTO `tbl_seatbooking` (`s_id`, `lid`, `tid`, `mid`, `screen`, `date`, `time`, `seat`, `amount`, `b_status`, `timestamp`) VALUES
+(75, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-8', 100, 3, '2019-04-15 19:36:39'),
+(76, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-9', 100, 3, '2019-04-15 19:36:40'),
+(77, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-10', 100, 3, '2019-04-15 19:36:41'),
+(78, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-11', 100, 3, '2019-04-15 19:36:42'),
+(79, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-12', 100, 3, '2019-04-15 19:36:42'),
+(80, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-13', 100, 3, '2019-04-15 19:36:43'),
+(81, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-15', 100, 0, '2019-04-15 19:37:32'),
+(82, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-16', 100, 0, '2019-04-15 19:37:32'),
+(83, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-17', 100, 0, '2019-04-15 19:37:32'),
+(84, 7, 2, 5, 1, '16-04-2019', '10:00 PM', '15-18', 100, 0, '2019-04-15 19:37:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_seatdetails`
+--
+
+CREATE TABLE `tbl_seatdetails` (
+  `sid` bigint(11) NOT NULL,
+  `lid` int(11) NOT NULL,
+  `se_id` text NOT NULL,
+  `seat_name` text NOT NULL,
+  `total_amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_seatdetails`
+--
+
+INSERT INTO `tbl_seatdetails` (`sid`, `lid`, `se_id`, `seat_name`, `total_amount`) VALUES
+(11, 7, '54,55,56,57,58', 'A1,A2,A3,A4,A5', 620),
+(12, 7, '59,60,61,62', 'J6,J7,J8,J9', 992),
+(13, 7, '69,70', 'J10,J11', 496),
+(14, 7, '81,82,83,84', 'O13,O14,O15,O16', 496);
 
 -- --------------------------------------------------------
 
@@ -1057,7 +1124,17 @@ INSERT INTO `tbl_showtime` (`stid`, `tid`, `screen`, `dayid`, `show_time`, `stat
 (3, 1, 1, 3, '10:00 AM,1:00 PM,4:00 PM,7:30 PM', 0),
 (4, 1, 1, 4, '11:00 AM,4:00 PM', 0),
 (5, 1, 2, 6, '05:00 AM,08:00 AM,11:00 AM,2:30 PM,8:30 PM', 0),
-(12, 1, 2, 7, '4:30 PM,9:00 PM', 0);
+(12, 1, 2, 7, '4:30 PM,9:00 PM', 0),
+(13, 1, 1, 5, '10:00 AM,1:00 PM,4:30 PM,8:00 PM', 0),
+(14, 1, 1, 6, '10:00 AM,1:00 PM,4:00 PM,7:00 PM,10:00 PM', 0),
+(15, 1, 1, 7, '05:30 AM,09:00 AM,1:00 PM,4:00 PM,7:30 PM,11:00 PM', 0),
+(16, 1, 2, 1, '10:30 AM,1:30 PM,4:30 PM,7:30 PM', 0),
+(17, 2, 1, 1, '10:00 AM,1:30 PM,4:30 PM,7:30 PM,10:00 PM', 0),
+(18, 2, 1, 2, '10:30 PM,1:30 PM,4:30 PM,7:30 PM', 0),
+(19, 2, 1, 3, '10:00 PM,1:30 PM,4:30 PM,7:30 PM', 0),
+(20, 2, 1, 4, '1:30 PM,1:30 PM,4:30 PM,7:30 PM', 0),
+(21, 2, 1, 5, '10:00 PM,1:30 PM,4:30 PM,7:30 PM', 0),
+(22, 2, 1, 7, '10:00 PM,1:30 PM,4:30 PM,7:30 PM,9:30 PM', 0);
 
 -- --------------------------------------------------------
 
@@ -1124,7 +1201,8 @@ CREATE TABLE `tbl_status` (
 INSERT INTO `tbl_status` (`sid`, `sname`) VALUES
 (0, 'ok'),
 (1, 'not approve'),
-(2, 'block');
+(2, 'block'),
+(3, 'Not payed');
 
 -- --------------------------------------------------------
 
@@ -1152,7 +1230,8 @@ CREATE TABLE `tbl_theatredetails` (
 --
 
 INSERT INTO `tbl_theatredetails` (`tid`, `lid`, `theatre_name`, `t_pro_pic`, `t_cov_pic`, `t_email`, `t_phone`, `t_district`, `t_place`, `t_description`, `t_screens`, `t_status`) VALUES
-(1, 3, 'NEW INDIA', '1553920924crown-theatre.jpg', '1553920924Kanakakkunnu_Palace_Kerala_8875.jpg', 'newindia@gmail.com', '9638527410', 4, 'iritty', 'A nice multiplex theater with decent crowd. Came here to witness the cinema experience in South India. Definitely worth a visit in case u are a big fan of watching movies first day no matter which place!!', 2, 0);
+(1, 3, 'NEW INDIA', '1553920924crown-theatre.jpg', '1553920924Kanakakkunnu_Palace_Kerala_8875.jpg', 'newindia@gmail.com', '9638527410', 4, 'IRITTY', 'A nice multiplex theater with decent crowd. Came here to witness the cinema experience in South India. Definitely worth a visit in case u are a big fan of watching movies first day no matter which place!!', 2, 0),
+(2, 5, 'CAROLIAN', '1555128856download.jpg', '1555128856carolina.jpg', 'carolina@gmail.com', '7410258963', 4, 'MATTANOOR', 'The film is projected with a movie projector onto a large projection screen at the front of the auditorium while the dialogue, sounds and music are played through a number of wall-mounted speakers. Since the 1970s, subwoofers have been used for low-pitched sounds. In the 2010s, most movie theaters are equipped for digital cinema projection, removing the need to create and transport a physical film print on a heavy reel.', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -1178,7 +1257,8 @@ CREATE TABLE `tbl_theatreseating` (
 --
 
 INSERT INTO `tbl_theatreseating` (`thid`, `tid`, `screen_no`, `row`, `cols`, `seat_arrangement`, `classes_names`, `class_rows`, `class_amount`, `status`) VALUES
-(1, 1, 1, 10, 20, '1-5,1-7,1-15,1-13,1-12,1-11,1-10,1-9,1-8,1-1,1-2,1-3,1-4,1-19,1-18,1-17,1-16,1-20,2-1,2-2,2-3,2-4,2-5,2-7,2-8,2-9,2-10,2-11,2-12,2-13,2-15,2-16,2-17,2-18,2-19,3-1,3-2,3-3,3-4,3-5,3-7,3-8,3-10,3-11,3-12,3-13,3-17,3-18,3-19,3-20,5-1,5-5,5-13,5-20,5-2,5-3,5-4,5-7,5-8,5-9,5-10,5-11,5-12,5-15,5-16,5-17,5-18,5-19,6-1,6-2,6-3,6-4,6-5,6-7,6-8,6-9,6-10,6-11,6-12,6-13,6-15,6-16,6-17,6-18,6-19,6-20,7-1,7-2,7-3,7-4,7-5,7-8,7-9,7-10,7-11,7-12,7-13,7-15,7-16,7-17,7-18,7-19,7-20,9-1,9-2,9-3,9-4,9-5,9-7,9-8,9-9,9-10,9-11,9-12,9-13,9-15,9-16,9-17,9-18,9-19,9-20,10-1,10-2,10-3,10-4,10-5,10-7,10-8,10-9,10-10,10-12,10-13,10-15,10-18,10-19,10-20,3-9,3-15,3-16,2-20,10-11,10-16,10-17,7-7', 'Balcoly,First Class,Second Class', '9,5,1', '200,150,100', 0);
+(1, 1, 1, 10, 20, '1-5,1-7,1-15,1-13,1-12,1-11,1-10,1-9,1-8,1-1,1-2,1-3,1-4,1-19,1-18,1-17,1-16,1-20,2-1,2-2,2-3,2-4,2-5,2-7,2-8,2-9,2-10,2-11,2-12,2-13,2-15,2-16,2-17,2-18,2-19,3-1,3-2,3-3,3-4,3-5,3-7,3-8,3-10,3-11,3-12,3-13,3-17,3-18,3-19,3-20,5-1,5-5,5-13,5-20,5-2,5-3,5-4,5-7,5-8,5-9,5-10,5-11,5-12,5-15,5-16,5-17,5-18,5-19,6-1,6-2,6-3,6-4,6-5,6-7,6-8,6-9,6-10,6-11,6-12,6-13,6-15,6-16,6-17,6-18,6-19,6-20,7-1,7-2,7-3,7-4,7-5,7-8,7-9,7-10,7-11,7-12,7-13,7-15,7-16,7-17,7-18,7-19,7-20,9-1,9-2,9-3,9-4,9-5,9-7,9-8,9-9,9-10,9-11,9-12,9-13,9-15,9-16,9-17,9-18,9-19,9-20,10-1,10-2,10-3,10-4,10-5,10-7,10-8,10-9,10-10,10-12,10-13,10-15,10-18,10-19,10-20,3-9,3-15,3-16,2-20,10-11,10-16,10-17,7-7', 'Balcoly,First Class,Second Class', '9,5,1', '200,150,100', 0),
+(2, 2, 1, 15, 20, '15-1,15-2,15-3,15-4,15-5,15-20,15-19,15-18,15-17,15-16,15-15,15-6,15-8,15-9,15-10,15-11,15-12,15-13,14-6,13-6,12-6,11-6,9-6,8-6,7-6,6-6,5-6,3-6,2-6,1-6,1-8,1-13,1-15,1-1,1-2,1-3,1-4,1-5,1-9,1-10,1-11,1-12,1-16,1-17,1-18,1-19,1-20,2-1,2-2,2-3,2-4,2-5,2-8,2-9,2-10,2-11,2-12,2-13,2-15,2-16,2-17,2-18,2-19,2-20,3-1,3-2,3-3,3-4,3-5,3-8,3-9,3-10,3-11,3-12,3-13,3-15,3-16,3-17,3-18,3-19,3-20,5-1,5-2,5-3,5-4,5-5,5-8,5-9,5-10,5-11,5-12,5-13,5-15,5-16,5-17,5-18,5-19,5-20,6-1,6-2,6-3,6-4,6-5,6-8,6-9,6-10,6-11,6-12,6-13,6-15,6-16,6-17,6-18,6-19,6-20,7-1,7-2,7-3,7-4,7-5,7-8,7-9,7-10,7-11,7-12,7-13,7-15,7-16,7-17,7-18,7-19,7-20,8-1,8-2,8-3,8-4,8-5,8-8,8-9,8-10,8-11,8-12,8-13,8-15,8-16,8-17,8-18,8-19,8-20,9-1,9-2,9-3,9-4,9-5,9-8,9-9,9-10,9-11,9-12,9-13,9-15,9-16,9-17,9-18,9-19,9-20,11-1,11-2,11-3,11-4,11-5,11-8,11-9,11-10,11-11,11-12,11-13,11-15,11-16,11-17,11-18,11-19,11-20,12-1,12-2,12-3,12-4,12-5,12-8,12-9,12-10,12-11,12-12,12-13,12-15,12-16,12-17,12-18,12-19,12-20,13-1,13-2,13-3,13-4,13-5,13-8,13-9,13-10,13-11,13-12,13-13,13-15,13-16,13-17,13-18,13-19,13-20,14-1,14-2,14-3,14-4,14-5,14-8,14-9,14-10,14-11,14-12,14-13,14-15,14-16,14-17,14-18,14-19,14-20', 'Second class,First Class,Balcony', '1,5,11', '100,150,200', 0);
 
 -- --------------------------------------------------------
 
@@ -1290,6 +1370,18 @@ ALTER TABLE `tbl_runningmovietime`
   ADD PRIMARY KEY (`runid`);
 
 --
+-- Indexes for table `tbl_seatbooking`
+--
+ALTER TABLE `tbl_seatbooking`
+  ADD PRIMARY KEY (`s_id`);
+
+--
+-- Indexes for table `tbl_seatdetails`
+--
+ALTER TABLE `tbl_seatdetails`
+  ADD PRIMARY KEY (`sid`);
+
+--
 -- Indexes for table `tbl_showtime`
 --
 ALTER TABLE `tbl_showtime`
@@ -1349,7 +1441,7 @@ ALTER TABLE `tbl_day`
 -- AUTO_INCREMENT for table `tbl_details`
 --
 ALTER TABLE `tbl_details`
-  MODIFY `regid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `regid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_district`
@@ -1361,7 +1453,7 @@ ALTER TABLE `tbl_district`
 -- AUTO_INCREMENT for table `tbl_filmselection`
 --
 ALTER TABLE `tbl_filmselection`
-  MODIFY `fs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `fs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_film_category`
@@ -1379,13 +1471,13 @@ ALTER TABLE `tbl_language`
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `lid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `lid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_moviedetails`
 --
 ALTER TABLE `tbl_moviedetails`
-  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_news`
@@ -1403,13 +1495,25 @@ ALTER TABLE `tbl_otp`
 -- AUTO_INCREMENT for table `tbl_runningmovietime`
 --
 ALTER TABLE `tbl_runningmovietime`
-  MODIFY `runid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `runid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `tbl_seatbooking`
+--
+ALTER TABLE `tbl_seatbooking`
+  MODIFY `s_id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+
+--
+-- AUTO_INCREMENT for table `tbl_seatdetails`
+--
+ALTER TABLE `tbl_seatdetails`
+  MODIFY `sid` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_showtime`
 --
 ALTER TABLE `tbl_showtime`
-  MODIFY `stid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `stid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tbl_state`
@@ -1421,19 +1525,19 @@ ALTER TABLE `tbl_state`
 -- AUTO_INCREMENT for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_theatredetails`
 --
 ALTER TABLE `tbl_theatredetails`
-  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_theatreseating`
 --
 ALTER TABLE `tbl_theatreseating`
-  MODIFY `thid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `thid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_usertype`
@@ -1483,12 +1587,6 @@ ALTER TABLE `tbl_otp`
   ADD CONSTRAINT `tbl_otp_ibfk_1` FOREIGN KEY (`email`) REFERENCES `tbl_details` (`email`);
 
 --
--- Constraints for table `tbl_showtime`
---
-ALTER TABLE `tbl_showtime`
-  ADD CONSTRAINT `tbl_showtime_ibfk_1` FOREIGN KEY (`dayid`) REFERENCES `tbl_day` (`did`);
-
---
 -- Constraints for table `tbl_theatredetails`
 --
 ALTER TABLE `tbl_theatredetails`
@@ -1500,6 +1598,16 @@ ALTER TABLE `tbl_theatredetails`
 --
 ALTER TABLE `tbl_theatreseating`
   ADD CONSTRAINT `tbl_theatreseating_ibfk_1` FOREIGN KEY (`tid`) REFERENCES `tbl_theatredetails` (`tid`);
+
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`localhost` EVENT `date_aftershow` ON SCHEDULE EVERY 1 SECOND STARTS '2019-04-12 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `tbl_seatbooking` SET b_status=4 WHERE time<TIME_FORMAT(CURRENT_TIME, '%r') AND date < CURRENT_DATE$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `test_event_01` ON SCHEDULE EVERY 1 SECOND STARTS '2019-04-11 21:04:43' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM `tbl_seatbooking` WHERE timestamp + 300 <= CURRENT_TIMESTAMP AND b_status=3$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

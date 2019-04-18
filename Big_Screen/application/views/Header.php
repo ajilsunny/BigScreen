@@ -16,7 +16,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="<?php echo base_url('style/css/faqstyle.css');?>" rel="stylesheet"  type="text/css" media="all" />
 <link href="<?php echo base_url('style/css/single.css');?>" rel='stylesheet' type='text/css' />
 <link href="<?php echo base_url('style/css/medile.css');?>" rel='stylesheet' type='text/css' />
-<link href="../../style/css/flexslider.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo base_url('style/css/flexslider.css');?>" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="<?php echo base_url('style/news-css/news.css');?>" type="text/css" media="all" />
 <!-- banner-slider -->
 <link href="<?php echo base_url('style/css/jquery.slidey.min.css');?>" rel="stylesheet">
 <!-- //banner-slider -->
@@ -269,7 +270,7 @@ function dist()
 								</ul>
 							</li>
 							<!--<li><a href="">tv - series</a></li>-->
-							<li><a href="<?php echo site_url('usercontroller/index');?>">news</a></li>
+							<li><a href="<?php echo site_url('usercontroller/news');?>">news</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Choose Theater  <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">

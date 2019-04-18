@@ -20,6 +20,7 @@ class ucontroller extends CI_Controller
   $result['dis']=$this->umodel->allfilms();
   $this->load->view('user/user_home',$result);
   }
+	
   function sessionin($t)
 	{
 		$username=$this->session->userdata('username');
@@ -168,6 +169,12 @@ function bookseat()
 	$seatid=$this->umodel->bookseat($data);
 	echo json_encode($seatid);
 }
+function bookedcount()
+{
+	$lid=$this->session->userdata('id');
+	$count=$this->umodel->bookedcount($lid);
+	echo $count;
+}
 
 function seatcheck()
 {
@@ -234,8 +241,9 @@ function payment()
 			for ($i=0; $i <sizeof($seatids) ; $i++)
 			{
 				// echo $seatids[$i];
-				$this->umodel->updatebooking($seatids[$i],$data1);
+				$this->umodel->updatebooking($seatids[$i]);
 			}
+			$this->umodel->insertbooking($data1);
 					echo "<script>alert('Payment Successful')</script>";
 					$this->userhome();
 
